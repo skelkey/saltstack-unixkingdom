@@ -1,0 +1,5 @@
+base:
+  '*':
+    - hostname
+  '*openvpn*':
+    - openvpn

@@ -1,5 +1,5 @@
 include:
-  - letsencrypt-formulas
+  - letsencrypt-formula
 
 install openvpn server:
   pkg.installed:

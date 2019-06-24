@@ -1,0 +1,1 @@
+mysql_ejbca_password: <password_for_ejbca_db_user>

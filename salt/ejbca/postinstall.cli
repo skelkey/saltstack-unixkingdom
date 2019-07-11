@@ -1,0 +1,169 @@
+##
+# Remove existing TLS and HTTP Configuration
+##
+if (outcome == success) of /subsystem=undertow/server=default-server/http-listener=default:read-resource
+  /subsystem=undertow/server=default-server/http-listener=default:remove
+  echo default HTTP listener removed
+else
+  echo default HTTP listener already removed
+end-if
+if (outcome == success) of /subsystem=undertow/server=default-server/https-listener=https:read-resource
+  /subsystem=undertow/server=default-server/https-listener=https:remove
+  echo default HTTPS listener removed
+else
+  echo default HTTPS listener already removed
+end-if
+if (outcome == success) of /socket-binding-group=standard-sockets/socket-binding=http:read-resource
+  try
+    /socket-binding-group=standard-sockets/socket-binding=http:remove
+    echo default HTTP socket binding removed
+  catch
+    echo default HTTP socket binding removing failed
+  end-try
+else
+  echo default HTTP socket binding already removed
+end-if
+if (outcome == success) of /socket-binding-group=standard-sockets/socket-binding=https:read-resource
+  /socket-binding-group=standard-sockets/socket-binding=https:remove
+  echo default HTTPS socket binding removed
+else
+  echo default HTTPS socket binding already removed
+end-if
+
+##
+# Configure TLS
+##
+if (outcome != success) of /interface=http:read-resource
+  /interface=http:add(inet-address="0.0.0.0")
+  echo Add inet address "0.0.0.0" to HTTP interface
+else
+  echo HTTP interface already exist
+end-if
+if (outcome != success) of /interface=httpspub:read-resource
+  /interface=httpspub:add(inet-address="0.0.0.0")
+  echo Add inet address "0.0.0.0" to HTTPS public interface
+else
+  echo HTTPS public interface already exist
+end-if
+if (outcome != success) of /interface=httpspriv:read-resource
+  /interface=httpspriv:add(inet-address="0.0.0.0")
+  echo Add inet address "0.0.0.0" to HTTPS private interface
+else
+  echo HTTPS private interface already exist
+end-if
+if (outcome != success) of /socket-binding-group=standard-sockets/socket-binding=http:read-resource
+  /socket-binding-group=standard-sockets/socket-binding=http:add(port="8080",interface="http")
+  echo Add listening on port "8080" to interface "http"
+else
+  echo HTTP socket binding already exist
+end-if
+if (outcome != success) of /subsystem=undertow/server=default-server/http-listener=http:read-resource
+  /subsystem=undertow/server=default-server/http-listener=http:add(socket-binding=http)
+  echo Add socket binding to HTTP listener
+else
+  echo HTTP listener already exist
+end-if
+#FIXME: I THINK THIS NOT WORKING IN THE CONDITION
+if (redirect-socket != httpspriv) of /subsystem=undertow/server=default-server/http-listener=http:read-resource 
+  /subsystem=undertow/server=default-server/http-listener=http:write-attribute(name=redirect-socket, value="httpspriv")
+  echo Add socket binding to HTTPS private listener
+else
+  echo private HTTPS listener already exist
+end-if
+
+if (outcome == failed) of /core-service=management/security-realm=SSLRealm:read-resource
+  /core-service=management/security-realm=SSLRealm:add()
+  echo Add SSLRealm to core service
+else
+  echo SSLRealm already exist
+end-if
+if (outcome == failed) of /core-service=management/security-realm=SSLRealm/server-identity=ssl:read-resource
+  /core-service=management/security-realm=SSLRealm/server-identity=ssl:add(keystore-path="${jboss.server.config.dir}/keystore/keystore.jks", keystore-password="pillar['ejbca_httpsserver_password']", alias="pki.unix-kingdom.lan")
+  echo Add SSL to SSLRealm
+else
+  echo SSL already exist for SSLRealm
+end-if
+if (outcome == failed) of /core-service=management/security-realm=SSLRealm/authentication=truststore:read-resource
+  /core-service=management/security-realm=SSLRealm/authentication=truststore:add(keystore-path="${jboss.server.config.dir}/keystore/truststore.jks", keystore-password="pillar['ejbca_javatrustore_password']")
+  echo Adding keystore to core-service
+else
+  echo Keystore already exist in core service
+end-if
+if (outcome == failed) of /socket-binding-group=standard-sockets/socket-binding=httpspriv:read-resource
+  /socket-binding-group=standard-sockets/socket-binding=httpspriv:add(port="8443",interface="httpspriv")
+  echo Binding socket on port "8443" to httpspriv
+else
+  echo Already bind socket on port "8443" to httpspriv
+end-if
+if (outcome == failed) of /socket-binding-group=standard-sockets/socket-binding=httpspub:read-resource
+  /socket-binding-group=standard-sockets/socket-binding=httpspub:add(port="8442", interface="httpspub")
+  echo Binding socket on port "8443" to httpspriv
+else
+  echo Already bind socket on port "8443" to httpspriv
+end-if
+
+
+if (outcome == failed) of /subsystem=undertow/server=default-server/https-listener=httpspriv:read-resource
+  /subsystem=undertow/server=default-server/https-listener=httpspriv:add(socket-binding=httpspriv, security-realm="SSLRealm", verify-client=REQUIRED)
+  echo Adding "httpspriv" binding to "httpspriv" listener
+else
+  echo "httpspriv" already bind to "httpspriv" listener
+end-if
+# FIXME : NOT SURE THAT WORKS !
+if (result != 2048) of /subsystem=undertow/server=default-server/https-listener=httpspriv:read-attribute(name=max-parameters)
+  /subsystem=undertow/server=default-server/https-listener=httpspriv:write-attribute(name=max-parameters, value="2048")
+  echo Setting max-parameters to 2048 for "httpspriv" listener
+else
+  echo max-paramaters already set to 2048 for "httpspriv"
+end-if
+if (outcome == failed) of /subsystem=undertow/server=default-server/https-listener=httpspub:read-resource
+  /subsystem=undertow/server=default-server/https-listener=httpspub:add(socket-binding=httpspub, security-realm="SSLRealm")
+  echo Adding "httpspub" socket binding to "httpspub" listener
+else
+  echo "httpspub" already bind to "httpspub" listener
+end-if
+# FIXME : NOT SURE THAT WORKS !
+if (result != 2048) of /subsystem=undertow/server=default-server/https-listener=httpspub:read-attribute(name=max-parameters)
+  /subsystem=undertow/server=default-server/https-listener=httpspub:write-attribute(name=max-parameters, value="2048")
+  echo Setting max-parameters to 2048 for "httpspub" listener
+else
+  echo max-paramaters already set to 2048 for "httpspub"
+end-if
+
+if (outcome == failed) of /system-property=org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH:read-resource
+  /system-property=org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH:add(value=true)
+  echo Adding ALLOW_ENCODED_SLASH 
+else
+  echo ALLOW_ENCODED_SLASH already added
+end-if
+if (outcome == failed) of /system-property=org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH:read-resource
+  /system-property=org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH:add(value=true)
+  echo Adding ALLOW_BACKSLASH 
+else
+  echo ALLOW_BACKSLASH already added
+end-if
+if (outcome == failed) of /system-property=org.apache.catalina.connector.URI_ENCODING:read-resource
+  /system-property=org.apache.catalina.connector.URI_ENCODING:add(value="UTF-8")
+  echo Adding URI_ENCODING
+else
+  echo URI_ENCODING already added
+end-if
+if (outcome == failed) of /system-property=org.apache.catalina.connector.USE_BODY_ENCODING_FOR_QUERY_STRING:read-resource
+  /system-property=org.apache.catalina.connector.USE_BODY_ENCODING_FOR_QUERY_STRING:add(value=true)
+  echo Adding USE_BODY_ENCODING_FOR_QUERY_STRING
+else
+  echo USE_BODY_ENCODING_FOR_QUERY_STRING already added
+end-if
+if (result == expression "${jboss.bind.address:127.0.0.1}") of /subsystem=webservices:read-attribute(name=wsdl-host)
+  /subsystem=webservices:write-attribute(name=wsdl-host, value=jbossws.undefined.host)
+  echo Setting wsdl-host value to "jbossws.undefined.host"
+else
+  echo wsdl-host already set to "jbossws.undefined.host"
+end-if
+if (result == true) of /subsystem=webservices:read-attribute(name=modify-wsdl-address)
+  /subsystem=webservices:write-attribute(name=modify-wsdl-address, value=true)
+  echo Setting modify-wsdl-address to "true"
+else
+  echo modify-wsdl-address already set to "true"
+end-if
+

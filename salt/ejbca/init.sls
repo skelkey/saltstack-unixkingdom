@@ -2,6 +2,10 @@ Install Java 8 OpenJDK:
   pkg.installed:
     - name: java-1.8.0-openjdk
 
+Install s3cmd:
+  pkg.installed:
+    - name: s3cmd
+
 Install ant package:
   pkg.installed:
     - name: ant
@@ -154,7 +158,7 @@ Configure EJBCA cesecore:
 
 Compile EJBCA:
   cmd.run:
-    - name: ant clean deployear > /tmp/deployear
+    - name: ant clean deployear 2>&1 > /tmp/deployear
     - cwd: /opt/ejbca_ce_6_15_2_1
     - runas: wildfly
     - unless: test -f /opt/wildfly/standalone/deployments/ejbca.ear.deployed
@@ -162,17 +166,58 @@ Compile EJBCA:
 
 Install EJBCA:
   cmd.run:
-    - name: sleep 120; ant runinstall > /tmp/runinstall
+    - name: sleep 120; ant runinstall 2>&1 > /tmp/runinstall
     - cwd: /opt/ejbca_ce_6_15_2_1
-    - unless: test -f /opt/ejbca_ce_6_15_2_1/p12
+    - unless: test -d /opt/ejbca_ce_6_15_2_1/p12
     - runas: wildfly
     - timeout: 180
 
 Deploy keystore:
   cmd.run:
-    - name: ant deploy-keystore > /tmp/keystore
+    - name: ant deploy-keystore 2>&1 > /tmp/keystore
     - cwd: /opt/ejbca_ce_6_15_2_1
     - runas: wildfly
     - unless: test -d /opt/wildfly/standalone/configuration/keystore
     - timeout: 60
 
+Deploy postinstall script:
+  file.managed:
+    - name: /tmp/postinstall.cli
+    - source: salt://ejbca/postinstall.cli
+    - user: wildfly
+    - group: wildfly
+    - mode: 400
+    - template: jinja
+
+Run postinstall script:
+  cmd.run:
+    - name: /opt/wildfly/bin/jboss-cli.sh -c --file=/tmp/postinstall.cli 2>&1 > /tmp/postinstall
+    - cwd: /opt/wildfly/bin
+    - runas: wildfly
+    - timeout: 60
+
+Restart wildfly service:
+  module.wait:
+    - name: service.restart
+    - m_name: wildfly
+
+Delete postinstall script:
+  file.absent:
+    - name: /tmp/postinstall.cli
+
+Write s3cmd configuration:
+  file.managed:
+    - name: /opt/wildfly/.s3cfg
+    - source: salt://ejbca/s3cfg
+    - user: wildfly
+    - group: wildfly
+    - mode: 400
+    - template: jinja
+
+Push management key to S3:
+  cmd.script:
+    - source: salt://ejbca/p12_to_osu.sh
+    - template: jinja
+    - runas: wildfly
+    - shell: /bin/bash
+    

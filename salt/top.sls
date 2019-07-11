@@ -1,9 +1,11 @@
 base:
   '*':
     - hostname
-  '*openvpn*':
-    - openvpn
+  '*strongswan*':
+    - strongswan
   '*mariadb*':
     - mariadb
   '*ejbca*':
     - ejbca
+  '*pkihaproxy*':
+    - pkihaproxy

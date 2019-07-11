@@ -1,1 +1,3 @@
-pillar/openvpn.sls
+pillar/common_ejbca.sls
+pillar/ejbca.sls
+pillar/mariadb.sls

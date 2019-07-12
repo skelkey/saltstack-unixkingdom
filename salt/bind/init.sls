@@ -2,6 +2,11 @@ install bind service:
   pkg.installed:
     - name: bind-chroot
 
+start and enable bind service:
+  service.running:
+    - name: named
+    - enable: true
+
 set right on /var/named:
   file.directory:
     - name: /var/named
@@ -68,9 +73,8 @@ create /var/named/chroot/var/named/unix-kingom.lan.zone:
     - group: named
     - mode: 640
 
-start and enable bind service:
-  service.running:
-    - name: named
-    - enable: true
-
+reload bind service:
+  module.wait:
+    - name: service.reload
+    - m_name: named
 

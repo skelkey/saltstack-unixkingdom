@@ -4,7 +4,7 @@ install bind service:
 
 start and enable bind service:
   service.running:
-    - name: named-chroot
+    - name: named
     - enable: true
 
 set right on /var/named:

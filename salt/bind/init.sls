@@ -3,39 +3,39 @@ install bind service:
     - name: bind-chroot
 
 set right on /var/named:
-  file.managed:
+  file.directory:
     - name: /var/named
-    - mode: 755
+    - dir_mode: 755
     - replace: false
 
 set right on /var/named/chroot:
-  file.managed:
+  file.directory:
     - name: /var/named/chroot
-    - mode: 775
+    - dir_mode: 775
     - replace: false
 
 set right on /var/named/chroot/var:
-  file.managed:
+  file.directory:
     - name: /var/named/chroot/var
-    - mode: 775
+    - dir_mode: 775
     - replace: false
 
 set right on /var/named/chroot/var/named:
-  file.managed:
+  file.directory:
     - name: /var/named/chroot/var/named
-    - mode: 775
+    - dir_mode: 775
     - replace: false
 
 set right on /var/named/chroot/var/run:
-  file.managed:
+  file.directory:
     - name: /var/named/chroot/var/run
-    - mode: 775
+    - dir_mode: 775
     - replace: false
 
 set right on /var/named/chroot/var/run/named/:
-  file.managed:
+  file.directory:
     - name: /var/named/chroot/var/run/named
-    - mode: 777
+    - dir_mode: 777
     - replace: false
 
 create a symlink to /var/named/chroot:

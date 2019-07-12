@@ -32,7 +32,7 @@ set right on /var/named/chroot/var/run:
     - mode: 775
     - replace: false
 
-set right on /var/named/chroot/var/run/named/
+set right on /var/named/chroot/var/run/named/:
   file.managed:
     - name: /var/named/chroot/var/run/named
     - mode: 777

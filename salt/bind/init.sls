@@ -4,7 +4,7 @@ install bind service:
 
 start and enable bind service:
   service.running:
-    - name: named
+    - name: named-chroot
     - enable: true
 
 set right on /var/named:
@@ -66,7 +66,7 @@ create /etc/named/conf.local:
 
 create /var/named/chroot/var/named/unix-kingom.lan.zone:
   file.managed:
-    - name: /var/named/chroot/var/named/unix-kingom.lan.zone
+    - name: /var/named/chroot/var/named/unix-kingdom.lan.zone
     - source: salt://bind/unix-kingdom.lan.zone
     - template: jinja
     - user: root

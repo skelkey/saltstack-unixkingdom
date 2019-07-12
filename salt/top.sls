@@ -9,3 +9,5 @@ base:
     - ejbca
   '*pkihaproxy*':
     - pkihaproxy
+  '*bind*':
+    - bind

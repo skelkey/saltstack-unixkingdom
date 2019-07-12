@@ -1,0 +1,6 @@
+zone "unix-kingdom.lan" IN {
+    type master;
+    file "unix-kingdom.lan.zone";
+    allow-update { none; };
+};
+

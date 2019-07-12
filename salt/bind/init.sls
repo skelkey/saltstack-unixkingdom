@@ -43,6 +43,31 @@ create a symlink to /var/named/chroot:
     - name: /var/named/chroot/var/named/chroot
     - target: /var/named/chroot
 
+create /etc/named.conf file:
+  file.managed:
+    - name: /etc/named.conf
+    - source: salt://bind/named.conf
+    - user: root
+    - group: named
+    - mode: 640
+
+create /etc/named/conf.local:
+  file.managed:
+    - name: /etc/named/conf.local
+    - source: salt://bind/conf.local
+    - user: root
+    - group: named
+    - mode: 640
+
+create /var/named/chroot/var/named/unix-kingom.lan.zone:
+  file.managed:
+    - name: /var/named/chroot/var/named/unix-kingom.lan.zone
+    - source: salt://bind/unix-kingdom.lan.zone
+    - template: jinja
+    - user: root
+    - group: named
+    - mode: 640
+
 start and enable bind service:
   service.running:
     - name: named

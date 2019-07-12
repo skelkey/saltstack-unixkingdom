@@ -1,6 +1,6 @@
 zone "unix-kingdom.lan" IN {
     type master;
-    file "unix-kingdom.lan.zone";
+    file "/var/named/unix-kingdom.lan.zone";
     allow-update { none; };
 };
 

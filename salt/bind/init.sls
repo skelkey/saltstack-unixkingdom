@@ -73,6 +73,14 @@ create /var/named/chroot/var/named/unix-kingom.lan.zone:
     - group: named
     - mode: 640
 
+create /var/named/chroot/var/named/named.empty:
+  file.managed
+    - name: /var/named/chroot/var/named/named.empty
+    - source: salt://bind/named.empty
+    - user: root
+    - group: named
+    - mode: 640
+
 reload bind service:
   module.wait:
     - name: service.reload

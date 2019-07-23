@@ -74,7 +74,7 @@ create /var/named/chroot/var/named/unix-kingom.lan.zone:
     - mode: 640
 
 link named.empty in chroot:
-  file.symlink
+  file.symlink:
     - name: /var/named/chroot/var/named/named.empty
     - target: /var/named/named.empty
 

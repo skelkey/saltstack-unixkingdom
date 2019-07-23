@@ -88,16 +88,6 @@ link named.empty in chroot:
     - name: /var/named/chroot/var/named/named.empty
     - target: /var/named/named.empty
 
-link conf.local in chroot:
-  file.symlink:
-    - name: /var/named/chroot/etc/named/conf.local
-    - target: /etc/named/conf.local
-
-link named.conf in chroot:
-  file.symlink:
-    - name: /var/named/chroot/etc/named.conf
-    - target: /etc/named.conf
-
 reload bind service:
   module.wait:
     - name: service.reload

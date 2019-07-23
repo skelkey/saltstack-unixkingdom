@@ -1,4 +1,3 @@
-
 $ttl 86400
 unix-kingdom.lan IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
     2019071200
@@ -7,8 +6,8 @@ unix-kingdom.lan IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
     604800
     38400 )
 
-@ IN NS ns1.unix-kingdom.lan
-@ IN NS ns2.unix-kingdom.lan
+@ IN NS ns1.unix-kingdom.lan.
+@ IN NS ns2.unix-kingdom.lan.
 
 euw2a-prd-unixkingdom-bind-1       IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-1', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-1'] }}
 euw2a-prd-unixkingdom-bind-2       IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-2', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-2'] }}

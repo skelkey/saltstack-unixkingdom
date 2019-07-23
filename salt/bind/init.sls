@@ -74,7 +74,7 @@ create /var/named/chroot/var/named/unix-kingom.lan.zone:
     - mode: 640
 
 create /var/named/chroot/var/named/named.empty:
-  file.managed
+  file.managed:
     - name: /var/named/chroot/var/named/named.empty
     - source: salt://bind/named.empty
     - user: root

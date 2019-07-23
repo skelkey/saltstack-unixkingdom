@@ -69,7 +69,7 @@ create /var/named/chroot/etc/named/conf.local file:
     - group: named
     - mode: 640
 
-link conf.local in /etc:
+link conf.local in /etc/named:
   file.symlink:
     - name: /etc/named/conf.local
     - target: /var/named/chroot/etc/named/conf.local
@@ -91,5 +91,5 @@ link named.empty in chroot:
 reload bind service:
   module.wait:
     - name: service.reload
-    - m_name: named
+    - m_name: named-chroot
 

@@ -2,11 +2,6 @@ install bind service:
   pkg.installed:
     - name: bind-chroot
 
-start and enable bind service:
-  service.running:
-    - name: named-chroot
-    - enable: true
-
 set right on /var/named:
   file.directory:
     - name: /var/named
@@ -87,6 +82,11 @@ link named.empty in chroot:
   file.symlink:
     - name: /var/named/chroot/var/named/named.empty
     - target: /var/named/named.empty
+
+start and enable bind service:
+  service.running:
+    - name: named-chroot
+    - enable: true
 
 reload bind service:
   module.wait:

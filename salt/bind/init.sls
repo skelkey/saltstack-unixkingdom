@@ -48,21 +48,31 @@ create a symlink to /var/named/chroot:
     - name: /var/named/chroot/var/named/chroot
     - target: /var/named/chroot
 
-create /etc/named.conf file:
+create /var/named/chroot/etc/named.conf file:
   file.managed:
-    - name: /etc/named.conf
+    - name: /var/named/chroot/etc/named.conf
     - source: salt://bind/named.conf
     - user: root
     - group: named
     - mode: 640
 
-create /etc/named/conf.local:
+link named.conf in /etc:
+  file.symlink:
+    - name: /etc/named.conf
+    - target: /var/named/chroot/etc/named.conf
+
+create /var/named/chroot/etc/named/conf.local file:
   file.managed:
-    - name: /etc/named/conf.local
+    - name: /var/named/chroot/etc/named/conf.local
     - source: salt://bind/conf.local
     - user: root
     - group: named
     - mode: 640
+
+link conf.local in /etc:
+  file.symlink:
+    - name: /etc/named/conf.local
+    - target: /var/named/chroot/etc/named/conf.local
 
 create /var/named/chroot/var/named/unix-kingom.lan.zone:
   file.managed:

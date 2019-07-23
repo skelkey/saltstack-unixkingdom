@@ -73,13 +73,20 @@ create /var/named/chroot/var/named/unix-kingom.lan.zone:
     - group: named
     - mode: 640
 
-create /var/named/chroot/var/named/named.empty:
-  file.managed:
+link named.empty in chroot:
+  file.symlink
     - name: /var/named/chroot/var/named/named.empty
-    - source: salt://bind/named.empty
-    - user: root
-    - group: named
-    - mode: 640
+    - target: /var/named/named.empty
+
+link conf.local in chroot:
+  file.symlink:
+    - name: /var/named/chroot/etc/named/conf.local
+    - target: /etc/named/conf.local
+
+link named.conf in chroot:
+  file.symlink:
+    - name: /var/named/chroot/etc/named.conf
+    - target: /etc/named.conf
 
 reload bind service:
   module.wait:

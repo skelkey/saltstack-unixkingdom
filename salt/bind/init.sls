@@ -88,7 +88,7 @@ create /var/named/chroot/etc/named.rfc1912.zones:
 
 create /var/named/chroot/run/named.ca:
   file.managed:
-    - name: /var/named/chroot/run/named.ca
+    - name: /var/named/chroot/var/named/named.ca
     - source: salt://bind/named.ca
     - user: root
     - group: named

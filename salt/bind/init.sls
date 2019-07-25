@@ -78,6 +78,14 @@ create /var/named/chroot/var/named/unix-kingom.lan.zone:
     - group: named
     - mode: 640
 
+create /var/named/chroot/etc/named.rfc1912.zones:
+  file.managed:
+    - name: /var/named/chroot/etc/named.rfc1912.zones
+    - source: salt://bind/named.rfc1912.zones
+    - user: root
+    - group: named
+    - mode: 640
+
 link named.empty in chroot:
   file.symlink:
     - name: /var/named/chroot/var/named/named.empty

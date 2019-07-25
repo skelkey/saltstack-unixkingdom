@@ -10,7 +10,9 @@ unix-kingdom.lan. IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
 @ IN NS ns2.unix-kingdom.lan.
 
 euw2a-prd-unixkingdom-bind-1       IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-1', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-1'] }}
+ns1                                IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-1', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-1'] }}
 euw2a-prd-unixkingdom-bind-2       IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-2', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-2'] }}
+ns2                                IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-2', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-2'] }}
 euw2a-prd-unixkingdom-ejbca-1      IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-ejbca-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ejbca-1'] }}
 euw2a-prd-unixkingdom-mariadb-1    IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] }}
 euw2a-prd-unixkingdom-pkihaproxy-1 IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-pkihaproxy-1', 'network.interface_ip')['euw2a-prd-unixkingdom-pkihaproxy-1'] }}
@@ -18,6 +20,4 @@ euw2a-prd-unixkingdom-saltstack-1  IN A {{ salt['mine.get']('euw2a-prd-unixkingd
 euw2a-prd-unixkingdom-strongswan-1 IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-strongswan-1', 'network.interface_ip')['euw2a-prd-unixkingdom-strongswan-1'] }}
 
 pki IN CNAME euw2a-prd-unixkingdom-pkihaproxy-1
-ns1 IN CNAME euw2a-prd-unix-kingdom-bind-1
-ns2 IN CNAME euw2a-prd-unix-kingdom-bind-2
 

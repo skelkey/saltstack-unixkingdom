@@ -1,5 +1,5 @@
 $ttl 86400
-unix-kingdom.lan IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
+unix-kingdom.lan. IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
     2019071200
     10800
     3600

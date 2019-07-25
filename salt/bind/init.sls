@@ -102,6 +102,14 @@ create /var/named/chroot/var/named/named.localhost:
     - group: named
     - mode: 640
 
+create /var/named/chroot/var/named/named.loopback:
+  file.managed:
+    - name: /var/named/chroot/var/named/named.loopback
+    - source: salt://bind/named.localhost
+    - user: root
+    - group: named
+    - mode: 640
+
 link named.empty in chroot:
   file.symlink:
     - name: /var/named/chroot/var/named/named.empty

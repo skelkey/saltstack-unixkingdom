@@ -86,10 +86,18 @@ create /var/named/chroot/etc/named.rfc1912.zones:
     - group: named
     - mode: 640
 
-create /var/named/chroot/run/named.ca:
+create /var/named/chroot/var/named/named.ca:
   file.managed:
     - name: /var/named/chroot/var/named/named.ca
     - source: salt://bind/named.ca
+    - user: root
+    - group: named
+    - mode: 640
+
+create /var/named/chroot/var/named/named.localhost:
+  file.managed:
+    - name: /var/named/chroot/var/named/named.localhost
+    - source: salt://bind/named.localhost
     - user: root
     - group: named
     - mode: 640

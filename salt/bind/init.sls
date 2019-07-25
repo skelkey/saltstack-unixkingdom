@@ -110,10 +110,13 @@ create /var/named/chroot/var/named/named.loopback:
     - group: named
     - mode: 640
 
-link named.empty in chroot:
-  file.symlink:
+create /var/named/chroot/var/named/named.empty:
+  file.managed:
     - name: /var/named/chroot/var/named/named.empty
-    - target: /var/named/named.empty
+    - source: salt://bind/named.empty
+    - user: root
+    - group: named
+    - mode: 640
 
 start and enable bind service:
   service.running:

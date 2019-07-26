@@ -118,6 +118,11 @@ create /var/named/chroot/var/named/named.empty:
     - group: named
     - mode: 640
 
+apply selinux context /var/named/chroot/dev/urandom:
+  selinux.fcontext_policy_present:
+    - name: /var/named/chroot/dev/urandom
+    - sel_type: system_u:object_r:urandom_device_t:s0 
+
 start and enable bind service:
   service.running:
     - name: named-chroot

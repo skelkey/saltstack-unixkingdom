@@ -121,7 +121,9 @@ create /var/named/chroot/var/named/named.empty:
 apply selinux context /var/named/chroot/dev/urandom:
   selinux.fcontext_policy_present:
     - name: /var/named/chroot/dev/urandom
-    - sel_user: system_u:object_r:urandom_device_t:s0 
+    - sel_user: system_u
+    - sel_type: random_device_t
+    - sel_level: s0
 
 start and enable bind service:
   service.running:

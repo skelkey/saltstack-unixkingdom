@@ -1,3 +1,7 @@
+set selinux permissive:
+  selinux.mode:
+    - name: permissive
+
 install bind service:
   pkg.installed:
     - name: bind-chroot
@@ -117,13 +121,6 @@ create /var/named/chroot/var/named/named.empty:
     - user: root
     - group: named
     - mode: 640
-
-apply selinux context /var/named/chroot/dev/urandom:
-  selinux.fcontext_policy_present:
-    - name: /var/named/chroot/dev/urandom
-    - sel_user: system_u
-    - sel_type: random_device_t
-    - sel_level: s0
 
 start and enable bind service:
   service.running:

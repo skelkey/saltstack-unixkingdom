@@ -30,6 +30,14 @@ set right on /var/named/chroot/var/named:
     - dir_mode: 775
     - replace: false
 
+create /var/named/chroot/var/named/data:
+  file.directory:
+    - name: /var/named/chroot/var/named/data:
+    - dir_mode: 775
+    - replace: false
+    - user: root
+    - group: named
+
 set right on /var/named/chroot/var/run:
   file.directory:
     - name: /var/named/chroot/var/run

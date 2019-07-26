@@ -32,7 +32,7 @@ set right on /var/named/chroot/var/named:
 
 create /var/named/chroot/var/named/data:
   file.directory:
-    - name: /var/named/chroot/var/named/data:
+    - name: /var/named/chroot/var/named/data
     - dir_mode: 775
     - replace: false
     - user: root

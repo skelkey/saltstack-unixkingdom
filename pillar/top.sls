@@ -9,3 +9,5 @@ base:
   '*mariadb*':
     - common_ejbca
     - mariadb
+  '*bind*':
+    - bind

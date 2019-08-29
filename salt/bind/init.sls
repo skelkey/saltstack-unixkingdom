@@ -59,6 +59,7 @@ create /var/named/chroot/etc/named.conf file:
   file.managed:
     - name: /var/named/chroot/etc/named.conf
     - source: salt://bind/named.conf
+    - template: jinja
     - user: root
     - group: named
     - mode: 640

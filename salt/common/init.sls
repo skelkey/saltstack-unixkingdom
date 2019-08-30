@@ -8,6 +8,7 @@ set system hostname:
 set system dns:
   network.managed:
     - name: eth0
+    - type: eth
     - dns:
       - {{ dns1_ip }}
       - {{ dns2_ip }}

@@ -9,7 +9,7 @@ set system dns:
   network.managed:
     - name: eth0
     - dns:
-      {{ dns1_ip }}
-      {{ dns2_ip }}
-      8.8.8.8
-      8.8.4.4
+      - {{ dns1_ip }}
+      - {{ dns2_ip }}
+      - 8.8.8.8
+      - 8.8.4.4

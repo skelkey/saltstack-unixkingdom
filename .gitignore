@@ -2,3 +2,4 @@ pillar/common_ejbca.sls
 pillar/ejbca.sls
 pillar/mariadb.sls
 pillar/bind.sls
+pillar/common.sls

@@ -5,6 +5,11 @@ set system hostname:
     - hostname: {{ grains['id'] }}
     - apply_hostname: True
 
+set root password:
+  user.present:
+    - name: root
+    - password: {{ pillar['root_hash'] }}
+
 set system dns:
   network.managed:
     - name: eth0

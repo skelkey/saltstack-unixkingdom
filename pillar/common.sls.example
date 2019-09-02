@@ -1,3 +1,5 @@
 mine_functions:
   network.interface_ip:
     iface: eth0
+
+root_hash: $6$Um/rA2s0N0$...FBF3i7l1WlXIqOCfVJ1 

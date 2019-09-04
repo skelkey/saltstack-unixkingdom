@@ -68,6 +68,7 @@ link named.conf in /etc:
   file.symlink:
     - name: /etc/named.conf
     - target: /var/named/chroot/etc/named.conf
+    - force: true
 
 create /var/named/chroot/etc/named/conf.local file:
   file.managed:

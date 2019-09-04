@@ -9,13 +9,3 @@ set root password:
   user.present:
     - name: root
     - password: {{ pillar['root_hash'] }}
-
-set system dns:
-  network.managed:
-    - name: eth0
-    - type: eth
-    - dns:
-      - {{ dns1_ip }}
-      - {{ dns2_ip }}
-      - 8.8.8.8
-      - 8.8.4.4

@@ -18,6 +18,7 @@ euw2a-prd-unixkingdom-mariadb-1    IN A {{ salt['mine.get']('euw2a-prd-unixkingd
 euw2a-prd-unixkingdom-pkihaproxy-1 IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-pkihaproxy-1', 'network.interface_ip')['euw2a-prd-unixkingdom-pkihaproxy-1'] }}
 euw2a-prd-unixkingdom-saltstack-1  IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-saltstack-1', 'network.interface_ip')['euw2a-prd-unixkingdom-saltstack-1'] }}
 euw2a-prd-unixkingdom-strongswan-1 IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-strongswan-1', 'network.interface_ip')['euw2a-prd-unixkingdom-strongswan-1'] }}
+euw2a-prd-unixkingdom-ldap-1       IN A {{ salt['mine.get'](euw2a-prd-unixkingdom-ldap-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ldap-1'] }}
 
 pki IN CNAME euw2a-prd-unixkingdom-pkihaproxy-1
 

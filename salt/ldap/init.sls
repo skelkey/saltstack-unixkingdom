@@ -1,7 +1,13 @@
 Install RCDevs repository:
-  pkg.installed:
-    - sources:
-      - rcdevs: https://www.rcdevs.com/repos/redhat/rcdevs_release-1.0.0-0.noarch.rpm
+  pkgrepo.managed:
+    - name: rcdevs
+    - enabled: True
+    - humanname: rcdevs
+    - baseurl: https://www.rcdevs.com/repos/redhat
+    - gpgcheck: 1
+    - gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs
+    - protect: 0
+
 
 Install RCDevs ldap:
   pkg.installed:

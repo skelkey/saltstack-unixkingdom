@@ -12,3 +12,8 @@ Install RCDevs repository:
 Install RCDevs ldap:
   pkg.installed:
     - name: slapd
+
+start and enable slapd service:
+  service.running:
+    - name: slapd
+    - enable: true

@@ -11,3 +11,5 @@ base:
     - pkihaproxy
   '*bind*':
     - bind
+  '*ldap*':
+    - ldap

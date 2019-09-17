@@ -1,3 +1,11 @@
+Install rcdevs GPG key:
+  file.managed:
+    - name: /etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs
+    - source: https://www.rcdevs.com/repos/redhat/RPM-GPG-KEY-rcdevs.pub
+    - user: root
+    - group: root
+    - mode: 644
+
 Install RCDevs repository:
   pkgrepo.managed:
     - name: rcdevs
@@ -7,7 +15,6 @@ Install RCDevs repository:
     - gpgcheck: 1
     - gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs
     - protect: 0
-
 
 Install RCDevs ldap:
   pkg.installed:

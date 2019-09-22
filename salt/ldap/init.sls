@@ -21,6 +21,22 @@ Install RCDevs ldap:
   pkg.installed:
     - name: slapd
 
+Generate SSL private key:
+  x509.private_key_managed:
+    - name: /opt/slapd/conf/slapd.key
+    - bits: 4096
+    - user: root
+    - group: root
+    - mode: 400
+
+Generate SSL csr:
+  x509.csr_managed:
+    - name: /opt/slapd/conf/slapd.csr
+    - private_key: /opt/slapd/conf/slapd.key
+    - CN: euw2a-prd-unixkingdom-ldap-1.unix-kingdom.lan
+    - C: FR
+    - L: Paris
+
 start and enable slapd service:
   service.running:
     - name: slapd

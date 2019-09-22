@@ -13,3 +13,5 @@ base:
     - bind
   '*ldap*':
     - ldap
+  '*vault*':
+    - vault

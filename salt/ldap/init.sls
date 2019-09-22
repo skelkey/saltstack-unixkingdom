@@ -1,3 +1,7 @@
+Install m2crypto package:
+  pkg.installed:
+    - name: m2crypto
+
 Install rcdevs GPG key:
   file.managed:
     - name: /etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs

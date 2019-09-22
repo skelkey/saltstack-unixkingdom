@@ -1,5 +1,5 @@
 Install vault service:
-  package.installed:
+  pkg.installed:
     - name: vault
 
 

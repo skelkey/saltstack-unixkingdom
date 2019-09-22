@@ -1,6 +1,6 @@
 $ttl 86400
 unix-kingdom.lan. IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
-    2019090500
+    2019092200
     10800
     3600
     604800
@@ -19,6 +19,7 @@ euw2a-prd-unixkingdom-pkihaproxy-1 IN A {{ salt['mine.get']('euw2a-prd-unixkingd
 euw2a-prd-unixkingdom-saltstack-1  IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-saltstack-1', 'network.interface_ip')['euw2a-prd-unixkingdom-saltstack-1'] }}
 euw2a-prd-unixkingdom-strongswan-1 IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-strongswan-1', 'network.interface_ip')['euw2a-prd-unixkingdom-strongswan-1'] }}
 euw2a-prd-unixkingdom-ldap-1       IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-ldap-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ldap-1'] }}
+euw2a-prd-unixkingdom-vault-1       IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-vault-1', 'network.interface_ip')['euw2a-prd-unixkingdom-vault-1'] }}
 
 pki IN CNAME euw2a-prd-unixkingdom-pkihaproxy-1
 

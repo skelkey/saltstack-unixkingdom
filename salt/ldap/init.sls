@@ -43,6 +43,15 @@ Install slapd private key:
     - group: root
     - mode: 400
 
+Configure slapd:
+  file.managed:
+    - name: /opt/slapd/conf/slapd.conf
+    - source: salt://ldap/slapd.conf
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+
 start and enable slapd service:
   service.running:
     - name: slapd

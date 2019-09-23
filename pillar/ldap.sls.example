@@ -1,3 +1,4 @@
+ldap_password: <password_for_admin>
 slapd_crt: |
     -----BEGIN CERTIFICATE-----
     MIIDBzCCAe+gAwIBAgIJAPYvXUVK1P23MA0GCSqGSIb3DQEBBQUAMBoxGDAWBgNV

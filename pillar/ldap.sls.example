@@ -1,4 +1,5 @@
-slapd_crt: | '-----BEGIN CERTIFICATE-----
+slapd_crt: |
+    -----BEGIN CERTIFICATE-----
     MIIDBzCCAe+gAwIBAgIJAPYvXUVK1P23MA0GCSqGSIb3DQEBBQUAMBoxGDAWBgNV
     BAMMD3d3dy5leGFtcGxlLmNvbTAeFw0xOTA5MjMyMDA2MjVaFw0yOTA5MjAyMDA2
     MjVaMBoxGDAWBgNVBAMMD3d3dy5leGFtcGxlLmNvbTCCASIwDQYJKoZIhvcNAQEB
@@ -17,9 +18,9 @@ slapd_crt: | '-----BEGIN CERTIFICATE-----
     IhXWe702GCNDC+4cuhHJ8DYG2gq0ibdaAI4+VFmjJYkuzUVtMIWGmfqMoi+DuIEX
     0hgdCwmDn/R8y6s=
     -----END CERTIFICATE-----
-    '
 
-slapd_key: | '-----BEGIN RSA PRIVATE KEY-----
+slapd_key: |
+    -----BEGIN RSA PRIVATE KEY-----
     MIIEogIBAAKCAQEAqeQWB16D10/3BGcGktpGQT/vHIfphdcdDVBwWQawQEyCOwoS
     /FBKTMhi7knsyXfkgu60R+ah02kW2KBJyhrMH2rnyXzxk3vTeS9zqbAIt3FM/ypM
     4EV0hws2IaflcVTEHo1eznCX6Q2writI36wd/l/3JiOkQEd/pGtPldn6O78lglvi
@@ -46,4 +47,4 @@ slapd_key: | '-----BEGIN RSA PRIVATE KEY-----
     4qMEM7yi3BVBZ+b96DZyolhB4DCQor2jKF6TQIdqlCcxyCQtKxE51nFLKXGFAdbj
     5+XrckoSWeVlbFSeeKhDqmVaN8gPPQV/0Djvw+3qeM8CKUBcE0Q=
     -----END RSA PRIVATE KEY-----
-    '
+

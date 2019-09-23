@@ -25,6 +25,24 @@ Install RCDevs ldap:
   pkg.installed:
     - name: slapd
 
+Install slapd certificate:
+  file.managed:
+    - name: /opt/slapd/conf/slapd.crt
+    - source: salt://ldap/slapd.crt
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 640
+
+Install slapd private key:
+  file.managed:
+    - name: /opt/slapd/conf/slapd.key
+    - source: salt://ldap/slapd.key
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 400
+
 start and enable slapd service:
   service.running:
     - name: slapd

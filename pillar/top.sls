@@ -11,3 +11,5 @@ base:
     - mariadb
   '*bind*':
     - bind
+  '*ldap*':
+    - ldap

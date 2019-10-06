@@ -1,3 +1,9 @@
+install selinux salt package:
+  pkg.installed:
+    - pkgs:
+      - policycoreutils
+      - policycoreutils-python-utils
+
 set selinux permissive:
   selinux.mode:
     - name: permissive

@@ -1,0 +1,15 @@
+# systemd service file for slapd
+
+[Unit]
+Description=RCDevs Directory Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/slapd/bin/slapd start
+ExecStop=/opt/slapd/bin/slapd stop
+PIDFile=/opt/slapd/temp/slapd.pid
+StandardOutput=syslog+console
+
+[Install]
+WantedBy=multi-user.target

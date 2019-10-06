@@ -1,3 +1,7 @@
+set selinux permissive:
+  selinux.mode:
+    - name: permissive
+
 Install rcdevs GPG key:
   file.managed:
     - name: /etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs

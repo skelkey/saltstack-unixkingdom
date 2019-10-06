@@ -1,6 +1,6 @@
 install selinux salt package:
   pkg.installed:
-    pkgs:
+    - pkgs:
       - policycoreutils
       - policycoreutils-python
 

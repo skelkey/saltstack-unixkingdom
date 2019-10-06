@@ -52,6 +52,11 @@ Configure slapd:
     - group: root
     - mode: 644
 
+group.present:
+  - name: slapd
+  - gid: 992
+  - system: true
+
 start and enable slapd service:
   service.running:
     - name: slapd

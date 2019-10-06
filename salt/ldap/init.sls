@@ -65,6 +65,14 @@ Create slapd group:
     - gid: 992
     - system: true
 
+Create slapd user:
+  user.present:
+    - name: slapd
+    - gid_from_name: slapd
+    - home: /opt/slapd
+    - shell: /sbin/nologin
+    - system: true
+
 start and enable slapd service:
   service.running:
     - name: slapd

@@ -76,7 +76,7 @@ Create slapd user:
 Link systemd service file:
   file.symlink:
     - name: /etc/systemd/system/slapd.service
-    - target: salt://ldap/slapd.service
+    - target: /opt/slapd/lib/systemd
     - user: root
     - group: root
     - mode: 0644

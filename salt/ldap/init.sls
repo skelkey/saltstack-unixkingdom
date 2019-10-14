@@ -88,7 +88,7 @@ Populate slapd database:
       - echo -n "MDB" > /opt/slapd/data/DB_TYPE
       - rcdevs-slapd -T add -l /opt/slapd/lib/treebase.ldif
 
-Set permission on /opt/slapd/conf
+Set permission on /opt/slapd/conf:
   file.directory:
     - name: /opt/slapd/conf
     - mode: 750

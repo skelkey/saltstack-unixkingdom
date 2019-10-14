@@ -84,9 +84,9 @@ Link systemd service file:
 Populate slapd database:
   cmd.run:
     - names:
-      - arch-check > /opt/slapd/data/DB_ARCH
+      - /opt/slapd/libexec/arch-check > /opt/slapd/data/DB_ARCH
       - echo -n "MDB" > /opt/slapd/data/DB_TYPE
-      - rcdevs-slapd -T add -l /opt/slapd/lib/treebase.ldif
+      - /opt/slapd/libexec/rcdevs-slapd -T add -l /opt/slapd/lib/treebase.ldif
 
 Set permission on /opt/slapd/conf:
   file.directory:

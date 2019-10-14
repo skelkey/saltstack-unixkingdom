@@ -81,6 +81,51 @@ Link systemd service file:
     - group: root
     - mode: 0644
 
+Populate slapd database:
+  cmd.run:
+    - names:
+      - arch-check > /opt/slapd/data/DB_ARCH
+      - echo -n "MDB" > /opt/slapd/data/DB_TYPE
+      - rcdevs-slapd -T add -l /opt/slapd/lib/treebase.ldif
+
+Set permission on /opt/slapd/conf
+  file.directory:
+    - name: /opt/slapd/conf
+    - mode: 750
+    - user: root
+    - group: slapd
+
+Set permission on /opt/slapd/logs:
+  file.directory:
+    - name: /opt/slapd/logs
+    - mode: 770
+    - user: root
+    - group: slapd
+
+Set permission on /opt/slapd/temp:
+  file.directory:
+    - name: /opt/slapd/temp
+    - mode: 770
+    - user: root
+    - group: slapd
+
+Set permission on /opt/slapd/data/*:
+  file.directory:
+    - name: /opt/slapd/data
+    - mode: 770
+    - user: slapd
+    - group: slapd
+    - recurse:
+      - user
+      - group
+
+Set permission on /opt/slapd/data:
+  file.directory:
+    - name: /opt/slapd/data
+    - mode: 770
+    - user: root
+    - group: slapd
+
 start and enable slapd service:
   service.running:
     - name: slapd

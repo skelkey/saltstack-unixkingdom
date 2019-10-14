@@ -109,7 +109,7 @@ Set permission on /opt/slapd/temp:
     - user: root
     - group: slapd
 
-Set permission on /opt/slapd/data/*:
+Set permission on /opt/slapd/data/:
   file.directory:
     - name: /opt/slapd/data
     - mode: 770

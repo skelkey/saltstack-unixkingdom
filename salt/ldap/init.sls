@@ -87,6 +87,7 @@ Populate slapd database:
       - /opt/slapd/libexec/arch-check > /opt/slapd/data/DB_ARCH
       - echo -n "MDB" > /opt/slapd/data/DB_TYPE
       - /opt/slapd/libexec/rcdevs-slapd -T add -l /opt/slapd/lib/treebase.ldif
+    - unless: test -f /opt/slapd/data/data.mdb
 
 Set permission on /opt/slapd/conf:
   file.directory:

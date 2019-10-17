@@ -74,12 +74,12 @@ Create slapd user:
     - system: true
 
 Link systemd service file:
-  file.symlink:
-    - name:  /usr/lib/systemd/system/slapd.service
+  file.copy_:
+    - name:  /etc/systemd/system/slapd.service
     - target: /opt/slapd/lib/systemd
     - user: root
     - group: root
-    - mode: 0644
+    - mode: 0755
 
 Populate slapd database:
   cmd.run:

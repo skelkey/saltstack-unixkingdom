@@ -74,9 +74,9 @@ Create slapd user:
     - system: true
 
 Link systemd service file:
-  file.copy_:
+  file.managed:
     - name:  /etc/systemd/system/slapd.service
-    - target: /opt/slapd/lib/systemd
+    - source: salt://ldap/slapd.service
     - user: root
     - group: root
     - mode: 0755

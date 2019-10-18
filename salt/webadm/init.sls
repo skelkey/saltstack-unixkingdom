@@ -30,3 +30,8 @@ Install RCDevs repository:
 Install RCDevs webadm:
   pkg.installed:
     - name: webadm
+
+start and enable webadm service:
+  service.running:
+    - name: webadm
+    - enable: true

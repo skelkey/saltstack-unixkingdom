@@ -1,0 +1,164 @@
+{% set mariadb_ip = salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] %}
+{% set ldap_ip = salt['mine.get']('euw2a-prd-unixkingdom-ldap-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ldap-1'] %}
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Servers>
+
+<!--
+******************************************
+***  WebADM Remote Server Connections  ***
+******************************************
+
+You can configure multiple instances for each of the following servers.
+At login, WebADM will try to connect the configured servers in the same
+order they appear in this file and uses the first one it successfully 
+establishes the connection to. If the server connection goes down, it
+will automatically failover to the next configured server.
+
+At least one LDAP server is required to run WebADM.
+Supported servers: OpenLDAP, Active Directory, Novell eDirectory, 389.
+
+Allowed LDAP parameters are:
+ - name: server friendly name
+ - host: server hostname or IP address
+ - port: LDAP port number
+   default and TLS: 389
+   default SSL: 636
+ - encryption: connection type
+   allowed type are NONE, SSL and TLS
+   default: 'NONE'
+ - ca_cert: Trusted CA for SSL and TLS
+ - cert_file: client certificate file
+ - cert_key: client certificate key
+ - sasl: SASL bind options separated by spaces
+-->
+
+<LdapServer name="LDAP Server"
+	host="{{ ldap_ip }}"
+	port="636"
+	encryption="TLS"
+	ca_file="/etc/pki/ca-trust/source/anchors/unixkingdom.crt"
+	sasl="" />
+
+<!--
+<LdapServer name="LDAP Server 2"
+	host="remotehost"
+        port="389"
+	encryption="TLS"
+	ca_file="" />
+-->
+
+<!--
+SQL servers are used for logs; message localizations and inventories.
+Supported servers: MySQL5, MySQL8, PostgreSQL, MSSQL, Sybase, Oracle, SQLite.
+
+Allowed LDAP parameters are:
+ - type: MySQL5, MySQL8, MariaDB, PostgreSQL, MSSQL, Sybase, Oracle or SQLite.
+ - name: server friendly name
+ - host: server hostname or IP address
+ - port: SQL port number (depends on server type)
+ - user: database user
+ - password: database password
+ - database: database name
+ - tnsname: Oracle TNS name (Oracle only) 
+ 
+With SQLite, only the 'database' must be set and other parameters are
+ignored. The database is the full path to an SQLite DB file where WebADM
+has full write access. 
+
+With Oracle, you can optionally use TNS names. If the 'tnsname' is set
+then the 'host' and 'port' parameters are ignored and a tnsnames.ora 
+file must exist under the conf/ directory.
+-->
+
+<SqlServer name="SQL Server"
+	type="MariaDB"
+	host="{{ mariadb_ip }}"
+	user="{{ pillar['mysql_webadm_user'] }}"
+	password="{{ pillar['mysql_webadm_password'] }}"
+	database="webadm"
+        encryption="NONE" />
+
+<!--
+A session server is required for web services using sessions
+such as OpenOTP. You can specify one or more SQL servers here.
+The session server is included in WebADM. So you can keep the
+default settings here.
+-->
+
+<SessionServer name="Session Server"
+	host="localhost"
+	port="4000"
+        secret="" />
+
+<!--
+A PKI server (or CA) is required for signing user certificates.
+The RSign PKI server is included in WebADM. So you can keep the
+default settings here.
+-->
+
+<PkiServer name="PKI Server"
+	host="localhost"
+	port="5000"
+	secret="secret"
+	ca_file="" />
+
+<!--
+You need to configure RCDevs Push server(s) in order to use
+TiQR Push or RCDevs Mobile Authenticator with Push login.
+If you have an Enterprise license then you don't need to 
+register an RCDevs push account (keep user and password empty).
+-->
+
+<!--
+<PushServer name="Push Server"
+        host="push.rcdevs.com"
+        port="7000"
+	user=""
+	password=""
+        ca_file="" />
+-->
+
+<!--
+Uncomment the following block if you have a license server
+with an IP pool-based Enterprise license from RCDevs.
+-->
+
+<!--
+<LicenseServer name="License Server"
+        host="license.rcdevs.com"
+	port="7001"
+        ca_file="" />
+-->
+
+<!--
+HTTP proxy servers can be used by WebADM for connecting
+remote Web services and version checking.
+-->
+
+<!--
+<ProxyServer name="HTTP Proxy"
+	host="proxy"
+        port="8080"
+        user=""
+        password=""
+	ca_file="" />
+-->
+
+<!--
+SMTP mail servers can be used by WebADM for sending emails.
+If no server is specified, WebADM will use the local mailer
+in /usb/sbin/sendmail to send emails.
+-->
+
+<!--
+<MailServer name="SMTP Server"
+        host="localhost"
+	port="25"
+	user=""
+	password=""
+	encryption="NONE"
+	ca_file="" />
+-->
+
+</Servers>

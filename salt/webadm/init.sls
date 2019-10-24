@@ -31,6 +31,28 @@ Install RCDevs webadm:
   pkg.installed:
     - name: webadm
 
+Create webadm group:
+  group.present:
+    - name: webadm
+    - system: true
+
+Create webadm user:
+  user.present:
+    - name: webadm
+    - gid_from_name: webadm
+    - home: /opt/webadm
+    - shell: /sbin/nologin
+    - system: true
+
+Deploy servers.xml file:
+  file.managed:
+    - name: /opt/webadm/conf/servers.xml
+    - source: salt://webadm/servers.xml
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
 start and enable webadm service:
   service.running:
     - name: webadm

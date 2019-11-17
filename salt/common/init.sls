@@ -1,6 +1,6 @@
 install m2crypto:
   pkg.installed:
-    - name: python3-m2crypto
+    - name: m2crypto
 
 set system hostname:
   network.system:

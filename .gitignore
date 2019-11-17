@@ -3,3 +3,4 @@ pillar/ejbca.sls
 pillar/mariadb.sls
 pillar/bind.sls
 pillar/common.sls
+pillar/common_webadm.sls

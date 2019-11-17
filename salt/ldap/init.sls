@@ -73,7 +73,7 @@ Create slapd user:
     - shell: /sbin/nologin
     - system: true
 
-Link systemd service file:
+Create systemd service file:
   file.managed:
     - name:  /etc/systemd/system/slapd.service
     - source: salt://ldap/slapd.service

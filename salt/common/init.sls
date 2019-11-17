@@ -1,7 +1,11 @@
+install m2crypto:
+  pkg.installed:
+    - name: python3-m2crypto
+
 set system hostname:
   network.system:
     - hostname: {{ grains['id'] }}
-    - apply_hostname: True
+    - apply_hostname: true
 
 set root password:
   user.present:

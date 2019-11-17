@@ -1,6 +1,6 @@
 base:
   '*':
-    - common:
+    - common
   '*strongswan*':
     - strongswan
   '*mariadb*':

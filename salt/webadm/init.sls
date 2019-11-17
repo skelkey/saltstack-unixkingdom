@@ -53,6 +53,15 @@ Deploy servers.xml file:
     - mode: 644
     - template: jinja
 
+Deploy webadm.conf file:
+  file.managed:
+    - name: /opt/webadm/conf/webadm.conf
+    - source: salt://webadm/webadm.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
 Create systemd service file:
   file.managed:
     - name: /etc/systemd/system/webadm.service

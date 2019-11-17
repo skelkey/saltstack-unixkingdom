@@ -14,22 +14,4 @@ LimitNOFILE=65536
 
 [Install]
 WantedBy=multi-user.target
-[fedora@euw2a-prd-unixkingdom-webadm-1 lib]$ vi systemd 
-[fedora@euw2a-prd-unixkingdom-webadm-1 lib]$ cat systemd 
-# systemd service file for webadm
-
-[Unit]
-Description=RCDevs WebADM Server
-After=network.target
-
-[Service]
-Type=forking
-ExecStart=/opt/webadm/bin/webadm start
-ExecStop=/opt/webadm/bin/webadm stop
-PIDFile=/opt/webadm/temp/webadm.pid
-StandardOutput=syslog+console
-LimitNOFILE=65536
-
-[Install]
-WantedBy=multi-user.target
 

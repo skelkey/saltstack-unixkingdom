@@ -14,7 +14,7 @@ set root password:
 
 install unixkingdom ca:
   x509.pem_managed:
-    - name: /etc/pki/ca-trust/source/anchors
+    - name: /etc/pki/ca-trust/source/anchors/unixkingdom.pem
     - text: {{ pillar['unixkingdom_ca'] }}
 
 update ca trustore:

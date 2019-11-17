@@ -60,7 +60,22 @@ Deploy webadm.conf file:
     - user: root
     - group: root
     - mode: 644
-    - template: jinja
+
+Deploy objects.xml file:
+  file.managed:
+    - name: /opt/webadm/conf/objects.xml
+    - source: salt://webadm/objects.xml
+    - user: root
+    - group: root
+    - mode: 644
+
+Deploy rsignd.conf file:
+  file.managed:
+    - name: /opt/webadm/conf/rsignd.conf
+    - source: salt://webadm/rsignd.conf
+    - user: root
+    - group: root
+    - mode: 644
 
 Create systemd service file:
   file.managed:

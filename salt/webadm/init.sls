@@ -77,6 +77,24 @@ Deploy rsignd.conf file:
     - group: root
     - mode: 644
 
+Deploy webadm.key file:
+  file.managed:
+    - name: /opt/webadm/pki/webadm.key
+    - source: salt://webadm/webadm.key
+    - user: root
+    - group: root
+    - mode: 400
+    - template: jinja
+
+Deploy webadm.crt file:
+  file.managed:
+    - name: /opt/webadm/pki/webadm.crt
+    - source: salt://webadm/webadm.crt
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
 Create systemd service file:
   file.managed:
     - name: /etc/systemd/system/webadm.service

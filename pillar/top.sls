@@ -16,3 +16,4 @@ base:
     - ldap
   '*webadm*':
     - common_webadm
+    - webadm

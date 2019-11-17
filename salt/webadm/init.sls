@@ -95,6 +95,24 @@ Deploy webadm.crt file:
     - mode: 644
     - template: jinja
 
+Deploy ca.key file:
+  file.managed:
+    - name: /opt/webadm/pki/ca/ca.key
+    - source: salt://webadm/ca.key
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
+Deploy ca.crt file:
+  file.managed:
+    - name: /opt/webadm/pki/ca/ca.crt
+    - source: salt://webadm/ca.crt
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
 Create systemd service file:
   file.managed:
     - name: /etc/systemd/system/webadm.service

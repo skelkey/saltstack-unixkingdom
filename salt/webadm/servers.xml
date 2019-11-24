@@ -1,5 +1,3 @@
-{% set mariadb_ip = salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] %}
-{% set ldap_ip = salt['mine.get']('euw2a-prd-unixkingdom-ldap-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ldap-1'] %}
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Servers>
@@ -32,6 +30,7 @@ Allowed LDAP parameters are:
  - cert_key: client certificate key
  - sasl: SASL bind options separated by spaces
 -->
+{% set ldap_ip = salt['mine.get']('euw2a-prd-unixkingdom-ldap-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ldap-1'] %}
 
 <LdapServer name="LDAP Server"
 	host="{{ ldap_ip }}"
@@ -70,6 +69,7 @@ With Oracle, you can optionally use TNS names. If the 'tnsname' is set
 then the 'host' and 'port' parameters are ignored and a tnsnames.ora 
 file must exist under the conf/ directory.
 -->
+{% set mariadb_ip = salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] %}
 
 <SqlServer name="SQL Server"
 	type="MariaDB"

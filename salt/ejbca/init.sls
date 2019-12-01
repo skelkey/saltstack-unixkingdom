@@ -158,7 +158,7 @@ Configure EJBCA cesecore:
 
 Compile EJBCA:
   cmd.run:
-    - name: ant clean deployear 2>&1 > /tmp/deployear
+    - name: ant deploy 2>&1 > /tmp/deploy
     - cwd: /opt/ejbca_ce_6_15_2_1
     - runas: wildfly
     - unless: test -f /opt/wildfly/standalone/deployments/ejbca.ear.deployed
@@ -166,11 +166,19 @@ Compile EJBCA:
 
 Install EJBCA:
   cmd.run:
-    - name: sleep 120; ant runinstall 2>&1 > /tmp/runinstall
+    - name: sleep 120; ant install 2>&1 > /tmp/install
     - cwd: /opt/ejbca_ce_6_15_2_1
     - unless: test -d /opt/ejbca_ce_6_15_2_1/p12
     - runas: wildfly
     - timeout: 180
+
+Configure web interface:
+  cmd.run:
+    - name: ant web-configure 2>&1 > /tmp/web-configure
+    - cwd: /opt/ejbca_ce_6_15_2_1
+    - unless: test -d /opt/ejbca_ce_6_15_2_1/p12
+    - runas: wildfly
+    - timeout: 60
 
 Deploy keystore:
   cmd.run:
@@ -180,19 +188,17 @@ Deploy keystore:
     - unless: test -d /opt/wildfly/standalone/configuration/keystore
     - timeout: 60
 
-Deploy postinstall script:
-  file.managed:
-    - name: /tmp/postinstall.cli
-    - source: salt://ejbca/postinstall.cli
-    - user: wildfly
-    - group: wildfly
-    - mode: 400
-    - template: jinja
-
-Run postinstall script:
+Configure datasource:
   cmd.run:
-    - name: /opt/wildfly/bin/jboss-cli.sh -c --file=/tmp/postinstall.cli 2>&1 > /tmp/postinstall
-    - cwd: /opt/wildfly/bin
+    - name: ant deploy-datasource 2>&1 > /tmp/datasource
+    - cwd: /opt/ejbca_ce_6_15_2_1
+    - runas: wildfly
+    - timeout: 60
+
+Deploy service:
+  cmd.run:
+    - name: ant deploy-service 2>&1 > /tmp/service
+    - cwd: /opt/ejbca_ce_6_15_2_1
     - runas: wildfly
     - timeout: 60
 
@@ -200,10 +206,6 @@ Restart wildfly service:
   module.wait:
     - name: service.restart
     - m_name: wildfly
-
-Delete postinstall script:
-  file.absent:
-    - name: /tmp/postinstall.cli
 
 Write s3cmd configuration:
   file.managed:

@@ -5,13 +5,13 @@ base:
     - strongswan
   '*mariadb*':
     - mariadb
-  '*ejbca*':
-    - ejbca
-  '*pkihaproxy*':
-    - pkihaproxy
   '*bind*':
     - bind
   '*ldap*':
     - ldap
   '*webadm*':
     - webadm
+  '*vault*':
+    - vault
+  '*repository*':
+    - repository

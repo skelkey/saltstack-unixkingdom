@@ -97,9 +97,9 @@ else
 end-if
 if (outcome == failed) of /socket-binding-group=standard-sockets/socket-binding=httpspub:read-resource
   /socket-binding-group=standard-sockets/socket-binding=httpspub:add(port="8442", interface="httpspub")
-  echo Binding socket on port "8443" to httpspriv
+  echo Binding socket on port "8443" to httpspub
 else
-  echo Already bind socket on port "8443" to httpspriv
+  echo Already bind socket on port "8443" to httpspub
 end-if
 
 

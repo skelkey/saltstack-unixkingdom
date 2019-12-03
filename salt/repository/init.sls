@@ -3,7 +3,7 @@ Install createrepo package:
     - name: createrepo
 
 Install nginx package:
-  pkg.instaled:
+  pkg.installed:
     - name: nginx
 
 Create directory /srv/repos/fedora/28/x86_64/RPMS:

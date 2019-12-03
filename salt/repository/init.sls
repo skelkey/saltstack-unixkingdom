@@ -24,7 +24,7 @@ Create directory /srv/repos/fedora/28/SRPMS:
 
 Repository creation:
   cmd.run:
-    - name: createrepo
+    - name: createrepo .
     - cwd: /srv/repos/fedora/28/x86_64
     - user: root
     - unless: test -d /srv/repos/fedora/28/x86_64/repodata

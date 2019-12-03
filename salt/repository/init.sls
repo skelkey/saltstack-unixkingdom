@@ -31,7 +31,7 @@ Repository creation:
 
 Deploy repository GPG key:
   file.managed:
-    - name: /srv/
+    - name: /srv/RPM-GPG-KEY-unixkingdom
     - source: salt://repository/RPM-GPG-KEY-unixkingdom
     - user: root
     - group: root

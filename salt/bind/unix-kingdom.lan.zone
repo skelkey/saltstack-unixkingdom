@@ -1,6 +1,6 @@
 $ttl 86400
 unix-kingdom.lan. IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
-    2019120100
+    2019120300
     10800
     3600
     604800
@@ -13,7 +13,6 @@ euw2a-prd-unixkingdom-bind-1       IN A {{ salt['mine.get']('euw2a-prd-unixkingd
 ns1                                IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-1', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-1'] }}
 euw2a-prd-unixkingdom-bind-2       IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-2', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-2'] }}
 ns2                                IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-bind-2', 'network.interface_ip')['euw2a-prd-unixkingdom-bind-2'] }}
-euw2a-prd-unixkingdom-ejbca-1      IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-ejbca-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ejbca-1'] }}
 euw2a-prd-unixkingdom-mariadb-1    IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] }}
 euw2a-prd-unixkingdom-saltstack-1  IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-saltstack-1', 'network.interface_ip')['euw2a-prd-unixkingdom-saltstack-1'] }}
 euw2a-prd-unixkingdom-strongswan-1 IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-strongswan-1', 'network.interface_ip')['euw2a-prd-unixkingdom-strongswan-1'] }}

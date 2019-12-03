@@ -15,7 +15,7 @@ Create directory /srv/repos/fedora/28/x86_64/RPMS:
     - makedirs: True
 
 Create directory /srv/repos/fedora/28/SRPMS:
-  file.directory
+  file.directory:
     - name: /srv/repos/fedora/28/SRPMS
     - user: root
     - group: root

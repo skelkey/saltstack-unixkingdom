@@ -17,3 +17,5 @@ base:
   '*webadm*':
     - common_webadm
     - webadm
+  '*repository*':
+    - repository

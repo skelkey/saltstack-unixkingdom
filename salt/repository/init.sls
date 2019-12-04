@@ -55,3 +55,13 @@ Reload nginx service:
   module.wait:
     - name: service.reload
     - m_name: nginx
+
+Verify httpd selinux context:
+  selinux.fcontext_policy_present:
+    - name: "^/srv(/.*)?"
+    - sel_type: "httpd_sys_content_t"
+
+Apply httpd selinux context:
+  selinux.fcontext_policy_applied:
+    - name: "^/srv(/.*)?"
+    - recursive: True

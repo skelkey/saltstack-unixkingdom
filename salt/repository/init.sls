@@ -64,10 +64,10 @@ Reload nginx service:
 
 Verify httpd selinux context:
   selinux.fcontext_policy_present:
-    - name: "/srv(/.*)?"
+    - name: /srv(/.*)?
     - sel_type: "httpd_sys_content_t"
 
 Apply httpd selinux context:
   selinux.fcontext_policy_applied:
-    - name: "/srv(/.*)?"
+    - name: /srv(/.*)?
     - recursive: True

@@ -66,6 +66,7 @@ Verify httpd selinux context:
   selinux.fcontext_policy_present:
     - name: /srv
     - sel_type: "httpd_sys_content_t"
+    - filetype: None
 
 Apply httpd selinux context:
   selinux.fcontext_policy_applied:

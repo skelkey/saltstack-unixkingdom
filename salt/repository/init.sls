@@ -71,3 +71,11 @@ Apply httpd selinux context:
   selinux.fcontext_policy_applied:
     - name: "/srv(/.*)?"
     - recursive: True
+
+Deploy vault rpm in repository:
+  file.managed:
+    - name: /srv/repos/fedora/28/x86_64/RPMS/vault-1.2.1-1.fc28.x86_64.rpm
+    - source: salt://repository/vault-1.2.1-1.fc28.x86_64.rpm
+    - user: root
+    - group: root
+    - mode: 644

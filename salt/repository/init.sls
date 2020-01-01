@@ -44,14 +44,6 @@ Deploy repository GPG key:
     - mode: 644
     - template: jinja
 
-Put vault package in repository:
-  file.managed:
-    - name: /srv/repos/fedora/28/x86_64/RPMS/vault-1.3.0-1.fc28.x86_64.rpm
-    - source: salt://repository/vault-1.3.0-1.fc28.x86_64.rpm
-    - user: root
-    - group: root
-    - mode: 755
-
 Configure nginx:
   file.managed:
     - name: /etc/nginx/nginx.conf
@@ -82,8 +74,8 @@ Apply httpd selinux context:
 
 Deploy vault rpm in repository:
   file.managed:
-    - name: /srv/repos/fedora/28/x86_64/RPMS/vault-1.2.1-1.fc28.x86_64.rpm
-    - source: salt://repository/vault-1.2.1-1.fc28.x86_64.rpm
+    - name: /srv/repos/fedora/28/x86_64/RPMS/vault-1.3.0-1.fc28.x86_64.rpm
+    - source: salt://repository/vault-1.3.0-1.fc28.x86_64.rpm
     - user: root
     - group: root
     - mode: 644

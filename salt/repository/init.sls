@@ -12,6 +12,10 @@ Install nginx package:
   pkg.installed:
     - name: nginx
 
+Install cron:
+  pkg.installed:
+    - name: cronie
+
 Create directory /srv/repos/fedora/28/x86_64/RPMS:
   file.directory:
     - name: /srv/repos/fedora/28/x86_64/RPMS

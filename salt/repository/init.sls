@@ -37,7 +37,6 @@ Repository creation:
     - name: createrepo .
     - cwd: /srv/repos/fedora/28/x86_64
     - user: root
-    - unless: test -d /srv/repos/fedora/28/x86_64/repodata
 
 Deploy repository GPG key:
   file.managed:

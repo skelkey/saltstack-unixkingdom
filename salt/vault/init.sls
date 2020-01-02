@@ -6,3 +6,8 @@ Adding unix-kingdom repository:
     - baseurl: https://repository.unix-kingdom.fr/repos/fedora/$releasever/$basearch
     - gpgkey: https://repository.unix-kingdom.fr/RPM-GPG-KEY-unixkingdom
     - gpgcheck: 1
+
+Install vault:
+  pkg.installed:
+    - name: vault
+    - fromrepo: unixkingdom

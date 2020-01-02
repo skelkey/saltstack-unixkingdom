@@ -78,7 +78,7 @@ Install certbot:
   pkg.installed:
     - pkgs:
       - certbot
-      - python3-cerbot-dns-ovh
+      - python3-certbot-dns-ovh
 
 Create OVH credentials:
   file.managed:

@@ -52,16 +52,6 @@ Configure nginx:
     - group: root
     - mode: 644
 
-Start and enable nginx:
-  service.running:
-    - name: nginx
-    - enable: true
-
-Reload nginx service:
-  module.wait:
-    - name: service.reload
-    - m_name: nginx
-
 Verify httpd selinux context:
   selinux.fcontext_policy_present:
     - name: "/srv(/.*)?"
@@ -79,3 +69,40 @@ Deploy vault rpm in repository:
     - user: root
     - group: root
     - mode: 644
+
+Install certbot:
+  pkg.installed:
+    - pkgs:
+      - certbot
+      - python3-cerbot-dns-ovh
+
+Create OVH credentials:
+  file.managed:
+    - name: /root/.credentials.ini
+    - source: salt://repository/credentials.ini
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 400
+
+Initialize certificate:
+  cmd.run:
+    - name: certbot certonly --dns-ovh --dns-ovh-credentials ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d repository.unix-kingdom.fr
+
+Crontab to renew certificate:
+  cron.present:
+    - name: certbot renew --post-hook "systemctl reload nginx"
+    - user: root
+    - minute: 0
+    - hour: '0,12'
+
+Start and enable nginx:
+  service.running:
+    - name: nginx
+    - enable: true
+
+Reload nginx service:
+  module.wait:
+    - name: service.reload
+    - m_name: nginx
+

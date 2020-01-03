@@ -42,6 +42,7 @@ Deploy repository GPG key:
   file.managed:
     - name: /srv/RPM-GPG-KEY-unixkingdom
     - source: salt://repository/RPM-GPG-KEY-unixkingdom
+    - contents_newline: False
     - user: root
     - group: root
     - mode: 644

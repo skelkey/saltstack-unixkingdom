@@ -1,2 +1,2 @@
-access_key: <s3 access key id>
-secret_key: <s3 secret access key>
+vault_access_key: <s3 access key id>
+vault_secret_key: <s3 secret access key>

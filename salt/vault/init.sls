@@ -20,3 +20,12 @@ Install vault:
   pkg.installed:
     - name: vault
     - fromrepo: unixkingdom
+
+Configure vault:
+  file.managed:
+    - source: salt://vault/vault.hcl
+    - name: /etc/vault/vault.hcl
+    - user: vault
+    - group: vault
+    - mode: 400
+    - template: jinja

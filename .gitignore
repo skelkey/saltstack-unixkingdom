@@ -7,3 +7,4 @@ pillar/common_webadm.sls
 pillar/ldap.sls
 pillar/webadm.sls
 pillar/repository.sls
+pillar/vault.sls

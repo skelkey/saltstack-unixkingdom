@@ -19,3 +19,5 @@ base:
     - webadm
   '*repository*':
     - repository
+  '*vault*':
+    - vault

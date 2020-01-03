@@ -3,10 +3,10 @@ ovh_api_key_secret: <ovh_api_secret_key>
 ovh_consumer_key: <ovh_consumer_key>
 
 repo_gpg_key: |
-    '-----BEGIN PGP PUBLIC KEY BLOCK-----
-     
-     mQINBF3my6sBEAD1KUZEHHWL1CNLKPGBc/3NOTTQDDiXjRdi14sII97g+tQfUkkS
-     ...
-     o9wHTMtQOX2CKv6wwzoI1zNWeao87wJNgB9RxA==
-     =xhxa
-     -----END PGP PUBLIC KEY BLOCK-----'
+    -----BEGIN PGP PUBLIC KEY BLOCK-----
+    
+    mQINBF3my6sBEAD1KUZEHHWL1CNLKPGBc/3NOTTQDDiXjRdi14sII97g+tQfUkkS
+    ...
+    o9wHTMtQOX2CKv6wwzoI1zNWeao87wJNgB9RxA==
+    =xhxa
+    -----END PGP PUBLIC KEY BLOCK-----

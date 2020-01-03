@@ -1,7 +1,7 @@
 Adding unix-kingdom signing public key:
   file.managed:
     - source: https://repository.unix-kingdom.fr/RPM-GPG-KEY-unixkingdom
-    - source_hash: 6c85ea668e8424694690c75f2ea8983b9833b867f157cb295600906aac841909
+    - source_hash: 8ff53291cf3385d8298c595d1861370c67b29b2838e101abc39f46dec3467aec
     - name: /etc/pki/rpm-gpg/RPM-GPG-KEY-unixkingdom
     - mode: 644
     - user: root

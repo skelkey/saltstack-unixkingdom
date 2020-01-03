@@ -1,1 +1,1 @@
-{{ pillar['repo_gpg_key'] -}}
+{{ pillar['repo_gpg_key'] }}

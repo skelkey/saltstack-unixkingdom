@@ -1,3 +1,5 @@
+ui = true
+
 storage "s3" {
   endpoint   = "https://osu.eu-west-2.outscale.com"
   region     = "eu-west-2"
@@ -7,6 +9,6 @@ storage "s3" {
 }
 
 listener "tcp" {
-  address     = "127.0.0.1:8200"
+  address     = "172.16.4.75:8200"
   tls_disable = 1
 }

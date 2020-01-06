@@ -10,5 +10,4 @@ storage "s3" {
 
 listener "tcp" {
   address     = "172.16.4.75:8200"
-  tls_disable = 1
 }

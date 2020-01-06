@@ -1,3 +1,9 @@
+{% set vault_ip = salt['mine.get']('euw2a-prd-unixkingdom-vault-1', 'network.interface_ip')['euw2a-prd-unixkingdom-vault-1'] %}
+
+Install jq:
+  pkg.installed:
+    - name: jq
+
 Adding unix-kingdom signing public key:
   file.managed:
     - source: https://repository.unix-kingdom.fr/RPM-GPG-KEY-unixkingdom
@@ -29,3 +35,12 @@ Configure vault:
     - group: vault
     - mode: 400
     - template: jinja
+
+#Initialize vault:
+#  cmd.run:
+#    - env:
+#      - VAULT_ADDR: "http://{{ vault_ip }}:8200"
+#    - vault operator init -key-shares=1 -key-threshold=1
+#    - runas: root
+#    - onlyif: 
+    

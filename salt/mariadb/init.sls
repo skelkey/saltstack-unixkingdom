@@ -1,4 +1,3 @@
-{% set ejbca_ip = salt['mine.get']('euw2a-prd-unixkingdom-ejbca-1', 'network.interface_ip')['euw2a-prd-unixkingdom-ejbca-1'] %}
 install MariaDB service:
   pkg.installed:
     - name: mariadb-server

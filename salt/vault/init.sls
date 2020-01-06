@@ -40,7 +40,7 @@ Initialize vault:
   cmd.run:
     - env:
       - VAULT_ADDR: "http://{{ vault_ip }}:8200"
-    - vault operator init -key-shares=1 -key-threshold=1
+    - name: "vault operator init -key-shares=1 -key-threshold=1"
     - runas: root
-    - onlyif: vault status -format=json |jq .initialized |grep false 
+    - onlyif: "vault status -format=json |jq .initialized |grep false"
     

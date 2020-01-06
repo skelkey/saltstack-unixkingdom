@@ -42,5 +42,5 @@ Initialize vault:
       - VAULT_ADDR: "http://{{ vault_ip }}:8200"
     - vault operator init -key-shares=1 -key-threshold=1
     - runas: root
-    - onlyif: vault status -format=json |jq .initialized |grep true 
+    - onlyif: vault status -format=json |jq .initialized |grep false 
     

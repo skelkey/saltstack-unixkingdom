@@ -9,6 +9,8 @@ storage "s3" {
 }
 
 listener "tcp" {
-  address     = "172.16.4.75:8200"
-  tls_disable = 1
+  address         = "172.16.4.75:8200"
+  tls_cert_file   = "/etc/letsencrypt/live/unix-kingdom.fr/fullchain.pem"
+  tls_key_file    = "/etc/letsencrypt/live/unix-kingdom.fr/privkey.pem"
+  tls_min_version = "tls12"
 }

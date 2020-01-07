@@ -70,3 +70,20 @@ Start and enable vault service:
   service.running:
     - name: vault
     - enable: true
+
+Install nginx:
+  pkg.installed:
+    - name: nginx
+
+Configure nginx:
+  file.managed:
+    - name: /etc/nginx.conf
+    - source: salt://vault/nginx.conf
+    - user: root
+    - group: root
+    - mode: 644
+
+Start and enable nginx service:
+  service.running:
+    - name: nginx
+    - enable: true

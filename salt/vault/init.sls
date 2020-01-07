@@ -1,8 +1,33 @@
 {% set vault_ip = salt['mine.get']('euw2a-prd-unixkingdom-vault-1', 'network.interface_ip')['euw2a-prd-unixkingdom-vault-1'] %}
-
 Install jq:
   pkg.installed:
     - name: jq
+
+Install certbot:
+  pkg.installed:
+    - pkgs:
+      - certbot
+      - python3-certbot-dns-ovh
+
+Create OVH credentials:
+  file.managed:
+    - name: /root/credentials.ini
+    - source: salt://vault/credentials.ini
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 400
+
+Initialize certificate:
+  cmd.run:
+    - name: certbot certonly --dns-ovh --dns-ovh-credentials ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vault.unix-kingdom.fr -d pki.unix-kingdom.fr -d crl.unix-kingdom.fr
+
+Crontab to renew certificate:
+  cron.present:
+    - name: cerbot renew --post-hook "systemctl reload vault"
+    - user: root
+    - minute: 0
+    - hour: '0,12'
 
 Adding unix-kingdom signing public key:
   file.managed:
@@ -36,11 +61,7 @@ Configure vault:
     - mode: 400
     - template: jinja
 
-Initialize vault:
-  cmd.run:
-    - env:
-      - VAULT_ADDR: "http://{{ vault_ip }}:8200"
-    - name: "vault operator init -key-shares=1 -key-threshold=1"
-    - runas: root
-    - onlyif: "vault status -format=json |jq .initialized |grep false"
-    
+Start and enable vault service:
+  service.running:
+    - name: vault
+    - enable: true

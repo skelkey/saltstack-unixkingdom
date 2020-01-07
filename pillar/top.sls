@@ -18,6 +18,8 @@ base:
     - common_webadm
     - webadm
   '*repository*':
+    - common_letsencrypt
     - repository
   '*vault*':
+    - common_letsencrypt
     - vault

@@ -15,7 +15,7 @@ Install certbot:
 
 Create OVH credentials:
   file.managed:
-    - name: /root/.credentials.ini
+    - name: /var/lib/vault/.credentials.ini
     - source: salt://vault/credentials.ini
     - template: jinja
     - user: root
@@ -25,11 +25,12 @@ Create OVH credentials:
 Initialize certificate:
   cmd.run:
     - name: certbot certonly --dns-ovh --dns-ovh-credentials ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vault.unix-kingdom.fr -d pki.unix-kingdom.fr -d crl.unix-kingdom.fr
+    - user: vault
 
 Crontab to renew certificate:
   cron.present:
     - name: cerbot renew --post-hook "systemctl reload vault"
-    - user: root
+    - user: vault
     - minute: 0
     - hour: '0,12'
 

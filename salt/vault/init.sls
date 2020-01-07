@@ -15,7 +15,7 @@ Install certbot:
 
 Create OVH credentials:
   file.managed:
-    - name: /root/credentials.ini
+    - name: /root/.credentials.ini
     - source: salt://vault/credentials.ini
     - template: jinja
     - user: root

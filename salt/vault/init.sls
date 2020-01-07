@@ -3,6 +3,10 @@ Install jq:
   pkg.installed:
     - name: jq
 
+Install cronie:
+  pkg.installed:
+    - name: cronie
+
 Install certbot:
   pkg.installed:
     - pkgs:

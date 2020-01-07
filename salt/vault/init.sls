@@ -77,7 +77,7 @@ Install nginx:
 
 Configure nginx:
   file.managed:
-    - name: /etc/nginx.conf
+    - name: /etc/nginx/nginx.conf
     - source: salt://vault/nginx.conf
     - user: root
     - group: root

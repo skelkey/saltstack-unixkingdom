@@ -59,6 +59,12 @@ Create OVH credentials:
     - group: root
     - mode: 400
 
+Authorize vault to write letsencrypt logs:
+  file.directory:
+    - name: /var/log/letsencrypt
+    - user: vault
+    - group: vault
+
 Initialize certificate:
   cmd.run:
     - name: certbot certonly --dns-ovh --dns-ovh-credentials ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vault.unix-kingdom.fr -d pki.unix-kingdom.fr -d crl.unix-kingdom.fr

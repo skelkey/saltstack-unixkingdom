@@ -1,3 +1,4 @@
+{% set vault_ip = salt['mine.get']('euw2a-prd-unixkingdom-vault-1', 'network.interface_ip')['euw2a-prd-unixkingdom-vault-1'] %}
 ui = true
 
 storage "s3" {
@@ -9,7 +10,7 @@ storage "s3" {
 }
 
 listener "tcp" {
-  address         = "172.16.4.75:8443"
+  address         = "{{ vault_ip }}:8443"
   tls_cert_file   = "/etc/letsencrypt/live/vault.unix-kingdom.fr/fullchain.pem"
   tls_key_file    = "/etc/letsencrypt/live/vault.unix-kingdom.fr/privkey.pem"
   tls_min_version = "tls12"

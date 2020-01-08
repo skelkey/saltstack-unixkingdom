@@ -1,4 +1,3 @@
-{% set vault_ip = salt['mine.get']('euw2a-prd-unixkingdom-vault-1', 'network.interface_ip')['euw2a-prd-unixkingdom-vault-1'] %}
 Install jq:
   pkg.installed:
     - name: jq

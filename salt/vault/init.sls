@@ -59,15 +59,21 @@ Create OVH credentials:
     - group: root
     - mode: 400
 
-Authorize vault to write letsencrypt logs:
+Authorize vault to write letsencrypt logsdir:
   file.directory:
     - name: /var/log/letsencrypt
     - user: vault
     - group: vault
 
-Authorize vault to write in letsencrypt workdir:
+Authorize vault to write in letsencrypt confdir:
   file.directory:
     - name: /etc/letsencrypt
+    - user: vault
+    - group: vault
+
+Authorize vault to write in letsencrypt workdir:
+  file.directory:
+    - name: /var/lib/letsencrypt
     - user: vault
     - group: vault
 

@@ -65,6 +65,13 @@ Authorize vault to write letsencrypt logs:
     - user: vault
     - group: vault
 
+Authorize vault to write in letsencrypt workdir:
+  file.directory
+    - name: /etc/letsencrypt
+    - user: vault
+    - group: vault
+    - recurse: true
+
 Initialize certificate:
   cmd.run:
     - name: certbot certonly --dns-ovh --dns-ovh-credentials ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vault.unix-kingdom.fr -d pki.unix-kingdom.fr -d crl.unix-kingdom.fr

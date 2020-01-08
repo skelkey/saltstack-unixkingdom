@@ -13,27 +13,6 @@ Install certbot:
       - certbot
       - python3-certbot-dns-ovh
 
-Create OVH credentials:
-  file.managed:
-    - name: /var/lib/vault/.credentials.ini
-    - source: salt://vault/credentials.ini
-    - template: jinja
-    - user: root
-    - group: root
-    - mode: 400
-
-Initialize certificate:
-  cmd.run:
-    - name: certbot certonly --dns-ovh --dns-ovh-credentials ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vault.unix-kingdom.fr -d pki.unix-kingdom.fr -d crl.unix-kingdom.fr
-    - user: vault
-
-Crontab to renew certificate:
-  cron.present:
-    - name: cerbot renew --post-hook "systemctl reload vault"
-    - user: vault
-    - minute: 0
-    - hour: '0,12'
-
 Adding unix-kingdom signing public key:
   file.managed:
     - source: https://repository.unix-kingdom.fr/RPM-GPG-KEY-unixkingdom
@@ -70,6 +49,29 @@ Start and enable vault service:
   service.running:
     - name: vault
     - enable: true
+
+Create OVH credentials:
+  file.managed:
+    - name: /var/lib/vault/.credentials.ini
+    - source: salt://vault/credentials.ini
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 400
+
+Initialize certificate:
+  cmd.run:
+    - name: certbot certonly --dns-ovh --dns-ovh-credentials ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vault.unix-kingdom.fr -d pki.unix-kingdom.fr -d crl.unix-kingdom.fr
+    - runas: vault
+    - shell: /bin/bash
+    - cwd: /var/lib/vault
+
+Crontab to renew certificate:
+  cron.present:
+    - name: cerbot renew --post-hook "systemctl reload vault"
+    - user: vault
+    - minute: 0
+    - hour: '0,12'
 
 Install nginx:
   pkg.installed:

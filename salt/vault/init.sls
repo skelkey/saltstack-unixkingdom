@@ -55,8 +55,8 @@ Create OVH credentials:
     - name: /var/lib/vault/.credentials.ini
     - source: salt://vault/credentials.ini
     - template: jinja
-    - user: root
-    - group: root
+    - user: vault
+    - group: vault
     - mode: 400
 
 Authorize vault to write letsencrypt logsdir:

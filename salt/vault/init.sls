@@ -71,11 +71,8 @@ Authorize vault to write in letsencrypt confdir:
     - user: vault
     - group: vault
     - recurse:
-      - accounts
-      - csr
-      - keys
-      - renewal
-      - renewal-hooks
+      - user
+      - group
 
 Authorize vault to write in letsencrypt workdir:
   file.directory:

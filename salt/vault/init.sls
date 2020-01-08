@@ -70,7 +70,6 @@ Authorize vault to write in letsencrypt workdir:
     - name: /etc/letsencrypt
     - user: vault
     - group: vault
-    - recurse: true
 
 Initialize certificate:
   cmd.run:

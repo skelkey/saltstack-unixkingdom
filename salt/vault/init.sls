@@ -66,7 +66,7 @@ Authorize vault to write letsencrypt logs:
     - group: vault
 
 Authorize vault to write in letsencrypt workdir:
-  file.directory
+  file.directory:
     - name: /etc/letsencrypt
     - user: vault
     - group: vault

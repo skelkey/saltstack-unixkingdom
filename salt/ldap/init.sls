@@ -1,11 +1,11 @@
-install selinux salt package:
+Install selinux salt package:
   pkg.installed:
     - pkgs:
       - policycoreutils
       - policycoreutils-python-utils
 
 
-set selinux permissive:
+Set selinux permissive:
   selinux.mode:
     - name: permissive
 
@@ -136,7 +136,7 @@ Set permission on /opt/slapd/data:
     - user: root
     - group: slapd
 
-start and enable slapd service:
+Start and enable slapd service:
   service.running:
     - name: slapd
     - enable: true

@@ -32,6 +32,15 @@ Install RCDevs ldap:
   pkg.installed:
     - name: slapd
 
+Install cacert unixkingdom:
+  file.managed:
+    - name: /opt/slapd/conf/cacert.crt
+    - source: salt://ldap/cacert.crt
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 640
+
 Install slapd certificate:
   file.managed:
     - name: /opt/slapd/conf/slapd.crt

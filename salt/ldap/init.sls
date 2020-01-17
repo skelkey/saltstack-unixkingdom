@@ -47,7 +47,7 @@ CA Server UnixKingdom:
       - file: Install cacert unixkingdom
 
 Install cacert unixkingdom:
-  x509.managed:
+  file.managed:
     - name: /opt/slapd/conf/cacert.crt
     - source: salt://ldap/cacert.crt
     - template: jinja

@@ -32,8 +32,22 @@ Install RCDevs ldap:
   pkg.installed:
     - name: slapd
 
+CA UnixKingdom:
+  file.accumulated:
+    - filename: /opt/slapd/conf/cacert.crt
+    - text: pillar['unixkingdom_ca']
+    - require_in:
+      - file: Install cacert unixkingdom
+
+CA Server UnixKingdom:
+  file.accumulated:
+    - filename: /opt/slapd/conf/cacert.crt
+    - text: pillar['server_unixkingdom_ca']
+    - require_in:
+      - file: Install cacert unixkingdom
+
 Install cacert unixkingdom:
-  file.managed:
+  x509.managed:
     - name: /opt/slapd/conf/cacert.crt
     - source: salt://ldap/cacert.crt
     - template: jinja

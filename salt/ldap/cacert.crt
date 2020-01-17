@@ -1,2 +1,2 @@
-{% for element in accumulator['CA UnixKingdom'] %}{{ element }}\\n{% endfor %}
-{% for element in accumulator['CA Server UnixKingdom'] %}{{ element }}\\n{% endfor %}
+{% for element in accumulator['CA UnixKingdom'] %}{{ element }}{% endfor %}
+{% for element in accumulator['CA Server UnixKingdom'] %}{{ element }}{% endfor %}

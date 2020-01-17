@@ -35,14 +35,14 @@ Install RCDevs ldap:
 CA UnixKingdom:
   file.accumulated:
     - filename: /opt/slapd/conf/cacert.crt
-    - text: pillar['unixkingdom_ca']
+    - text: {{ pillar['unixkingdom_ca'] }}
     - require_in:
       - file: Install cacert unixkingdom
 
 CA Server UnixKingdom:
   file.accumulated:
     - filename: /opt/slapd/conf/cacert.crt
-    - text: pillar['server_unixkingdom_ca']
+    - text: {{ pillar['server_unixkingdom_ca'] }}
     - require_in:
       - file: Install cacert unixkingdom
 

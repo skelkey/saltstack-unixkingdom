@@ -1,2 +1,2 @@
 {{ pillar['server_unixkingdom_ca'] }}
-{{ pillar['unixkingdom_ca'] }}
+{{ pillar['unix_kingdom_ca'] }}

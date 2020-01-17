@@ -13,9 +13,9 @@ set root password:
     - password: {{ pillar['root_hash'] }}
 
 install unixkingdom ca:
-  x509.pem_managed:
+  file.managed:
     - name: /etc/pki/ca-trust/source/anchors/unixkingdom.pem
-    - text: {{ pillar['unixkingdom_ca'] }}
+    - contents_pillar: unixkingdom_ca
 
 update ca trustore:
   cmd.run:

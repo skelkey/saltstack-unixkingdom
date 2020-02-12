@@ -27,6 +27,10 @@ Install RCDevs repository:
     - gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs
     - protect: 0
 
+Install OpenLDAP tools:
+  pkg.installed:
+    - name: openldap-clients
+
 Install RCDevs webadm:
   pkg.installed:
     - name: webadm

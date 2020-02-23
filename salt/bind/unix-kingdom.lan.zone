@@ -20,6 +20,7 @@ euw2a-prd-unixkingdom-ldap-1       IN A {{ salt['mine.get']('euw2a-prd-unixkingd
 euw2a-prd-unixkingdom-webadm-1     IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-webadm-1', 'network.interface_ip')['euw2a-prd-unixkingdom-webadm-1'] }}
 euw2a-prd-unixkingdom-vault-1     IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-vault-1', 'network.interface_ip')['euw2a-prd-unixkingdom-vault-1'] }}
 euw2a-prd-unixkingdom-repository-1     IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-repository-1', 'network.interface_ip')['euw2a-prd-unixkingdom-repository-1'] }}
+euw2a-prd-unixkingdom-haproxy-1   IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-haproxy-1', 'network.interface_ip')['euw2a-prd-unixkingdom-haproxy-1'] }}
 
 ldap IN CNAME euw2a-prd-unixkingdom-ldap-1
-webadm IN CNAME euw2a-prd-unixkingdom-webadm-1
+webadm IN CNAME euw2a-prd-unixkingdom-haproxy-1

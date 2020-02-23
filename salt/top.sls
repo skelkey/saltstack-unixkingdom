@@ -15,3 +15,5 @@ base:
     - vault
   '*repository*':
     - repository
+  '*haproxy*':
+    - haproxy

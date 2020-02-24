@@ -24,6 +24,11 @@ Deploy certificate for haproxy:
     - mode: 0600
     - template: jinja
 
+Start and enable rsyslog service:
+  service.running:
+    - name: haproxy
+    - enable: true
+
 Start and enable haproxy service:
   service.running:
     - name: haproxy

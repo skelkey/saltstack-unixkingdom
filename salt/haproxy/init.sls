@@ -42,10 +42,10 @@ Add haproxy logging socket to fstab:
     - device: /dev/log
     - fstype: none
     - mkmnt: True
-    - opts: defaults,bind
+    - opts: defaults,bind,fscontext=system_u:object_r:haproxy_var_lib_t
     - persist: True
     - mount: True
-    
+
 Start and enable rsyslog service:
   service.running:
     - name: haproxy

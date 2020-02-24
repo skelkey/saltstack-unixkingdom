@@ -15,6 +15,14 @@ Deploy configuration for haproxy:
     - mode: 0644
     - template: jinja
 
+Deploy configuration for rsyslog:
+  file.managed:
+    - name: /etc/rsyslog.conf
+    - source: salt://haproxy/rsyslog.conf
+    - user: root
+    - group: root
+    - mode: 0644
+
 Deploy certificate for haproxy:
   file.managed:
     - name: /etc/haproxy/webadm.pem

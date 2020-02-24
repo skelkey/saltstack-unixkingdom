@@ -1,6 +1,6 @@
 $ttl 86400
 unix-kingdom.lan. IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.com. (
-    2020021501
+    2020022401
     10800
     3600
     604800

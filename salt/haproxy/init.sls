@@ -11,6 +11,15 @@ Deploy configuration for haproxy:
     - mode: 0644
     - template: jinja
 
+Deploy certificate for haproxy:
+  file.managed:
+    - name: /etc/haproxy/webadm.pem
+    - source: salt://haproxy/webadm.pem
+    - user: root
+    - group: root
+    - mode: 0600
+    - template: jinja
+
 Start and enable haproxy service:
   service.running:
     - name: haproxy

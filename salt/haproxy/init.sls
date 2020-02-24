@@ -2,6 +2,10 @@ Install haproxy:
   pkg.installed:
     - name: haproxy
 
+Install rsylog:
+  pkg.installed:
+    - name: rsyslog
+
 Deploy configuration for haproxy:
   file.managed:
     - name: /etc/haproxy/haproxy.cfg

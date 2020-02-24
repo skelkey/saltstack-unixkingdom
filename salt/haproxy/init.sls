@@ -40,9 +40,9 @@ Add haproxy logging socket to fstab:
   mount.mounted:
     - name: /var/lib/haproxy/log
     - device: /dev/log
-    - fstype: None
+    - fstype: none
     - mkmnt: True
-    - opts: bind
+    - opts: defaults,bind
     - persist: True
     - mount: True
     

@@ -32,6 +32,18 @@ Deploy certificate for haproxy:
     - mode: 0600
     - template: jinja
 
+Create logging haproxy socket:
+  file.touch:
+    - name: /var/lib/haproxy/log
+
+Add haproxy logging socket to fstab:
+  fstab.present:
+    - name: /dev/log
+    - fs_file: /var/lib/haproxy/log
+    - fs_mntops: bind
+    - mount: True
+    
+
 Start and enable rsyslog service:
   service.running:
     - name: haproxy

@@ -42,7 +42,7 @@ Add haproxy logging socket to fstab:
     - device: /dev/log
     - fstype: none
     - mkmnt: True
-    - opts: defaults,bind,fscontext=system_u:object_r:haproxy_var_lib_t
+    - opts: defaults,bind
     - persist: True
     - mount: True
 

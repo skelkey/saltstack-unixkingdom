@@ -37,13 +37,15 @@ Create logging haproxy socket:
     - name: /var/lib/haproxy/log
 
 Add haproxy logging socket to fstab:
-  mount.fstab_present:
-    - name: /dev/log
-    - fs_file: /var/lib/haproxy/log
-    - fs_mntops: bind
+  mount.mounted:
+    - name: /var/lib/haproxy/log
+    - device: /dev/log
+    - fstype: None
+    - mkmnt: True
+    - opts: bind
+    - persist: True
     - mount: True
     
-
 Start and enable rsyslog service:
   service.running:
     - name: haproxy

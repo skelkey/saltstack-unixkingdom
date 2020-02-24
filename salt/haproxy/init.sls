@@ -37,7 +37,7 @@ Create logging haproxy socket:
     - name: /var/lib/haproxy/log
 
 Add haproxy logging socket to fstab:
-  fstab.present:
+  mount.fstab_present:
     - name: /dev/log
     - fs_file: /var/lib/haproxy/log
     - fs_mntops: bind

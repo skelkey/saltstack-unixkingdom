@@ -1,3 +1,9 @@
+install selinux salt package:
+  pkg.installed:
+    - pkgs:
+      - policycoreutils
+      - policycoreutils-python-utils
+
 install m2crypto:
   pkg.installed:
     - name: m2crypto

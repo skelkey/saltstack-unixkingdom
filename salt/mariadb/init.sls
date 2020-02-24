@@ -50,35 +50,6 @@ Disable remote login for MariaDB root user:
     - connection_pass: {{ pillar['mysql_root_password'] }}
     - connection_charset: utf8
 
-Create database for EJBCA:
-  mysql_database.present:
-    - name: 'ejbca'
-    - host: localhost
-    - character_set: utf8
-    - collate: utf8_general_ci
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8
-    
-Create database user for EJBCA:
-  mysql_user.present:
-    - host: '{{ ejbca_ip }}'
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8
-    - name: 'ejbca'
-    - password: {{ pillar['mysql_ejbca_password'] }}
-
-Grant right for database user EJBCA on EJBCA database:
-  mysql_grants.present:
-    - host: '{{ ejbca_ip }}'
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - grant : all privileges
-    - database: ejbca.*
-    - user: ejbca
-    - connection_charset: utf8
-
 Restart MariaDB service:
   module.wait:
     - name: service.restart

@@ -15,6 +15,7 @@ base:
   '*ldap*':
     - ldap
   '*webadm*':
+    - common_certwebadm
     - common_webadm
     - webadm
   '*repository*':
@@ -23,3 +24,5 @@ base:
   '*vault*':
     - common_letsencrypt
     - vault
+  '*haproxy*':
+    - common_certwebadm

@@ -36,6 +36,14 @@ Deploy certificate for haproxy:
     - mode: 0600
     - template: jinja
 
+Create directory for log socket:
+  file.directory:
+    - name: /var/lib/haproxy/dev
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
+
 Start and enable rsyslog service:
   service.running:
     - name: haproxy

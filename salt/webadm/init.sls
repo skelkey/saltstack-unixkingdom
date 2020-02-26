@@ -1,13 +1,3 @@
-#install selinux salt package:
-#  pkg.installed:
-#    - pkgs:
-#      - policycoreutils
-#      - policycoreutils-python-utils
-
-#set selinux permissive:
-#  selinux.mode:
-#    - name: permissive
-
 Install rcdevs GPG key:
   file.managed:
     - name: /etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs

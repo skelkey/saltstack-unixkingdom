@@ -1,9 +1,3 @@
-Install selinux salt package:
-  pkg.installed:
-    - pkgs:
-      - policycoreutils
-      - policycoreutils-python-utils
-
 Install createrepo package:
   pkg.installed:
     - name: createrepo

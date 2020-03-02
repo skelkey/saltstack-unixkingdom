@@ -35,7 +35,7 @@ Allowed LDAP parameters are:
 <LdapServer name="LDAP Server"
 	host="{{ ldap_ip }}"
 	port="636"
-	encryption="TLS"
+	encryption="SSL"
 	ca_file="/etc/pki/ca-trust/source/anchors/unixkingdom.pem"
 	sasl="" />
 

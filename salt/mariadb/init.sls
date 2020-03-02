@@ -1,3 +1,4 @@
+{% set webadm_ip = salt['mine.get']('euw2a-prd-unixkingdom-webadm-1', 'network.interface_ip')['euw2a-prd-unixkingdom-webadm-1'] %}
 install MariaDB service:
   pkg.installed:
     - name: mariadb-server
@@ -48,6 +49,35 @@ Disable remote login for MariaDB root user:
     - host: localhost
     - connection_user: 'root'
     - connection_pass: {{ pillar['mysql_root_password'] }}
+    - connection_charset: utf8
+
+Create database for WebADM:
+  mysql_database.present:
+    - name: 'webadm'
+    - host: localhost
+    - character_set: utf8
+    - collate: utf8_general_ci
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - connection_charset: utf8
+
+Create database user for WebADM:
+  mysql_user.present:
+    - host: '{{ webadm_ip }}'
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - connection_charset: utf8
+    - name: {{ pillar['mysql_webadm_user'] }}
+    - password: {{ pillar['mysql_webadm_password'] }}
+
+Grant right for database user WebADM on WebADM database:
+  mysql_grants.present:
+    - host: '{{ webadm_ip }}'
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - grant : all privileges
+    - database: webadm.*
+    - user: webadm
     - connection_charset: utf8
 
 Restart MariaDB service:

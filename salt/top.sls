@@ -17,3 +17,5 @@ base:
     - repository
   '*haproxy*':
     - haproxy
+  '*waproxy*':
+    - waproxy

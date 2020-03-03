@@ -21,6 +21,14 @@ Install RCDevs waproxy:
   pkg.installed:
     - name: waproxy
 
+Configure waproxy:
+  file.managed:
+    - name: /opt/waproxy/conf/waproxy.conf
+    - source: salt://waproxy/waproxy.conf
+    - user: root
+    - group: root
+    - mode: 644
+
 start and enable waproxy service:
   service.running:
     - name: waproxy

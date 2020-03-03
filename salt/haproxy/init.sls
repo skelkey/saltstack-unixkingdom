@@ -27,10 +27,19 @@ Deploy configuration for rsyslog:
     - group: root
     - mode: 0644
 
-Deploy certificate for haproxy:
+Deploy certificate for webadm:
   file.managed:
     - name: /etc/haproxy/webadm.pem
     - source: salt://haproxy/webadm.pem
+    - user: root
+    - group: root
+    - mode: 0600
+    - template: jinja
+
+Deploy certificate for waproxy:
+  file.managed:
+    - name: /etc/haproxy/waproxy.pem
+    - source: salt://haproxy/waproxy.pem
     - user: root
     - group: root
     - mode: 0600

@@ -21,3 +21,5 @@ base:
     - vault
   '*haproxy*':
     - haproxy
+  '*waproxy*':
+    - waproxy

@@ -21,6 +21,19 @@ Install RCDevs waproxy:
   pkg.installed:
     - name: waproxy
 
+Create waproxy group:
+  group.present:
+    - name: waproxy
+    - system: true
+
+Create waproxy user:
+  user.present:
+    - name: waproxy
+    - gid_from_name: waproxy
+    - home: /opt/waproxy
+    - shell: /sbin/nologin
+    - system: true
+
 Configure waproxy:
   file.managed:
     - name: /opt/waproxy/conf/waproxy.conf
@@ -28,6 +41,33 @@ Configure waproxy:
     - user: root
     - group: root
     - mode: 644
+
+Set waproxy certificate:
+  file.managed:
+    - name: /opt/waproxy/conf/waproxy.crt
+    - source: salt://waproxy/waproxy.crt
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
+Set waproxy private key:
+  file.managed:
+    - name: /opt/waproxy/conf/waproxy.key
+    - source: salt://waproxy/waproxy.key
+    - user: root
+    - group: root
+    - mode: 600
+    - template: jinja
+
+Install certificate chain for waproxy:
+  file.managed:
+    - name: /opt/waproxy/conf/ca.crt
+    - source: salt://waproxy/ca.crt
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
 
 start and enable waproxy service:
   service.running:

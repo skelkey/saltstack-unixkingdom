@@ -88,7 +88,7 @@ Initialize certificate:
 
 Crontab to renew certificate:
   cron.present:
-    - name: certbot renew --post-hook "systemctl reload nginx"
+    - name: /usr/bin/certbot renew --post-hook "systemctl reload nginx"
     - user: root
     - minute: 0
     - hour: '0,12'

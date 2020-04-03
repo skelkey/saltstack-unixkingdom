@@ -8,7 +8,7 @@ Install cronie:
 
 Start and enable cronie:
   service.running:
-    - name: cronie
+    - name: crond
     - enable: true
 
 Install certbot:

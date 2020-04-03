@@ -6,6 +6,11 @@ Install cronie:
   pkg.installed:
     - name: cronie
 
+Start and enable cronie:
+  service.running:
+    - name: cronie
+    - enable: true
+
 Install certbot:
   pkg.installed:
     - pkgs:

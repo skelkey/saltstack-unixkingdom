@@ -10,6 +10,11 @@ Install cron:
   pkg.installed:
     - name: cronie
 
+Start and enable cronie:
+  service.running:
+    - name: cronie
+    - enable: true
+
 Create directory /srv/repos/fedora/28/x86_64/RPMS:
   file.directory:
     - name: /srv/repos/fedora/28/x86_64/RPMS

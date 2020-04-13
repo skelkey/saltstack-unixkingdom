@@ -93,7 +93,7 @@ Initialize certificate:
 
 Crontab to renew certificate:
   cron.present:
-    - name: /usr/bin/certbot renew --post-hook "systemctl reload vault"
+    - name: /usr/bin/certbot renew --post-hook "systemctl restart vault"
     - user: vault
     - minute: 0
     - hour: '0,12'

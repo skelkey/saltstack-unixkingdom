@@ -25,6 +25,10 @@ Install RCDevs webadm:
   pkg.installed:
     - name: webadm
 
+Install RCDevs selfdesk application:
+  pkg.installed:
+    - name: selfdesk
+
 Create webadm group:
   group.present:
     - name: webadm

@@ -27,7 +27,12 @@ Install RCDevs webadm:
 
 Install RCDevs selfdesk application:
   pkg.installed:
-    - name: selfdesk
+    - pkgs:
+     - selfdesk
+     - openid
+     - openotp
+     - opensso
+     - spankey
 
 Create webadm group:
   group.present:

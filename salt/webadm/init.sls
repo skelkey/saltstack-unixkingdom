@@ -27,7 +27,7 @@ Install RCDevs webadm:
 
 Install RCDevs selfdesk application:
   pkg.installed:
-    - pkgs:
+   - pkgs:
      - selfdesk
      - openid
      - openotp

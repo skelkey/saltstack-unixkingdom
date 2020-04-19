@@ -34,13 +34,13 @@ Install RCDevs radius bridge:
 #    - shell: /sbin/nologin
 #    - system: true
 
-#Configure waproxy:
-#  file.managed:
-#    - name: /opt/waproxy/conf/waproxy.conf
-#    - source: salt://waproxy/waproxy.conf
-#    - user: root
-#    - group: root
-#    - mode: 644
+Configure waproxy:
+  file.managed:
+    - name: /opt/radiusd/conf/radiusd.conf
+    - source: salt://radiusd/radiusd.conf
+    - user: root
+    - group: root
+    - mode: 644
 
 #Set waproxy certificate:
 #  file.managed:

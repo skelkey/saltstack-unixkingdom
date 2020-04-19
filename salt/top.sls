@@ -19,3 +19,5 @@ base:
     - haproxy
   '*waproxy*':
     - waproxy
+  '*radius*':
+    - radius

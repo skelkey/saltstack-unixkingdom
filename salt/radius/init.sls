@@ -37,7 +37,7 @@ Install RCDevs radius bridge:
 Configure radiusd:
   file.managed:
     - name: /opt/radiusd/conf/radiusd.conf
-    - source: salt://radiusd/radiusd.conf
+    - source: salt://radius/radiusd.conf
     - user: root
     - group: root
     - mode: 644

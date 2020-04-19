@@ -34,7 +34,7 @@ Install RCDevs radius bridge:
 #    - shell: /sbin/nologin
 #    - system: true
 
-Configure waproxy:
+Configure radiusd:
   file.managed:
     - name: /opt/radiusd/conf/radiusd.conf
     - source: salt://radiusd/radiusd.conf

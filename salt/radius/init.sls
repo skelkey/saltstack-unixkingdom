@@ -46,8 +46,8 @@ Set radius certificate:
   file.managed:
     - name: /opt/radiusd/conf/radiusd.crt
     - source: salt://radius/radiusd.crt
-    - user: root
-    - group: root
+    - user: radiusd
+    - group: radiusd
     - mode: 644
     - template: jinja
 
@@ -55,8 +55,8 @@ Set radius private key:
   file.managed:
     - name: /opt/radiusd/conf/radiusd.key
     - source: salt://radius/radiusd.key
-    - user: root
-    - group: root
+    - user: radiusd
+    - group: radiusd
     - mode: 600
     - template: jinja
 

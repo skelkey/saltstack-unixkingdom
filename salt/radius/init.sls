@@ -62,7 +62,7 @@ Set radius private key:
 
 Install certificate chain for radius:
   file.managed:
-    - name: /opt/radius/conf/ca.crt
+    - name: /opt/radiusd/conf/ca.crt
     - source: salt://radius/ca.crt
     - user: root
     - group: root

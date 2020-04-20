@@ -21,18 +21,18 @@ Install RCDevs radius bridge:
   pkg.installed:
     - name: radiusd
 
-#Create waproxy group:
-#  group.present:
-#    - name: waproxy
-#    - system: true
+Create radiusd group:
+  group.present:
+    - name: radiusd
+    - system: true
 
-#Create waproxy user:
-#  user.present:
-#    - name: waproxy
-#    - gid_from_name: waproxy
-#    - home: /opt/waproxy
-#    - shell: /sbin/nologin
-#    - system: true
+Create radiusd user:
+  user.present:
+    - name: radiusd
+    - gid_from_name: radiusd
+    - home: /opt/radiusd
+    - shell: /sbin/nologin
+    - system: true
 
 Configure radiusd:
   file.managed:
@@ -42,34 +42,34 @@ Configure radiusd:
     - group: root
     - mode: 644
 
-#Set waproxy certificate:
-#  file.managed:
-#    - name: /opt/waproxy/conf/waproxy.crt
-#    - source: salt://waproxy/waproxy.crt
-#    - user: root
-#    - group: root
-#    - mode: 644
-#    - template: jinja
+Set radius certificate:
+  file.managed:
+    - name: /opt/radiusd/conf/radiusd.crt
+    - source: salt://radius/radiusd.crt
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
 
-#Set waproxy private key:
-#  file.managed:
-#    - name: /opt/waproxy/conf/waproxy.key
-#    - source: salt://waproxy/waproxy.key
-#    - user: root
-#    - group: root
-#    - mode: 600
-#    - template: jinja
+Set radius private key:
+  file.managed:
+    - name: /opt/radiusd/conf/radiusd.key
+    - source: salt://radius/radiusd.key
+    - user: root
+    - group: root
+    - mode: 600
+    - template: jinja
 
-#Install certificate chain for waproxy:
-#  file.managed:
-#    - name: /opt/waproxy/conf/ca.crt
-#    - source: salt://waproxy/ca.crt
-#    - user: root
-#    - group: root
-#    - mode: 644
-#    - template: jinja
+Install certificate chain for radius:
+  file.managed:
+    - name: /opt/radius/conf/ca.crt
+    - source: salt://radius/ca.crt
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
 
-#start and enable waproxy service:
-#  service.running:
-#    - name: waproxy
-#    - enable: true
+start and enable radius service:
+  service.running:
+    - name: radiusd
+    - enable: true

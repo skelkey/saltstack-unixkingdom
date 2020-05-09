@@ -48,7 +48,7 @@ Initialize certificate:
 Crontab to renew certificate:
   cron.present:
     - name: /usr/bin/certbot renew --post-hook "systemctl restart strongswan"
-    - user: vault
+    - user: strongswan
     - minute: 0
     - hour: '0,12'
 

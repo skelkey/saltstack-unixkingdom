@@ -25,3 +25,5 @@ base:
     - waproxy
   '*radius*':
     - radius
+  '*strongswan*':
+    - common_letsencrypt

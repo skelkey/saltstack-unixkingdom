@@ -84,7 +84,7 @@ Deploy ipsec configuration file:
 
 Deploy strongswan configuration file:
   file.managed:
-    - name: /etc/strongwan/strongswan.conf
+    - name: /etc/strongswan/strongswan.conf
     - source: salt://strongswan/strongswan.conf
     - user: root
     - group: root

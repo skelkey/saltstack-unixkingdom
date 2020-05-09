@@ -74,3 +74,18 @@ Crontab to renew certificate:
     - minute: 0
     - hour: '0,12'
 
+Deploy ipsec configuration file:
+  file.managed:
+    - name: /etc/strongswan/ipsec.conf
+    - source: salt://strongswan/ipsec.conf
+    - user: root
+    - group: root
+    - mode: 644
+
+Deploy eap-radius configuration file:
+  file.managed:
+    - name: /etc/strongswan/strongswan.d/charon/eap-radius.conf
+    - source: salt://strongswan/eap-radius.conf
+    - user: root
+    - group: root
+    - mode: 644

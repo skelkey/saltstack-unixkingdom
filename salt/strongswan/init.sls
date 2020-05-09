@@ -82,6 +82,14 @@ Deploy ipsec configuration file:
     - group: root
     - mode: 644
 
+Deploy strongswan configuration file:
+  file.managed:
+    - name: /etc/strongwan/strongswan.conf
+    - source: salt://strongswan/strongswan.conf
+    - user: root
+    - group: root
+    - mode: 644
+
 Deploy eap-radius configuration file:
   file.managed:
     - name: /etc/strongswan/strongswan.d/charon/eap-radius.conf

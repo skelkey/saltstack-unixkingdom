@@ -65,6 +65,7 @@ Initialize certificate:
     - name: certbot certonly --dns-ovh --dns-ovh-credential ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vpn.unix-kingdom.fr
     - runas: strongswan
     - shell: /bin/bash
+    - cwd: /var/lib/strongswan
 
 Crontab to renew certificate:
   cron.present:

@@ -97,3 +97,9 @@ Deploy eap-radius configuration file:
     - user: root
     - group: root
     - mode: 644
+
+Start and enable strongswan:
+  service.running:
+    - name: strongswan
+    - enable: true
+

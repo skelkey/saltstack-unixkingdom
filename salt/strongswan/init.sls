@@ -7,7 +7,7 @@ Create strongswan user:
   user.present:
     - name: strongswan
     - gid_from_name: strongswan
-    - home: /
+    - home: /var/lib/strongswan
     - shell: /sbin/nologin
     - system: true
 
@@ -32,7 +32,7 @@ Install certbot:
 
 Create OVH credentials:
   file.managed:
-    - name: /etc/strongswan/.credentials.ini
+    - name: ~/.credentials.ini
     - source: salt://strongswan/credentials.ini
     - template: jinja
     - user: strongswan
@@ -62,7 +62,7 @@ Authorize strongswan to write in letsencrypt workdir:
 
 Initialize certificate:
   cmd.run:
-    - name: certbot certonly --dns-ovh --dns-ovh-credentials /etc/strongswan/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vpn.unix-kingdom.fr
+    - name: certbot certonly --dns-ovh --dns-ovh-credential ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vpn.unix-kingdom.fr
     - runas: strongswan
     - shell: /bin/bash
 

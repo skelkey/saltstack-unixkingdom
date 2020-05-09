@@ -39,6 +39,26 @@ Create OVH credentials:
     - group: strongswan
     - mode: 400
 
+Authorize vault to write letsencrypt logsdir:
+  file.directory:
+    - name: /var/log/letsencrypt
+    - user: vault
+    - group: vault
+
+Authorize vault to write in letsencrypt confdir:
+  file.directory:
+    - name: /etc/letsencrypt
+    - user: vault
+    - group: vault
+    - recurse:
+      - user
+      - group
+
+Authorize vault to write in letsencrypt workdir:
+  file.directory:
+    - name: /var/lib/letsencrypt
+    - user: vault
+
 Initialize certificate:
   cmd.run:
     - name: certbot certonly --dns-ovh --dns-ovh-credentials /etc/strongswan/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vpn.unix-kingdom.fr

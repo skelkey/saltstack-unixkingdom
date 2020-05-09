@@ -32,7 +32,7 @@ Install certbot:
 
 Create OVH credentials:
   file.managed:
-    - name: ~/.credentials.ini
+    - name: /var/lib/strongswan/.credentials.ini
     - source: salt://strongswan/credentials.ini
     - template: jinja
     - user: strongswan

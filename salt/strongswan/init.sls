@@ -15,6 +15,10 @@ Install strongswan service:
   pkg.installed:
     - name: strongswan
 
+Install xl2tpd service:
+  pkg.installed:
+    - name: xl2tpd
+
 Install cronie:
   pkg.installed:
     - name: cronie
@@ -84,10 +88,15 @@ Link letsencrypt private key to strongswan private key:
     - name: /etc/strongswan/ipsec.d/private/vpn.unix-kingdom.fr.key
     - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/privkey.pem
 
-Link letsencrypt cert to strongswan cert:
+Link letsencrypt cert to strongswan certs:
   file.symlink:
     - name: /etc/strongswan/ipsec.d/certs/vpn.unix-kingdom.fr.crt
     - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/cert.pem
+
+Link letsencrypt cert to strongswan acerts:
+  file.symlink:
+    - name: /etc/strongswan/ipsec.d/certs/vpn.unix-kingdom.fr.crt
+    - tagets: /etc/letsencrypt/live/vpn.unix-kingdom.fr/cert.pem
 
 Deploy ipsec secrets file:
   file.managed:

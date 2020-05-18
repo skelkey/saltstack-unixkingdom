@@ -77,17 +77,17 @@ Crontab to renew certificate:
 Link letsencrypt chain to strongswan cacerts:
   file.symlink:
     - name: /etc/strongswan/ipsec.d/cacerts/ca.crt
-    - target: /etc/letsencrypt/live/chain.pem
+    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/chain.pem
 
 Link letsencrypt private key to strongswan private key:
   file.symlink:
     - name: /etc/strongswan/ipsec.d/private/vpn.unix-kingdom.fr.key
-    - target: /etc/letsencrypt/live/privkey.pem
+    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/privkey.pem
 
 Link letsencrypt cert to strongswan cert:
   file.symlink:
     - name: /etc/strongswan/ipsec.d/certs/vpn.unix-kingdom.fr.crt
-    - target: /etc/letsencrypt/live/cert.pem
+    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/cert.pem
 
 Deploy ipsec secrets file:
   file.managed:

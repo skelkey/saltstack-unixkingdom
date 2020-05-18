@@ -78,16 +78,19 @@ Link letsencrypt chain to strongswan cacerts:
   file.symlink:
     - name: /etc/ipsec.d/cacerts/ca.crt
     - target: /etc/letsencrypt/live/chain.pem
+    - makedirs: true
 
 Link letsencrypt private key to strongswan private key:
   file.symlink:
     - name: /etc/ipsec.d/private/vpn.unix-kingdom.fr.key
     - target: /etc/letsencrypt/live/privkey.pem
+    - makedirs: true
 
 Link letsencrypt cert to strongswan cert:
   file.symlink:
     - name: /etc/ipsec.d/certs/vpn.unix-kingdom.fr.crt
     - target: /etc/letsencrypt/live/cert.pem
+    - makedirs: true
 
 Deploy ipsec secrets file:
   file.managed:

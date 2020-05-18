@@ -74,26 +74,33 @@ Crontab to renew certificate:
     - minute: 0
     - hour: '0,12'
 
+Link letsencrypt chain to strongswan cacerts:
+  file.symlink:
+    - name: /etc/ipsec.d/cacerts/ca.crt
+    - target: /etc/letsencrypt/live/chain.pem
+
+Link letsencrypt private key to strongswan private key:
+  file.symlink:
+    - name: /etc/ipsec.d/private/vpn.unix-kingdom.fr.key
+    - target: /etc/letsencrypt/live/privkey.pem
+
+Link letsencrypt cert to strongswan cert:
+  file.symlink:
+    - name: /etc/ipsec.d/certs/vpn.unix-kingdom.fr.crt
+    - target: /etc/letsencrypt/live/cert.pem
+
+Deploy ipsec secrets file:
+  file.managed:
+    - name: /etc/ipsec.secrets
+    - source: salt://strongswan/ipsec.secrets
+    - user: root
+    - group: root
+    - mode: 644
+
 Deploy ipsec configuration file:
   file.managed:
     - name: /etc/strongswan/ipsec.conf
     - source: salt://strongswan/ipsec.conf
-    - user: root
-    - group: root
-    - mode: 644
-
-Deploy strongswan configuration file:
-  file.managed:
-    - name: /etc/strongswan/strongswan.conf
-    - source: salt://strongswan/strongswan.conf
-    - user: root
-    - group: root
-    - mode: 644
-
-Deploy eap-radius configuration file:
-  file.managed:
-    - name: /etc/strongswan/strongswan.d/charon/eap-radius.conf
-    - source: salt://strongswan/eap-radius.conf
     - user: root
     - group: root
     - mode: 644

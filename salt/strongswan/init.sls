@@ -94,7 +94,7 @@ Link letsencrypt cert to strongswan cert:
 
 Deploy ipsec secrets file:
   file.managed:
-    - name: /etc/ipsec.secrets
+    - name: /etc/strongswan/ipsec.secrets
     - source: salt://strongswan/ipsec.secrets
     - user: root
     - group: root

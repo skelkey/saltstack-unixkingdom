@@ -96,7 +96,7 @@ Link letsencrypt cert to strongswan certs:
 Link letsencrypt cert to strongswan acerts:
   file.symlink:
     - name: /etc/strongswan/ipsec.d/acerts/vpn.unix-kingdom.fr.crt
-    - tagets: /etc/letsencrypt/live/vpn.unix-kingdom.fr/cert.pem
+    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/cert.pem
 
 Deploy ipsec secrets file:
   file.managed:

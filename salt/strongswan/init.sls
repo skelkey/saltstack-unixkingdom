@@ -114,6 +114,22 @@ Deploy ipsec configuration file:
     - group: root
     - mode: 644
 
+Deploy xl2tpd configuration file:
+  file.managed:
+    - name: /etc/xl2tpd/xl2tpd.conf
+    - source: salt://strongswan/xl2tpd.conf
+    - user: root
+    - group: root
+    - mode: 644
+
+Deploy xl2tpd options file:
+  file.managed:
+    - name: /etc/xl2tpd/options.xl2tpd
+    - source: salt://strongswan/options.xl2tpd
+    - user: root
+    - group: root
+    - mode: 644
+
 Start and enable strongswan:
   service.running:
     - name: strongswan

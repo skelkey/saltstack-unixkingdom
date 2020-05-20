@@ -1,0 +1,9 @@
+noccp
+auth
+crtscts
+mtu 1410
+mru 1410
+nodefaultroute
+lock
+proxyarp
+silent

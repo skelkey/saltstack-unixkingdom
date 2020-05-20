@@ -136,6 +136,6 @@ Start and enable strongswan:
     - enable: true
 
 Start and enable xl2tpd:
-  servide.running:
+  service.running:
     - name: xl2tpd
     - enable: true

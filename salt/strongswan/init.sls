@@ -19,6 +19,10 @@ Install xl2tpd service:
   pkg.installed:
     - name: xl2tpd
 
+Install freeradius-client:
+  pkg.installed:
+    - name: freeradius-client
+
 Install cronie:
   pkg.installed:
     - name: cronie

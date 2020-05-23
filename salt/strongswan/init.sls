@@ -134,6 +134,14 @@ Deploy xl2tpd options file:
     - group: root
     - mode: 644
 
+Deploy freeradius servers file:
+  file.managed:
+    - name: /etc/radiusclient/servers
+    - source: salt://strongswan/servers
+    - user: root
+    - group: root
+    - mode: 400
+
 Start and enable strongswan:
   service.running:
     - name: strongswan

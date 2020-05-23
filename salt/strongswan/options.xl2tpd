@@ -7,3 +7,4 @@ nodefaultroute
 lock
 proxyarp
 silent
+plugin radius.so

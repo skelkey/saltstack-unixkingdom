@@ -34,6 +34,15 @@ Create radiusd user:
     - shell: /sbin/nologin
     - system: true
 
+Configuration for radius clients:
+  file.managed:
+    - name: /opt/radiusd/conf/clients.conf
+    - source: salt://radius/clients.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
 Configure radiusd:
   file.managed:
     - name: /opt/radiusd/conf/radiusd.conf

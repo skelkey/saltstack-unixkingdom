@@ -117,6 +117,7 @@ Deploy strongswan radius configuration file:
     - user: root
     - group: root
     - mode: 400
+    - template: jinja
 
 Start and enable strongswan:
   service.running:

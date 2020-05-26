@@ -15,6 +15,7 @@ Install libgcrypt:
   pkg.installed:
     - name: libgcrypt
     - version: 1.8.4
+    - reinstall: true
 
 Install strongswan service:
   pkg.installed:

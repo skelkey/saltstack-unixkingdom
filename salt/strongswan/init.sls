@@ -11,6 +11,11 @@ Create strongswan user:
     - shell: /sbin/nologin
     - system: true
 
+Install libgcrypt:
+  pkg.installed:
+    - name: libgcrypt
+    - version: 1.8.4
+
 Install strongswan service:
   pkg.installed:
     - name: strongswan

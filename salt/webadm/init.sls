@@ -80,6 +80,7 @@ Deploy rsignd.conf file:
     - user: root
     - group: root
     - mode: 644
+    - template: jinja
 
 Deploy webadm.key file:
   file.managed:

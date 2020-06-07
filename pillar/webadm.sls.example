@@ -1,3 +1,4 @@
+webadm_pki_secret: <webadm_pki_password>
 webadm_key: |
     -----BEGIN RSA PRIVATE KEY-----
     MIIEowIBAAKCAQEAq8WYRu0ZjNJL3Q8VYgvR0WYPtMaTQ/6Lu706L0DhYlZS7HeW

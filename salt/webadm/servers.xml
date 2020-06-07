@@ -100,8 +100,8 @@ default settings here.
 <PkiServer name="PKI Server"
 	host="localhost"
 	port="5000"
-	secret="secret"
-	ca_file="" />
+	secret="{{ pillar['webadm_pki_secret'] }}"
+	ca_file="/opt/webadm/pki/ca/ca.crt" />
 
 <!--
 You need to configure RCDevs Push server(s) in order to use

@@ -1,1 +1,2 @@
+{{ pillar['unixkingdom_ca'] }}
 {{ pillar['webadm_cacert'] }}

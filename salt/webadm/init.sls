@@ -17,6 +17,10 @@ Install RCDevs repository:
     - gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs
     - protect: 0
 
+Install make tools:
+  pkg.installed:
+    - name: make
+
 Install OpenLDAP tools:
   pkg.installed:
     - name: openldap-clients
@@ -128,12 +132,12 @@ Create systemd service file:
 
 Add unixkingdom_ca to webadm truststore:
   file.managed:
-    - name: /opt/webadm/pki/trusted/unixkingdom.pem
+    - name: /opt/webadm/pki/trusted/unixkingdom.crt
     - contents_pillar: unixkingdom_ca
 
 Add people_unixkingdom_ca to webadm truststore:
   file.managed:
-    - name: /opt/webadm/pki/trusted/people_unixkingdom.pem
+    - name: /opt/webadm/pki/trusted/people_unixkingdom.crt
     - contents_pillar: webadm_cacert
 
 start and enable webadm service:

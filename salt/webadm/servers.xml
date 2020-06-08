@@ -101,7 +101,7 @@ default settings here.
 	host="localhost"
 	port="5000"
 	secret="{{ pillar['webadm_pki_secret'] }}"
-	ca_file="/opt/webadm/pki/ca/ca.crt" />
+	ca_file="" />
 
 <!--
 You need to configure RCDevs Push server(s) in order to use

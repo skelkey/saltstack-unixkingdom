@@ -140,6 +140,11 @@ Add people_unixkingdom_ca to webadm truststore:
     - name: /opt/webadm/pki/trusted/people_unixkingdom.crt
     - contents_pillar: webadm_cacert
 
+Compiling trusted certificate store:
+  cmd.run:
+    - name: make
+    - cwd: /opt/webadm/pki/trusted
+
 start and enable webadm service:
   service.running:
     - name: webadm

@@ -134,7 +134,7 @@ Add unixkingdom_ca to webadm truststore:
 Add people_unixkingdom_ca to webadm truststore:
   file.managed:
     - name: /opt/webadm/pki/trusted/people_unixkingdom.pem
-    - contents_pillar: people_unixkingdom_ca
+    - contents_pillar: webadm_cacert
 
 start and enable webadm service:
   service.running:

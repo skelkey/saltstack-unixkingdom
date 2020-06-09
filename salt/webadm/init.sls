@@ -86,19 +86,27 @@ Deploy rsignd.conf file:
     - mode: 644
     - template: jinja
 
-Deploy webadm.key file:
-  file.managed:
+Remove webadm auto-generated key:
+  file.absent:
     - name: /opt/webadm/pki/webadm.key
-    - source: salt://webadm/webadm.key
+
+Remove webadm auto-generated cert:
+  file.absent:
+    - name: /opt/webadm/pki/webadm.crt
+
+Deploy custom.key file:
+  file.managed:
+    - name: /opt/webadm/pki/custom.key
+    - source: salt://webadm/custom.key
     - user: root
     - group: root
     - mode: 400
     - template: jinja
 
-Deploy webadm.crt file:
+Deploy custom.crt file:
   file.managed:
-    - name: /opt/webadm/pki/webadm.crt
-    - source: salt://webadm/webadm.crt
+    - name: /opt/webadm/pki/custom.crt
+    - source: salt://webadm/custom.crt
     - user: root
     - group: root
     - mode: 644

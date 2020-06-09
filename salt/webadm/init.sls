@@ -86,12 +86,12 @@ Deploy rsignd.conf file:
     - mode: 644
     - template: jinja
 
-Remove webadm auto-generated key:
-  file.absent:
+Touch webadm auto-generated key:
+  file.touch:
     - name: /opt/webadm/pki/webadm.key
 
-Remove webadm auto-generated cert:
-  file.absent:
+Touch webadm auto-generated cert:
+  file.touch:
     - name: /opt/webadm/pki/webadm.crt
 
 Deploy custom.key file:

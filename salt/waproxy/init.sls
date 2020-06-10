@@ -1,3 +1,7 @@
+{% set root_path = "/opt/waproxy" %}
+{% set current_path = salt['environ.get']('PATH', '/bin:/usr/bin') %}
+{% set library_path = salt['environ.get']('LD_LIBRARY_PATH', '') %}
+
 Install rcdevs GPG key:
   file.managed:
     - name: /etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs
@@ -49,10 +53,10 @@ Create waproxy private key:
     - cwd: /opt/waproxy/
     - env:
       - ROOT: '/opt/waproxy'
-      - OPENSSL: '$ROOT/libexec/openssl'
-      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
-      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
-      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL: '{{ root_path }}/libexec/openssl'
+      - PATH: '{{ root_path }}/libexec:/bin:/sbin:/usr/bin:/usr/sbin:{{ current_path }}'
+      - LD_LIBRARY_PATH: '{{ root_path }}/lib:{{ root_path }}/lib/gnulib:/opt/slapd/lib/:{{ library_path }}'
+      - OPENSSL_CONF: '{{ root_path }}/lib/openssl.ini'
       - OPENSSL_SAN: ''
 
 Set correct right on webadm private key:
@@ -67,10 +71,10 @@ Create webadm certificate request:
     - cwd: /opt/waproxy/
     - env:
       - ROOT: '/opt/waproxy'
-      - OPENSSL: '$ROOT/libexec/openssl'
-      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
-      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
-      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL: '{{ root_path }}/libexec/openssl'
+      - PATH: '{{ root_path }}/libexec:/bin:/sbin:/usr/bin:/usr/sbin:{{ current_path }}'
+      - LD_LIBRARY_PATH: '{{ root_path }}/lib:{{ root_path }}/lib/gnulib:/opt/slapd/lib/:{{ library_path }}'
+      - OPENSSL_CONF: '{{ root_path }}/lib/openssl.ini'
       - OPENSSL_SAN: ''
 
 Create waproxy certificate:
@@ -80,10 +84,10 @@ Create waproxy certificate:
     - cwd: /opt/webadm
     - env:
       - ROOT: '/opt/waproxy'
-      - OPENSSL: '$ROOT/libexec/openssl'
-      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
-      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
-      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL: '{{ root_path }}/libexec/openssl'
+      - PATH: '{{ root_path }}/libexec:/bin:/sbin:/usr/bin:/usr/sbin:{{ current_path }}'
+      - LD_LIBRARY_PATH: '{{ root_path }}/lib:{{ root_path }}/lib/gnulib:/opt/slapd/lib/:{{ library_path }}'
+      - OPENSSL_CONF: '{{ root_path }}/lib/openssl.ini'
       - OPENSSL_SAN: ''
 
 Set correct right on waproxy certificate:

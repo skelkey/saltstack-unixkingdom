@@ -1,3 +1,7 @@
+{% set root_path = "/opt/webadm" %}
+{% set current_path = salt['environ.get']('PATH', '/bin:/usr/bin') %}
+{% set library_path = salt['environ.get']('LD_LIBRARY_PATH', '') %}
+
 Install rcdevs GPG key:
   file.managed:
     - name: /etc/pki/rpm-gpg/RPM-GPG-KEY-rcdevs
@@ -93,17 +97,17 @@ Create webadm private key:
     - cwd: /opt/webadm/
     - env:
       - ROOT: '/opt/webadm'
-      - OPENSSL: '$ROOT/libexec/openssl'
-      - RANDFILE: '$ROOT/temp/webadm.rnd'
-      - CA_KEY: '$ROOT/pki/ca/ca.key'
-      - CA_CRT: '$ROOT/pki/ca/ca.crt'
-      - CA_SER: '$ROOT/pki/ca/serial'
-      - SSL_KEY: '$ROOT/pki/webadm.key'
-      - SSL_CRT: '$ROOT/pki/webadm.crt'
-      - SSL_CSR: '$ROOT/pki/webadm.csr'
-      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
-      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
-      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL: '{{ root_path }}/libexec/openssl'
+      - RANDFILE: '{{ root_path }}/temp/webadm.rnd'
+      - CA_KEY: '{{ root_path }}/pki/ca/ca.key'
+      - CA_CRT: '{{ root_path }}/pki/ca/ca.crt'
+      - CA_SER: '{{ root_path }}/pki/ca/serial'
+      - SSL_KEY: '{{ root_path }}/pki/webadm.key'
+      - SSL_CRT: '{{ root_path }}/pki/webadm.crt'
+      - SSL_CSR: '{{ root_path }}/pki/webadm.csr'
+      - PATH: '{{ root_path }}/libexec:/bin:/sbin:/usr/bin:/usr/sbin:{{ current_path }}'
+      - LD_LIBRARY_PATH: '{{ root_path }}/lib:{{ root_path }}/lib/gnulib:/opt/slapd/lib/:{{ library_path }}'
+      - OPENSSL_CONF: '{{ root_path }}/lib/openssl.ini'
       - OPENSSL_SAN: ''
       
 Set correct right on webadm private key:
@@ -118,17 +122,17 @@ Create webadm certificate request:
     - cwd: /opt/webadm/
     - env:
       - ROOT: '/opt/webadm'
-      - OPENSSL: '$ROOT/libexec/openssl'
-      - RANDFILE: '$ROOT/temp/webadm.rnd'
-      - CA_KEY: '$ROOT/pki/ca/ca.key'
-      - CA_CRT: '$ROOT/pki/ca/ca.crt'
-      - CA_SER: '$ROOT/pki/ca/serial'
-      - SSL_KEY: '$ROOT/pki/webadm.key'
-      - SSL_CRT: '$ROOT/pki/webadm.crt'
-      - SSL_CSR: '$ROOT/pki/webadm.csr'
-      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
-      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
-      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL: '{{ root_path }}/libexec/openssl'
+      - RANDFILE: '{{ root_path }}/temp/webadm.rnd'
+      - CA_KEY: '{{ root_path }}/pki/ca/ca.key'
+      - CA_CRT: '{{ root_path }}/pki/ca/ca.crt'
+      - CA_SER: '{{ root_path }}/pki/ca/serial'
+      - SSL_KEY: '{{ root_path }}/pki/webadm.key'
+      - SSL_CRT: '{{ root_path }}/pki/webadm.crt'
+      - SSL_CSR: '{{ root_path }}/pki/webadm.csr'
+      - PATH: '{{ root_path }}/libexec:/bin:/sbin:/usr/bin:/usr/sbin:{{ current_path }}'
+      - LD_LIBRARY_PATH: '{{ root_path }}/lib:{{ root_path }}/lib/gnulib:/opt/slapd/lib/:{{ library_path }}'
+      - OPENSSL_CONF: '{{ root_path }}/lib/openssl.ini'
       - OPENSSL_SAN: ''
 
 Create webadm certificate:
@@ -138,17 +142,17 @@ Create webadm certificate:
     - cwd: /opt/webadm
     - env:
       - ROOT: '/opt/webadm'
-      - OPENSSL: '$ROOT/libexec/openssl'
-      - RANDFILE:'$ROOT/temp/webadm.rnd'
-      - CA_KEY: '$ROOT/pki/ca/ca.key'
-      - CA_CRT: '$ROOT/pki/ca/ca.crt'
-      - CA_SER: '$ROOT/pki/ca/serial'
-      - SSL_KEY: '$ROOT/pki/webadm.key'
-      - SSL_CRT: '$ROOT/pki/webadm.crt'
-      - SSL_CSR: '$ROOT/pki/webadm.csr'
-      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
-      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
-      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL: '{{ root_path }}/libexec/openssl'
+      - RANDFILE: '{{ root_path }}/temp/webadm.rnd'
+      - CA_KEY: '{{ root_path }}/pki/ca/ca.key'
+      - CA_CRT: '{{ root_path }}/pki/ca/ca.crt'
+      - CA_SER: '{{ root_path }}/pki/ca/serial'
+      - SSL_KEY: '{{ root_path }}/pki/webadm.key'
+      - SSL_CRT: '{{ root_path }}/pki/webadm.crt'
+      - SSL_CSR: '{{ root_path }}/pki/webadm.csr'
+      - PATH: '{{ root_path }}/libexec:/bin:/sbin:/usr/bin:/usr/sbin:{{ current_path }}'
+      - LD_LIBRARY_PATH: '{{ root_path }}/lib:{{ root_path }}/lib/gnulib:/opt/slapd/lib/:{{ library_path }}'
+      - OPENSSL_CONF: '{{ root_path }}/lib/openssl.ini'
       - OPENSSL_SAN: ''
 
 Set correct right on webadm certificate:

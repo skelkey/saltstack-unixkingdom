@@ -59,12 +59,12 @@ Create waproxy private key:
       - OPENSSL_CONF: '{{ root_path }}/lib/openssl.ini'
       - OPENSSL_SAN: ''
 
-Set correct right on webadm private key:
+Set correct right on waproxy private key:
   file.managed:
     - name: /opt/waproxy/conf/waproxy.key
     - mode: 600
 
-Create webadm certificate request:
+Create waproxy certificate request:
   cmd.run:
     - name: $OPENSSL req -new -key $ROOT/conf/waproxy.key -out $ROOT/conf/waproxy.csr -subj "/CN=euw2a-prd-unixkingdom-waproxy-1/O=UnixKingdom"
     - onlyif: test ! -e /opt/waproxy/conf/waproxy.csr
@@ -81,7 +81,7 @@ Create waproxy certificate:
   cmd.run:
     - name: $OPENSSL x509 -req -days 365 -in $ROOT/conf/waproxy.csr -signkey $ROOT/conf/waproxy.key -out $ROOT/conf/waproxy.crt
     - onlyif: test ! -e /opt/waproxy/conf/waproxy.crt
-    - cwd: /opt/webadm
+    - cwd: /opt/waproxy
     - env:
       - ROOT: '/opt/waproxy'
       - OPENSSL: '{{ root_path }}/libexec/openssl'

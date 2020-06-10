@@ -42,19 +42,68 @@ Configure waproxy:
     - group: root
     - mode: 644
 
-Set waproxy certificate:
+Create waproxy private key:
+  cmd.run:
+    - name: $OPENSSL genrsa -out $ROOT/conf/waproxy.key 2048
+    - onlyif: test ! -e /opt/waproxy/conf/waproxy.key
+    - cwd: /opt/waproxy/
+    - env:
+      - ROOT: '/opt/waproxy'
+      - OPENSSL: '$ROOT/libexec/openssl'
+      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
+      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
+      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL_SAN: ''
+
+Set correct right on webadm private key:
+  file.managed:
+    - name: /opt/waproxy/conf/waproxy.key
+    - mode: 600
+
+Create webadm certificate request:
+  cmd.run:
+    - name: $OPENSSL req -new -key $ROOT/conf/waproxy.key -out $ROOT/conf/waproxy.csr -subj "/CN=euw2a-prd-unixkingdom-waproxy-1/O=UnixKingdom"
+    - onlyif: test ! -e /opt/waproxy/conf/waproxy.csr
+    - cwd: /opt/waproxy/
+    - env:
+      - ROOT: '/opt/waproxy'
+      - OPENSSL: '$ROOT/libexec/openssl'
+      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
+      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
+      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL_SAN: ''
+
+Create waproxy certificate:
+  cmd.run:
+    - name: $OPENSSL x509 -req -days 365 -in $ROOT/conf/waproxy.csr -signkey $ROOT/conf/waproxy.key -out $ROOT/conf/waproxy.crt
+    - onlyif: test ! -e /opt/waproxy/conf/waproxy.crt
+    - cwd: /opt/webadm
+    - env:
+      - ROOT: '/opt/waproxy'
+      - OPENSSL: '$ROOT/libexec/openssl'
+      - PATH: '$ROOT/libexec:/bin:/sbin:/usr/bin:/usr/sbin:$PATH'
+      - LD_LIBRARY_PATH: '$ROOT/lib:$ROOT/lib/gnulib:/opt/slapd/lib/:$LD_LIBRARY_PATH'
+      - OPENSSL_CONF: '$ROOT/lib/openssl.ini'
+      - OPENSSL_SAN: ''
+
+Set correct right on waproxy certificate:
   file.managed:
     - name: /opt/waproxy/conf/waproxy.crt
-    - source: salt://waproxy/waproxy.crt
+    - mode: 644
+
+Set waproxy custom certificate:
+  file.managed:
+    - name: /opt/waproxy/conf/custom.crt
+    - source: salt://waproxy/custom.crt
     - user: root
     - group: root
     - mode: 644
     - template: jinja
 
-Set waproxy private key:
+Set waproxy custom private key:
   file.managed:
-    - name: /opt/waproxy/conf/waproxy.key
-    - source: salt://waproxy/waproxy.key
+    - name: /opt/waproxy/conf/custom.key
+    - source: salt://waproxy/custom.key
     - user: root
     - group: root
     - mode: 600

@@ -19,7 +19,6 @@ Adding unix-kingdom repository:
 Install keycloak:
   pkg.installed:
     - name: keycloak
-    - fromrepo: unixkingdom
 
 Start and enable keycloak service:
   service.running:

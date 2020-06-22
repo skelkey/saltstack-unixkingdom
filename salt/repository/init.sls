@@ -31,12 +31,6 @@ Create directory /srv/repos/fedora/28/SRPMS:
     - mode: 755
     - makedirs: True
 
-Repository creation:
-  cmd.run:
-    - name: createrepo .
-    - cwd: /srv/repos/fedora/28/x86_64
-    - user: root
-
 Deploy repository GPG key:
   file.managed:
     - name: /srv/RPM-GPG-KEY-unixkingdom
@@ -81,6 +75,12 @@ Deploy keycloak rpm in repository:
     - user: root
     - group: root
     - mode: 644
+
+Repository creation:
+  cmd.run:
+    - name: createrepo .
+    - cwd: /srv/repos/fedora/28/x86_64
+    - user: root
 
 Install certbot:
   pkg.installed:

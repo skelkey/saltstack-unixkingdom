@@ -20,6 +20,14 @@ Install keycloak:
   pkg.installed:
     - name: keycloak
 
+Configure keycloak operating mode:
+  file.managed:
+    - name: /etc/keycloak/wildfly.conf
+    - source: salt://keycloak/wildfly.conf
+    - user: root
+    - group: root
+    - mode: 644
+
 Start and enable keycloak service:
   service.running:
     - name: keycloak

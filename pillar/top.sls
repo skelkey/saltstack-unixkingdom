@@ -4,6 +4,7 @@ base:
   '*openvpn*':
     - openvpn
   '*mariadb*':
+    - common_keycloak
     - common_webadm
     - mariadb
   '*bind*':

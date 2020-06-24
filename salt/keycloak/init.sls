@@ -28,6 +28,32 @@ Configure keycloak operating mode:
     - group: root
     - mode: 644
 
+Deploy jar file in keycloak module directory:
+  file.managed:
+    - name: /opt/keycloak/modules/system/layers/keycloak/org/mariadb/main/mariadb-java-client-1.4.6.jar
+    - source: https://downloads.mariadb.com/Connectors/java/connector-java-1.4.6/mariadb-java-client-1.4.6.jar
+    - source_hash: https://downloads.mariadb.com/Connectors/java/connector-java-1.4.6/sha256sums.txt
+    - mode: 644
+    - user: keycloak
+    - group: keycloak
+
+Deploy module.xml in keycloak module directory:
+  file.managed:
+    - name: /opt/keycloak/modules/system/layers/keycloak/org/mysql/main/module.xml
+    - source: salt://keycloak/module.xml
+    - mode: 644
+    - user: keycloak
+    - group: keycloak
+
+Deploy standalone-ha.xml in keycloak configuration:
+  file.managed:
+    - name: /opt/keycloak/standalone/configuration/standalone-ha.xml
+    - source: salt://keycloak/standalone-ha.xml
+    - mode: 644
+    - user: keycloak
+    - group: keycloak
+    - template: jinja
+
 Start and enable keycloak service:
   service.running:
     - name: keycloak

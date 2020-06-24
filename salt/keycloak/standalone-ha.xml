@@ -141,7 +141,8 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}">
-                    <connection-url>jdbc:mariadb://euw2a-prd-unixkingdom-mariadb-1.unix-kingdom.lan/keycloak</connection-url>
+{% set mariadb_ip = salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] %}
+                    <connection-url>jdbc:mariadb://{{ mariadb_ip }}/keycloak</connection-url>
                     <driver>mariadb-java-client-1.4.6.jar</driver>
                     <driver-class>org.mariadb.jdbc.Driver</driver-class>
                     <security>

@@ -142,7 +142,7 @@
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}">
 {% set mariadb_ip = salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] %}
-                    <connection-url>jdbc:mariadb://{{ mariadb_ip }}/keycloak?useSSL=false</connection-url>
+                    <connection-url>jdbc:mariadb://{{ mariadb_ip }}/keycloak?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Amsterdam&amp;characterEncoding=UTF-8</connection-url>
                     <driver>mariadb-java-client-1.4.6.jar</driver>
                     <driver-class>org.mariadb.jdbc.Driver</driver-class>
                     <security>

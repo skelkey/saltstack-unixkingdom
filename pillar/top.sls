@@ -30,3 +30,5 @@ base:
   '*strongswan*':
     - common_radius
     - common_letsencrypt
+  '*keycloak*':
+    - common_keycloak

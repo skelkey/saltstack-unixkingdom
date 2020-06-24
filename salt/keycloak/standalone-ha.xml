@@ -137,8 +137,8 @@
                     <driver>mariadb-java-client-1.4.6.jar</driver>
                     <driver-class>org.mariadb.jdbc.Driver</driver-class>
                     <security>
-                        <user-name>{{ mysql_keycloak_user }}</user-name>
-                        <password>{{ mysql_keycloak_password }}</password>
+                        <user-name>{{ pillar['mysql_keycloak_user'] }}</user-name>
+                        <password>{{ pillar['mysql_keycloak_password'] }}</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>

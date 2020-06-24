@@ -36,7 +36,7 @@ Deploy jar file in keycloak module directory:
     - mode: 644
     - user: keycloak
     - group: keycloak
-    - creates: true
+    - makedirs: true
 
 Deploy module.xml in keycloak module directory:
   file.managed:
@@ -45,7 +45,7 @@ Deploy module.xml in keycloak module directory:
     - mode: 644
     - user: keycloak
     - group: keycloak
-    - creates: true
+    - makedirs: true
 
 Deploy standalone-ha.xml in keycloak configuration:
   file.managed:

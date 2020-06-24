@@ -141,7 +141,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/KeycloakDS" pool-name="KeycloakDS" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}>
-                    <connection-url>jdbc:mariadb://euw2a-prd-unixkingdom-mariadb-1.unix-kingdom.lan/keycloak</connection-url>
+                    <connection-url>jdbc:mariadb:euw2a-prd-unixkingdom-mariadb-1.unix-kingdom.lan/keycloak</connection-url>
                     <driver>mariadb-java-client-1.4.6.jar</driver>
                     <driver-class>org.mariadb.jdbc.Driver</driver-class>
                     <security>
@@ -151,9 +151,9 @@
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
                        <validate-on-match>true</validate-on-match>
-                           <background-validation>false</background-validation>
-                           <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
-                       </validation>
+                       <background-validation>false</background-validation>
+                       <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/>
+                    </validation>
                 </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">

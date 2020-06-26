@@ -1,2 +1,0 @@
-mysql_keycloak_user: keycloak
-mysql_keycloak_password: <password_for_keycloak_user>

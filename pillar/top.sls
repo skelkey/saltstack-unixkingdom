@@ -4,7 +4,6 @@ base:
   '*openvpn*':
     - openvpn
   '*mariadb*':
-    - common_keycloak
     - common_webadm
     - mariadb
   '*bind*':
@@ -30,5 +29,3 @@ base:
   '*strongswan*':
     - common_radius
     - common_letsencrypt
-  '*keycloak*':
-    - common_keycloak

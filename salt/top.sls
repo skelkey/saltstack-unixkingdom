@@ -21,5 +21,3 @@ base:
     - waproxy
   '*radius*':
     - radius
-  '*keycloak*':
-    - keycloak

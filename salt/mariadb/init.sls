@@ -1,5 +1,4 @@
 {% set webadm_ip = salt['mine.get']('euw2a-prd-unixkingdom-webadm-1', 'network.interface_ip')['euw2a-prd-unixkingdom-webadm-1'] %}
-{% set keycloak_ip = salt['mine.get']('euw2a-prd-unixkingdom-keycloak-1', 'network.interface_ip')['euw2a-prd-unixkingdom-keycloak-1'] %}
 
 install MariaDB service:
   pkg.installed:
@@ -80,35 +79,6 @@ Grant right for database user WebADM on WebADM database:
     - grant : all privileges
     - database: webadm.*
     - user: webadm
-    - connection_charset: utf8
-
-Create database for Keycloak:
-  mysql_database.present:
-    - name: 'keycloak'
-    - host: localhost
-    - character_set: utf8
-    - collate: utf8_general_ci
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8
-
-Create database user for Keycloak:
-  mysql_user.present:
-    - host: '{{ keycloak_ip }}'
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8
-    - name: {{ pillar['mysql_keycloak_user'] }}
-    - password: {{ pillar['mysql_keycloak_password'] }}
-
-Grant right for database user Keycloak on Keycloak database:
-  mysql_grants.present:
-    - host: '{{ keycloak_ip }}'
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - grant : all privileges
-    - database: keycloak.*
-    - user: keycloak
     - connection_charset: utf8
 
 Restart MariaDB service:

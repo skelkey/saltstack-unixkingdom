@@ -5,35 +5,22 @@ Install freeradius service:
       - freeradius-utils
       - freeradius-ldap
 
-#Create radiusd group:
-#  group.present:
-#    - name: radiusd
-#    - system: true
+Configuration for radius clients:
+  file.managed:
+    - name: /etc/raddb/clients.conf
+    - source: salt://radius/clients.conf
+    - user: root
+    - group: radiusd
+    - mode: 640
+    - template: jinja
 
-#Create radiusd user:
-#  user.present:
-#    - name: radiusd
-#    - gid_from_name: radiusd
-#    - home: /opt/radiusd
-#    - shell: /sbin/nologin
-#    - system: true
-
-#Configuration for radius clients:
-#  file.managed:
-#    - name: /opt/radiusd/conf/clients.conf
-#    - source: salt://radius/clients.conf
-#    - user: root
-#    - group: root
-#    - mode: 644
-#    - template: jinja
-
-#Configure radiusd:
-#  file.managed:
-#    - name: /opt/radiusd/conf/radiusd.conf
-#    - source: salt://radius/radiusd.conf
-#    - user: root
-#    - group: root
-#    - mode: 644
+Configure radiusd:
+  file.managed:
+    - name: /etc/raddb/radiusd.conf
+    - source: salt://radius/radiusd.conf
+    - user: root
+    - group: radiusd
+    - mode: 640
 
 #Set radius certificate:
 #  file.managed:

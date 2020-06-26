@@ -1,6 +1,6 @@
 Install freeradius service:
   pkg.installed:
-    pkgs:
+    - pkgs:
       - freeradius
       - freeradius-utils
       - freeradius-ldap

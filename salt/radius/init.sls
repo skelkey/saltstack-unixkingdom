@@ -40,14 +40,14 @@ Set radius private key:
     - mode: 600
     - template: jinja
 
-#Install certificate chain for radius:
-#  file.managed:
-#    - name: /opt/radiusd/conf/ca.crt
-#    - source: salt://radius/ca.crt
-#    - user: root
-#    - group: root
-#    - mode: 644
-#    - template: jinja
+Install certificate chain for radius:
+  file.managed:
+    - name: /etc/raddb/certs/ca.pem
+    - source: salt://radius/ca.pem
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
 
 #start and enable radius service:
 #  service.running:

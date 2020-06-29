@@ -49,6 +49,11 @@ Install certificate chain for radius:
     - mode: 644
     - template: jinja
 
+Create dh param if not exist:
+  cmd.run:
+    - name: openssl dhparam -out /etc/raddb/certs/dh 2048
+    - onlyif: test ! -e /etc/raddb/certs/dh
+
 #start and enable radius service:
 #  service.running:
 #    - name: radiusd

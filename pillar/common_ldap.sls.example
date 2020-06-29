@@ -1,0 +1,2 @@
+ldap_readonly_user: cn=readldap,ou=ServiceUsers,o=UnixKingdom
+ldap_readonly_password: <my_readldap_password>

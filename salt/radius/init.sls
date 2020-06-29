@@ -45,6 +45,20 @@ Create dh param if not exist:
     - name: openssl dhparam -out /etc/raddb/certs/dh 2048
     - onlyif: test ! -e /etc/raddb/certs/dh
 
+Configure LDAP connector:
+  file.managed:
+    - name: /etc/raddb/mods-available/ldap
+    - source: salt://radius/ldap
+    - user: root
+    - group: radiusd
+    - mode: 640
+    - template: jinja
+
+Activate LDAP connector:
+  file.symlink:
+    - name: /etc/raddb/mods-enabled/ldap
+    - target: /etc/raddb/mods-available/ldap
+
 start and enable radius service:
   service.running:
     - name: radiusd

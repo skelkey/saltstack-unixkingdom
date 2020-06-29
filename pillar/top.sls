@@ -9,6 +9,7 @@ base:
   '*bind*':
     - bind
   '*ldap*':
+    - common_ldap
     - ldap
   '*webadm*':
     - common_webadm
@@ -24,6 +25,7 @@ base:
   '*waproxy*':
     - waproxy
   '*radius*':
+    - common_ldap
     - common_radius
     - radius
   '*strongswan*':

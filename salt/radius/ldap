@@ -294,7 +294,9 @@ ldap {
 		#  Note that this configuration references the "user_dn"
 		#  configuration defined above.
 		#
+{% raw %}
 #		membership_filter = "(|(member=%{control:${..user_dn}})(memberUid=%{%{Stripped-User-Name}:-%{User-Name}}))"
+{% endraw %}
 
 		#  The attribute, in user objects, which contain the names
 		#  or DNs of groups a user is a member of.
@@ -437,7 +439,9 @@ ldap {
 	#  attribute, all instances of the attribute will be removed and
 	#  replaced with a single attribute.
 	accounting {
+                {% raw %}
 		reference = "%{tolower:type.%{Acct-Status-Type}}"
+                {% endraw %}
 
 		type {
 			start {

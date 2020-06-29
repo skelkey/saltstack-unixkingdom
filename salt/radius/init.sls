@@ -45,7 +45,7 @@ Create dh param if not exist:
     - name: openssl dhparam -out /etc/raddb/certs/dh 2048
     - onlyif: test ! -e /etc/raddb/certs/dh
 
-#start and enable radius service:
-#  service.running:
-#    - name: radiusd
-#    - enable: true
+start and enable radius service:
+  service.running:
+    - name: radiusd
+    - enable: true

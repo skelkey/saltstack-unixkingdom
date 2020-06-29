@@ -22,23 +22,23 @@ Configure radiusd:
     - group: radiusd
     - mode: 640
 
-#Set radius certificate:
-#  file.managed:
-#    - name: /opt/radiusd/conf/radiusd.crt
-#    - source: salt://radius/radiusd.crt
-#    - user: radiusd
-#    - group: radiusd
-#    - mode: 644
-#    - template: jinja
+Set radius certificate:
+  file.managed:
+    - name: /etc/raddb/certs/server.pem
+    - source: salt://radius/server.pem
+    - user: radiusd
+    - group: radiusd
+    - mode: 644
+    - template: jinja
 
-#Set radius private key:
-#  file.managed:
-#    - name: /opt/radiusd/conf/radiusd.key
-#    - source: salt://radius/radiusd.key
-#    - user: radiusd
-#    - group: radiusd
-#    - mode: 600
-#    - template: jinja
+Set radius private key:
+  file.managed:
+    - name: /etc/raddb/certs/server.key
+    - source: salt://radius/server.key
+    - user: radiusd
+    - group: radiusd
+    - mode: 600
+    - template: jinja
 
 #Install certificate chain for radius:
 #  file.managed:

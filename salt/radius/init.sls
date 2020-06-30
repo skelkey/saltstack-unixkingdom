@@ -1,3 +1,7 @@
+Set selinux permissive:
+  selinux.mode:
+    - name: permissive
+
 Install freeradius service:
   pkg.installed:
     - pkgs:

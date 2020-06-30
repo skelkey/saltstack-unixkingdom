@@ -5,6 +5,19 @@ Install freeradius service:
       - freeradius-utils
       - freeradius-ldap
 
+Remove PKI management script:
+  file.absent:
+    - names:
+      - /etc/raddb/certs/Makefile
+      - /etc/raddb/certs/README
+      - /etc/raddb/certs/bootstrap
+      - /etc/raddb/certs/ca.cnf
+      - /etc/raddb/certs/client.cnf
+      - /etc/raddb/certs/inner-server.cnf
+      - /etc/raddb/certs/passwords.mk
+      - /etc/raddb/certs/server.cnf
+      - /etc/raddb/certs/xpextensions
+
 Configuration for radius clients:
   file.managed:
     - name: /etc/raddb/clients.conf

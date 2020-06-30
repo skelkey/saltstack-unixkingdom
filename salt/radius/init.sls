@@ -10,7 +10,6 @@ Remove PKI management script:
     - names:
       - /etc/raddb/certs/Makefile
       - /etc/raddb/certs/README
-      - /etc/raddb/certs/bootstrap
       - /etc/raddb/certs/ca.cnf
       - /etc/raddb/certs/client.cnf
       - /etc/raddb/certs/inner-server.cnf
@@ -26,6 +25,14 @@ Configuration for radius clients:
     - group: radiusd
     - mode: 640
     - template: jinja
+
+Creating an empty bootstrap file:
+  file.managed:
+    - name: /etc/raddb/certs/bootstrap
+    - source: salt://radius/bootstrap
+    - user: root
+    - group: radiusd
+    - mode: 640
 
 Configure radiusd:
   file.managed:

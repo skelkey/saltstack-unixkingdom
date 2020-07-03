@@ -16,12 +16,12 @@ ldap {
 	#  - ldaps:// (LDAP over SSL)
 	#  - ldapi:// (LDAP over Unix socket)
 	#  - ldapc:// (Connectionless LDAP)
-	server = 'ldap.unix-kingdom.lan'
+	server = 'ldaps://ldap.unix-kingdom.lan'
 #	server = 'ldap.rrdns.example.org'
 #	server = 'ldap.rrdns.example.org'
 
 	#  Port to connect on, defaults to 389, will be ignored for LDAP URIs.
-	port = 636
+#	port = 389
 
 	#  Administrator account for searching and possibly modifying.
 	#  If using SASL + KRB5 these should be commented out.
@@ -556,10 +556,10 @@ ldap {
 
 		ca_file	= ${certdir}/cacert.pem
 
-		#ca_path	= ${certdir}
-		#certificate_file = /path/to/radius.crt
-		#private_key_file = /path/to/radius.key
-		#random_file = /dev/urandom
+#		ca_path	= ${certdir}
+#		certificate_file = /path/to/radius.crt
+#		private_key_file = /path/to/radius.key
+#		random_file = /dev/urandom
 
  		#  Certificate Verification requirements.  Can be:
 		#    'never' (do not even bother trying)

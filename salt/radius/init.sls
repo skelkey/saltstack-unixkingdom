@@ -60,6 +60,15 @@ Install certificate chain for radius:
     - mode: 644
     - template: jinja
 
+Deploy UnixKingdom CA in certs file:
+  file.managed:
+    - name: /etc/raddb/certs/cacert.pem
+    - source: salt://radius/cacert.pem
+    - user: root
+    - group: radiusd
+    - mode: 644
+    - template: jinja
+
 Create dh param if not exist:
   cmd.run:
     - name: openssl dhparam -out /etc/raddb/certs/dh 2048

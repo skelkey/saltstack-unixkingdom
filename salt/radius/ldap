@@ -30,7 +30,7 @@ ldap {
 
 	#  Unless overridden in another section, the dn from which all
 	#  searches will start from.
-	base_dn = 'ou=Users, o=UnixKingdom'
+	base_dn = 'o=UnixKingdom'
 
 	#
 	#  You can run the 'ldapsearch' command line tool using the

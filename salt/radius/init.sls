@@ -54,11 +54,12 @@ Set radius certificate:
 Install certificate chain for radius:
   file.managed:
     - name: /etc/raddb/certs/ca.pem
-    - source: salt://radius/ca.pem
+    - contents_pillar:
+      - unixkingdom_ca
+      - server_unixkingdom_ca
     - user: root
     - group: root
     - mode: 644
-    - template: jinja
 
 Deploy UnixKingdom CA in certs file:
   file.managed:

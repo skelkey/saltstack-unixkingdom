@@ -12,6 +12,7 @@ base:
     - common_ldap
     - ldap
   '*webadm*':
+    - people
     - common_webadm
     - webadm
   '*repository*':
@@ -25,6 +26,7 @@ base:
   '*waproxy*':
     - waproxy
   '*radius*':
+    - people
     - common_ldap
     - common_radius
     - radius

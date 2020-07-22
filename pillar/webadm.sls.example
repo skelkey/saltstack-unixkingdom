@@ -11,13 +11,7 @@ webadm_crt: |
      ...
      CFAn2ihTv3kDMwkLEwSTx/EMLpS40KnPGw6cX9sTfys=
      -----END CERTIFICATE-----
-webadm_cacert: |
-     -----BEGIN CERTIFICATE-----
-     MIIDHDCCAgSgAwIBAgIUAa3u/CNBWRftTOFM9WMecqIE2E8wDQYJKoZIhvcNAQEN
-     ...
-     CFAn2ihTv3kDMwkLEwSTx/EMLpS40KnPGw6cX9sTfys=
-     -----END CERTIFICATE-----
-webadm_cakey: |
+people_unixkingdom_cakey: |
     -----BEGIN RSA PRIVATE KEY-----
     MIIEowIBAAKCAQEAq8WYRu0ZjNJL3Q8VYgvR0WYPtMaTQ/6Lu706L0DhYlZS7HeW
     ...

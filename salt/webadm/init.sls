@@ -212,7 +212,7 @@ Add unixkingdom_ca to webadm truststore:
 Add people_unixkingdom_ca to webadm truststore:
   file.managed:
     - name: /opt/webadm/pki/trusted/people_unixkingdom.crt
-    - contents_pillar: webadm_cacert
+    - contents_pillar: people_unixkingdom_ca
 
 Compiling trusted certificate store:
   cmd.run:

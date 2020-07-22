@@ -7,7 +7,7 @@ Install freeradius service:
 
 Install wpa_supplicant:
   pkg.installed:
-    - wpa_supplicant
+    - name: wpa_supplicant
 
 Remove PKI management script:
   file.absent:

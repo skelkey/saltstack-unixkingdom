@@ -5,6 +5,10 @@ Install freeradius service:
       - freeradius-utils
       - freeradius-ldap
 
+Install wpa_supplicant:
+  pkg.installed:
+    - wpa_supplicant
+
 Remove PKI management script:
   file.absent:
     - names:

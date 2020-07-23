@@ -60,6 +60,7 @@ Install certificate chain for radius:
     - name: /etc/raddb/certs/ca.pem
     - contents_pillar:
       - unixkingdom_ca
+      - server_unixkingdom_ca
       - people_unixkingdom_ca
     - user: root
     - group: root

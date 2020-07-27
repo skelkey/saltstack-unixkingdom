@@ -81,8 +81,9 @@ Deploy UnixKingdom CA in certs file:
     - group: radiusd
     - mode: 644
     - contents_pillar:
-      - unixkingdom_ca
+      - people_unixkingdom_ca
       - server_unixkingdom_ca
+      - unixkingdom_ca
 
 Create dh param if not exist:
   cmd.run:

@@ -52,6 +52,15 @@ Set radius certificate:
     - source: salt://radius/server.pem
     - user: radiusd
     - group: radiusd
+    - mode: 640
+    - template: jinja
+
+Set radius private key:
+  file.managed:
+    - name: /etc/raddb/certs/server.key
+    - source: salt://radius/server.key
+    - user: radiusd
+    - group: radiusd
     - mode: 600
     - template: jinja
 

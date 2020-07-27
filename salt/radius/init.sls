@@ -76,7 +76,6 @@ Install certificate chain for radius:
 Deploy UnixKingdom CA in certs file:
   file.managed:
     - name: /etc/raddb/certs/cacert.pem
-    - source: salt://radius/cacert.pem
     - user: root
     - group: radiusd
     - mode: 644

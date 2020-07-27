@@ -69,8 +69,6 @@ Install certificate chain for radius:
     - name: /etc/raddb/certs/ca.pem
     - contents_pillar:
       - unixkingdom_ca
-      - server_unixkingdom_ca
-      - people_unixkingdom_ca
     - user: root
     - group: root
     - mode: 644
@@ -82,7 +80,9 @@ Deploy UnixKingdom CA in certs file:
     - user: root
     - group: radiusd
     - mode: 644
-    - template: jinja
+    - contents_pillar:
+      - unixkingdom_ca
+      - server_unixkingdom_ca
 
 Create dh param if not exist:
   cmd.run:

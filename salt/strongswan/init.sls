@@ -84,7 +84,7 @@ Crontab to renew certificate:
 
 Link letsencrypt private key to strongswan private key:
   file.symlink:
-    - name: /etc/strongswan/swanct/private/privkey.pem
+    - name: /etc/strongswan/swanctl/private/privkey.pem
     - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/privkey.pem
 
 Link letsencrypt fullchain to strongswan certs:
@@ -106,7 +106,7 @@ Deploy people unixkingdom CA to strongswan CA:
     - mode: 644
     - user: root
     - group: root
-    - contents_pillar: people_unixkingom_ca
+    - contents_pillar: people_unixkingdom_ca
 
 Deploy swanctl configuration file:
   file.managed:

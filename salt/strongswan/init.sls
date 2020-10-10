@@ -1,3 +1,7 @@
+set selinux permissive:
+  selinux.mode:
+    - name: permissive
+
 Create strongswan group:
   group.present:
     - name: strongswan
@@ -14,6 +18,10 @@ Create strongswan user:
 Install strongswan service:
   pkg.installed:
     - name: strongswan
+
+Install iptables:
+  pkg.installed:
+    - name: iptables
 
 Install cronie:
   pkg.installed:
@@ -74,52 +82,65 @@ Crontab to renew certificate:
     - minute: 0
     - hour: '0,12'
 
-Link letsencrypt chain to strongswan cacerts:
-  file.symlink:
-    - name: /etc/strongswan/ipsec.d/cacerts/chain.pem
-    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/chain.pem
-
 Link letsencrypt private key to strongswan private key:
   file.symlink:
-    - name: /etc/strongswan/ipsec.d/private/privkey.pem
+    - name: /etc/strongswan/swanct/private/privkey.pem
     - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/privkey.pem
 
 Link letsencrypt fullchain to strongswan certs:
   file.symlink:
-    - name: /etc/strongswan/ipsec.d/certs/fullchain.pem
+    - name: /etc/strongswan/swanctl/x509/fullchain.pem
     - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/fullchain.pem
 
-Link letsencrypt cert to strongswan acerts:
-  file.symlink:
-    - name: /etc/strongswan/ipsec.d/acerts/vpn.unix-kingdom.fr.crt
-    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/cert.pem
-
-Deploy ipsec secrets file:
+Deploy unixkingdom CA to strongswan CA:
   file.managed:
-    - name: /etc/strongswan/ipsec.secrets
-    - source: salt://strongswan/ipsec.secrets
+    - name: /etc/strongswan/swanctl/x509ca/UnixKingdom_CA.pem
+    - mode: 644
+    - user: root
+    - group: root
+    - contents_pillar: unixkingdom_ca
+
+Deploy people unixkingdom CA to strongswan CA:
+  file.managed:
+    - name: /etc/strongswan/swanctl/x509ca/People_UnixKingdom_CA.pem
+    - mode: 644
+    - user: root
+    - group: root
+    - contents_pillar: people_unixkingom_ca
+
+Deploy swanctl configuration file:
+  file.managed:
+    - name: /etc/strongswan/swanctl/swanctl.conf
+    - source: salt://strongswan/swanctl.conf
+    - user: root
+    - group: root
+    - mode: 640
+
+Deploy strongswan swanctl configuration:
+  file.managed:
+    - name: /etc/strongswan/strongswan.d/swanctl.conf
+    - source: salt://strongswan/strongswan.d/swanctl.conf
     - user: root
     - group: root
     - mode: 644
 
-Deploy ipsec configuration file:
+Deploy charon systemd configuration:
   file.managed:
-    - name: /etc/strongswan/ipsec.conf
-    - source: salt://strongswan/ipsec.conf
+    - name: /etc/strongswan/strongswan.d/charon-systemd.conf
+    - source: salt://strongswan/strongswan.d/charon-systemd.conf
     - user: root
     - group: root
     - mode: 644
 
-Deploy strongswan radius configuration file:
+Deploy strongswan configuration:
   file.managed:
-    - name: /etc/strongswan/strongswan.d/charon/eap-radius.conf
-    - source: salt://strongswan/eap-radius.conf
+    - name: /etc/strongswan/strongswan.conf
+    - source: salt://strongswan/strongswan.conf
     - user: root
     - group: root
-    - mode: 400
-    - template: jinja
+    - mode: 644
 
 Start and enable strongswan:
   service.running:
-    - name: strongswan
+    - name: strongswan-swanctl
     - enable: true

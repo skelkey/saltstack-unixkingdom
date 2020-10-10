@@ -31,5 +31,5 @@ base:
     - common_radius
     - radius
   '*strongswan*':
-    - common_radius
     - common_letsencrypt
+    - people

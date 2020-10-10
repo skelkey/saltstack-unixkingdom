@@ -140,7 +140,7 @@ Deploy strongswan configuration:
     - group: root
     - mode: 644
 
-Start and enable strongswan:
+Start and enable strongswan-swanctl:
   service.running:
     - name: strongswan-swanctl
     - enable: true

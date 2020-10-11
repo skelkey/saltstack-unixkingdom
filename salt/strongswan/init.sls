@@ -104,6 +104,13 @@ Deploy strongswan configuration:
     - group: root
     - mode: 644
 
+Adding nat iptables rule for vpn:
+  iptables.chain_present:
+    - name: POSTROUTING
+    - table: nat
+    - out-interface: eth0
+    - jump: masquerade
+
 Start and enable strongswan-swanctl:
   service.running:
     - name: strongswan-swanctl

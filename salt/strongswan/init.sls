@@ -141,7 +141,7 @@ Deploy strongswan configuration:
     - mode: 644
 
 Set right on strongswan configuration:
-  file.managed:
+  file.directory:
     - name: /etc/strongswan
     - user: strongswan
     - group: root

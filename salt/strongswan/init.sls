@@ -140,6 +140,15 @@ Deploy strongswan configuration:
     - group: root
     - mode: 644
 
+Set right on strongswan configuration:
+  file.managed:
+    - name: /etc/strongswan
+    - user: strongswan
+    - group: root
+    - recurse:
+      - user
+      - group 
+
 Start and enable strongswan-swanctl:
   service.running:
     - name: strongswan-swanctl

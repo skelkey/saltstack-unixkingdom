@@ -112,7 +112,7 @@ Deploy swanctl configuration file:
   file.managed:
     - name: /etc/strongswan/swanctl/swanctl.conf
     - source: salt://strongswan/swanctl.conf
-    - user: root
+    - user: strongswan
     - group: root
     - mode: 640
 
@@ -120,7 +120,7 @@ Deploy strongswan swanctl configuration:
   file.managed:
     - name: /etc/strongswan/strongswan.d/swanctl.conf
     - source: salt://strongswan/strongswan_swanctl.conf
-    - user: root
+    - user: strongswan
     - group: root
     - mode: 644
 
@@ -128,7 +128,7 @@ Deploy charon systemd configuration:
   file.managed:
     - name: /etc/strongswan/strongswan.d/charon-systemd.conf
     - source: salt://strongswan/charon-systemd.conf
-    - user: root
+    - user: strongswan
     - group: root
     - mode: 644
 
@@ -136,7 +136,7 @@ Deploy strongswan configuration:
   file.managed:
     - name: /etc/strongswan/strongswan.conf
     - source: salt://strongswan/strongswan.conf
-    - user: root
+    - user: strongswan
     - group: root
     - mode: 644
 

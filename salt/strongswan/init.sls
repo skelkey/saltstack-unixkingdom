@@ -105,11 +105,9 @@ Deploy strongswan configuration:
     - mode: 644
 
 Adding nat iptables rule for vpn:
-  iptables.append:
-    - chain: POSTROUTING
-    - table: nat
-    - out-interface: eth0
-    - jump: masquerade
+  cmd.run:
+    - name: /usr/sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+    - unless: test $(/usr/sbin/iptables -t nat -L | grep MASQUERADE | wc -l) -gt 0
 
 Start and enable strongswan-swanctl:
   service.running:

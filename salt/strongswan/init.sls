@@ -109,6 +109,10 @@ Adding nat iptables rule for vpn:
     - name: /usr/sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
     - unless: test $(/usr/sbin/iptables -t nat -L | grep MASQUERADE | wc -l) -gt 0
 
+Making iptables rule persistent:
+  cmd.run:
+    - name: /usr/sbin/iptables-save > /etc/sysconfig/iptables
+
 Activate kernel ip forward:
   sysctl.present:
     - name: net.ipv4.ip_forward

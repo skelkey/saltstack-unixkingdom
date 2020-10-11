@@ -109,6 +109,11 @@ Adding nat iptables rule for vpn:
     - name: /usr/sbin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
     - unless: test $(/usr/sbin/iptables -t nat -L | grep MASQUERADE | wc -l) -gt 0
 
+Activate kernel ip forward:
+  sysctl.present:
+    - name: net.ipv4.ip_forward
+    - value: 1
+
 Start and enable strongswan-swanctl:
   service.running:
     - name: strongswan-swanctl

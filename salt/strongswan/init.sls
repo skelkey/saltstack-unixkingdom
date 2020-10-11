@@ -78,6 +78,7 @@ Deploy swanctl configuration file:
     - user: root
     - group: root
     - mode: 640
+    - template: jinja
 
 Deploy strongswan swanctl configuration:
   file.managed:

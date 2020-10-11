@@ -8,7 +8,9 @@ Install strongswan service:
 
 Install iptables:
   pkg.installed:
-    - name: iptables
+    - pkgs:
+      - iptables
+      - iptables-services
 
 Install cronie:
   pkg.installed:
@@ -117,6 +119,11 @@ Activate kernel ip forward:
   sysctl.present:
     - name: net.ipv4.ip_forward
     - value: 1
+
+Start and enable iptables:
+  service.running:
+    - name: iptables
+    - enable: true
 
 Start and enable strongswan-swanctl:
   service.running:

@@ -105,8 +105,8 @@ Deploy strongswan configuration:
     - mode: 644
 
 Adding nat iptables rule for vpn:
-  iptables.chain_present:
-    - name: POSTROUTING
+  iptables.append:
+    - chain: POSTROUTING
     - table: nat
     - out-interface: eth0
     - jump: masquerade

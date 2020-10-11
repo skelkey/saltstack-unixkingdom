@@ -2,19 +2,6 @@ set selinux permissive:
   selinux.mode:
     - name: permissive
 
-Create strongswan group:
-  group.present:
-    - name: strongswan
-    - system: true
-
-Create strongswan user:
-  user.present:
-    - name: strongswan
-    - gid_from_name: strongswan
-    - home: /var/lib/strongswan
-    - shell: /sbin/nologin
-    - system: true
-
 Install strongswan service:
   pkg.installed:
     - name: strongswan
@@ -43,42 +30,18 @@ Create OVH credentials:
     - name: /var/lib/strongswan/.credentials.ini
     - source: salt://strongswan/credentials.ini
     - template: jinja
-    - user: strongswan
-    - group: strongswan
+    - user: root
+    - group: root
     - mode: 400
-
-Authorize strongswan to write letsencrypt logsdir:
-  file.directory:
-    - name: /var/log/letsencrypt
-    - user: strongswan
-    - group: strongswan
-
-Authorize stronswan to write in letsencrypt confdir:
-  file.directory:
-    - name: /etc/letsencrypt
-    - user: strongswan
-    - group: strongswan
-    - recurse:
-      - user
-      - group
-
-Authorize strongswan to write in letsencrypt workdir:
-  file.directory:
-    - name: /var/lib/letsencrypt
-    - user: strongswan
-    - group: strongswan
 
 Initialize certificate:
   cmd.run:
     - name: certbot certonly --dns-ovh --dns-ovh-credential ~/.credentials.ini --non-interactive --agree-tos --email edouard.camoin@gmail.com -d vpn.unix-kingdom.fr
-    - runas: strongswan
-    - shell: /bin/bash
-    - cwd: /var/lib/strongswan
 
 Crontab to renew certificate:
   cron.present:
     - name: /usr/bin/certbot renew --post-hook "systemctl restart strongswan-swanctl"
-    - user: strongswan
+    - user: root
     - minute: 0
     - hour: '0,12'
 
@@ -112,7 +75,7 @@ Deploy swanctl configuration file:
   file.managed:
     - name: /etc/strongswan/swanctl/swanctl.conf
     - source: salt://strongswan/swanctl.conf
-    - user: strongswan
+    - user: root
     - group: root
     - mode: 640
 
@@ -120,7 +83,7 @@ Deploy strongswan swanctl configuration:
   file.managed:
     - name: /etc/strongswan/strongswan.d/swanctl.conf
     - source: salt://strongswan/strongswan_swanctl.conf
-    - user: strongswan
+    - user: root
     - group: root
     - mode: 644
 
@@ -128,7 +91,7 @@ Deploy charon systemd configuration:
   file.managed:
     - name: /etc/strongswan/strongswan.d/charon-systemd.conf
     - source: salt://strongswan/charon-systemd.conf
-    - user: strongswan
+    - user: root
     - group: root
     - mode: 644
 
@@ -136,18 +99,9 @@ Deploy strongswan configuration:
   file.managed:
     - name: /etc/strongswan/strongswan.conf
     - source: salt://strongswan/strongswan.conf
-    - user: strongswan
+    - user: root
     - group: root
     - mode: 644
-
-Set right on strongswan configuration:
-  file.directory:
-    - name: /etc/strongswan
-    - user: strongswan
-    - group: root
-    - recurse:
-      - user
-      - group 
 
 Start and enable strongswan-swanctl:
   service.running:

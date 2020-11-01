@@ -9,3 +9,7 @@ Install PHP packages:
       - php-mbstring
       - php-fpm
       - php-ldap
+
+Install nginx package:
+  pkg.installed:
+    - name: nginx

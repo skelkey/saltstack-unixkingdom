@@ -19,4 +19,4 @@ Install passbolt source code:
     - name: /opt/passbolt_api
     - source: https://github.com/passbolt/passbolt_api/archive/v2.13.5.tar.gz
     - source_hash: 9367a328d4592275cf6841ef5ebeee90fb4efafed50b8b97495aa907e7eefc98
-    - if_missing: /var/www
+    - if_missing: /opt/passbolt_api

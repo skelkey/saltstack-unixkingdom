@@ -3,7 +3,7 @@ Install PHP packages:
     - pkgs:
       - php-intl
       - php-gd
-      - php-mysql
+      - php-mysqlnd
       - php-pear
       - php-devel
       - php-mbstring

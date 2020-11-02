@@ -10,6 +10,10 @@ Install PHP packages:
       - php-fpm
       - php-ldap
 
+Install community mysql:
+  pkg.installed:
+    - name: community-mysql
+
 Install nginx package:
   pkg.installed:
     - name: nginx
@@ -25,3 +29,21 @@ Link passbolt directory in /var/www:
   file.symlink:
     - target: /opt/passbolt_api-2.13.5
     - name: /var/www/passbolt_api
+
+Configuration of nginx:
+  file.managed:
+    - name: /etc/nginx/nginx.conf
+    - source: salt://wordpress/nginx.conf
+    - user: root
+    - group: root
+    - mode: 640
+
+Start and enable php-fpm service:
+  service.running:
+    - name: php-fpm
+    - enable: true
+
+Start and enable nginx service:
+  service.running:
+   - name: nginx
+   - enable: true

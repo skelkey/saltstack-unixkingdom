@@ -9,7 +9,6 @@ Install PHP packages:
       - php-mbstring
       - php-fpm
       - php-ldap
-      - php-pear-crypt-gpg
 
 Install community mysql:
   pkg.installed:

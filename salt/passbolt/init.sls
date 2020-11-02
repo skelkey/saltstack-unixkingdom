@@ -33,7 +33,7 @@ Link passbolt directory in /var/www:
 Configuration of nginx:
   file.managed:
     - name: /etc/nginx/nginx.conf
-    - source: salt://wordpress/nginx.conf
+    - source: salt://passbolt/nginx.conf
     - user: root
     - group: root
     - mode: 640

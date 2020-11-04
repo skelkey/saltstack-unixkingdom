@@ -66,6 +66,16 @@ Create database user for backup:
     - name: 'backup'
     - password: {{ pillar['mysql_backup_password'] }}
 
+Grant rigths for database user backup on all in read:
+  mysql_grants.present:
+    - host: 'localhost'
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - grant : reload,process, lock tables, replication client
+    - database: *.*
+    - user: backup
+    - connection_charset: utf8
+
 Create database for WebADM:
   mysql_database.present:
     - name: 'webadm'
@@ -74,16 +84,6 @@ Create database for WebADM:
     - collate: utf8_general_ci
     - connection_user: 'root'
     - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8
-
-Grant rigths for database user backup on all in read:
-  mysql_grants.present:
-    - host: 'localhost'
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - grant : RELOAD, PROCESS, LOCK TABLES, REPLICATION CLIENT
-    - database: *.*
-    - user: backup
     - connection_charset: utf8
 
 Create database user for WebADM:

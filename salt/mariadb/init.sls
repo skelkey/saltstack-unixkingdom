@@ -64,7 +64,7 @@ Create database user for backup:
     - connection_pass: {{ pillar['mysql_root_password'] }}
     - connection_charset: utf8
     - name: 'backup'
-    - password: {{ pillar['mysql_backup_user'] }}
+    - password: {{ pillar['mysql_backup_password'] }}
 
 Create database for WebADM:
   mysql_database.present:

@@ -72,7 +72,7 @@ Grant rigths for database user backup on all in read:
     - connection_user: 'root'
     - connection_pass: {{ pillar['mysql_root_password'] }}
     - grant : reload,process, lock tables, replication client
-    - database: *.*
+    - database: '*.*'
     - user: 'backup'
     - connection_charset: utf8
 

@@ -5,6 +5,10 @@ install MariaDB service:
   pkg.installed:
     - name: mariadb-server
 
+install MariaDB backup:
+  pkg.installed:
+    - name: mariadb-backup
+
 configure MariaDB service:
   file.managed:
     - name: /etc/my.cnf.d/mariadb-server.cnf
@@ -53,6 +57,15 @@ Disable remote login for MariaDB root user:
     - connection_pass: {{ pillar['mysql_root_password'] }}
     - connection_charset: utf8
 
+Create database user for backup:
+  mysql_user.present:
+    - host: 'localhost'
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - connection_charset: utf8
+    - name: 'backup'
+    - password: {{ pillar['mysql_backup_user'] }}
+
 Create database for WebADM:
   mysql_database.present:
     - name: 'webadm'
@@ -61,6 +74,16 @@ Create database for WebADM:
     - collate: utf8_general_ci
     - connection_user: 'root'
     - connection_pass: {{ pillar['mysql_root_password'] }}
+    - connection_charset: utf8
+
+Grant rigths for database user backup on all in read:
+  mysql_grants.present:
+    - host: 'localhost'
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - grant : RELOAD, PROCESS, LOCK TABLES, REPLICATION CLIENT
+    - database: *.*
+    - user: backup
     - connection_charset: utf8
 
 Create database user for WebADM:
@@ -86,11 +109,11 @@ Create database for passbolt:
   mysql_database.present:
     - name: 'passbolt'
     - host: localhost
-    - character_set: utf8
-    - collate: utf8_general_ci
+    - character_set: utf8mb4
+    - collate: utf8mb4_unicode_ci
     - connection_user: 'root'
     - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8
+    - connection_charset: utf8mb4
 
 Create database user for passbolt:
   mysql_user.present:

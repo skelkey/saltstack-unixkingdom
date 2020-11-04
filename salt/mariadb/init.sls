@@ -73,7 +73,7 @@ Grant rigths for database user backup on all in read:
     - connection_pass: {{ pillar['mysql_root_password'] }}
     - grant : reload,process, lock tables, replication client
     - database: *.*
-    - user: backup
+    - user: 'backup'
     - connection_charset: utf8
 
 Create database for WebADM:

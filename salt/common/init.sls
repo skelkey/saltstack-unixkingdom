@@ -8,6 +8,7 @@ install m2crypto:
   pkg.installed:
     - name: python3-m2crypto
 
+# FIXME : Condition must disappear when SaltStack upgraded
 set system hostname:
   network.system:
     - hostname: {{ grains['id'] }}

@@ -6,7 +6,7 @@ install selinux salt package:
 
 install m2crypto:
   pkg.installed:
-    - name: m2crypto
+    - name: python3-m2crypto
 
 set system hostname:
   network.system:

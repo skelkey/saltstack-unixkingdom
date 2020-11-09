@@ -11,7 +11,11 @@ install m2crypto:
 set system hostname:
   network.system:
     - hostname: {{ grains['id'] }}
-    - apply_hostname: true
+    {% if grains['osrelease'] == '28' %}
+    - apply_hostname: True
+    {% else %}
+    - noifupdown: False
+    {% endif %}
 
 set root password:
   user.present:

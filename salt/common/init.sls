@@ -13,9 +13,13 @@ set system hostname:
     - hostname: {{ grains['id'] }}
     {% if grains['osrelease'] == '28' %}
     - apply_hostname: True
-    {% else %}
-    - noifupdown: False
     {% endif %}
+    
+{% if grains['osrelease'] >= '30' %}
+restart network for Fedora 33:
+  cmd.run:
+    - name: 'nmcli con reload eth0'
+{% endif %}
 
 set root password:
   user.present:

@@ -103,6 +103,16 @@ Create the .gnupg directory in httpd home:
     - group: nginx
     - mode: 755
 
+Set selinux context on .gnupg:
+  selinux.fcontext_policy_present:
+    - name: /usr/share/httpd/.gnupg(/.*)?
+    - sel_type: httpd_sys_rw_content_t
+
+Apply selinux context for .gnupg:
+  selinux.fcontext_policy_applied:
+    - name: /usr/share/httpd/.gnupg
+    - recursive: true
+
 Configuration of nginx:
   file.managed:
     - name: /etc/nginx/nginx.conf

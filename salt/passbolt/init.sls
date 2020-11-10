@@ -139,6 +139,25 @@ Configuration of nginx:
     - group: root
     - mode: 640
 
+Deploy server certificate:
+  file.managed:
+    - name: /etc/nginx/euw2a-prd-unixkingdom-passbolt-1.crt
+    - mode: 644
+    - user: root
+    - group: root
+    - contents_pillar:
+      - passbolt_crt
+      - server_unixkingdom_ca
+      - unixkingdom_ca
+
+Deploy server private key:
+  file.managed:
+    - name: /etc/nginx/euw2a-prd-unixkingdom-passbolt-1.key
+    - mode: 600
+    - user: root
+    - group: root
+    - contents_pillar: passbolt_key
+
 Start and enable php-fpm service:
   service.running:
     - name: php-fpm

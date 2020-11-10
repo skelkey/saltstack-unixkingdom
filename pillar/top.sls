@@ -36,3 +36,4 @@ base:
     - people
   '*passbolt*':
     - common_passbolt
+    - passbolt

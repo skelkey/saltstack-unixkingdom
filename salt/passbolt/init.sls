@@ -99,7 +99,7 @@ Set selinux context on logs:
     - name: /opt/passbolt_api-2.13.5/logs(/.*)?
     - sel_type: httpd_sys_rw_content_t
 
-Apply selinux context for tmp:
+Apply selinux context for logs:
   selinux.fcontext_policy_applied:
     - name: /opt/passbolt_api-2.13.5/logs
     - recursive: true

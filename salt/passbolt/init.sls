@@ -66,6 +66,16 @@ Link passbolt directory in /var/www:
     - target: /opt/passbolt_api-2.13.5
     - name: /var/www/passbolt_api
 
+Set selinux context on passbolt:
+  selinux.fcontext_policy_present:
+    - name: /opt/passbolt_api-2.13.5(/.*)?
+    - sel_type: httpd_sys_content_t
+
+Apply selinux context for passbolt:
+  selinux.fcontext_policy_applied:
+    - name: /opt/passbolt_api-2.13.5
+    - recursive: true
+
 Set selinux context on config:
   selinux.fcontext_policy_present:
     - name: /var/www/passbolt_api/config(/.*)?

@@ -78,22 +78,22 @@ Apply selinux context for passbolt:
 
 Set selinux context on config:
   selinux.fcontext_policy_present:
-    - name: /var/www/passbolt_api/config(/.*)?
+    - name: /opt/passbolt_api-2.13.5/config(/.*)?
     - sel_type: httpd_sys_rw_content_t
 
 Apply selinux context for config:
   selinux.fcontext_policy_applied:
-    - name: /var/www/passbolt_api/config
+    - name: /opt/passbolt_api-2.13.5/config
     - recursive: true
 
 Set selinux context on tmp:
   selinux.fcontext_policy_present:
-    - name: /var/www/passbolt_api/tmp(/.*)?
+    - name: /opt/passbolt_api-2.13.5/tmp(/.*)?
     - sel_type: httpd_sys_rw_content_t
 
 Apply selinux context for tmp:
   selinux.fcontext_policy_applied:
-    - name: /var/www/passbolt_api/tmp
+    - name: /opt/passbolt_api-2.13.5/tmp
     - recursive: true
 
 Create the .gnupg directory in httpd home:

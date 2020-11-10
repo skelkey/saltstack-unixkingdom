@@ -66,6 +66,14 @@ Link passbolt directory in /var/www:
     - target: /opt/passbolt_api-2.13.5
     - name: /var/www/passbolt_api
 
+Execute composer in passbolt directory:
+  cmd.run:
+    - name: "composer install"
+    - runas: apache
+    - cwd: /opt/passbolt_api-2.13.5
+    - shell: /bin/bash
+    - unless: test -d /opt/passbolt_api-2.13.5/vendor
+
 Set selinux context on passbolt:
   selinux.fcontext_policy_present:
     - name: /opt/passbolt_api-2.13.5(/.*)?

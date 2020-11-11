@@ -31,6 +31,22 @@ Create directory /srv/repos/fedora/28/SRPMS:
     - mode: 755
     - makedirs: True
 
+Create directory /srv/repos/fedora/33/x86_64/RPMS:
+  file.directory:
+    - name: /srv/repos/fedora/28/x86_64/RPMS
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
+
+Create directory /srv/repos/fedora/33/x86_64/SRPMS:
+  file.directory:
+    - name: /srv/repos/fedora/28/x86_64/SRPMS
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
+
 Deploy repository GPG key:
   file.managed:
     - name: /srv/RPM-GPG-KEY-unixkingdom
@@ -67,10 +83,25 @@ Deploy vault rpm in repository:
     - group: root
     - mode: 644
 
-Repository creation:
+Deploy php-pecl-gnupg in repository:
+  file.managed:
+    - name: /srv/repos/fedora/33/x86_64/RPMS/php-pecl-gnupg-1.4.0-9.fc33.remi.7.4.x86_64.rpm
+    - source: https://osu.eu-west-2.outscale.com/repository/php-pecl-gnupg-1.4.0-9.fc33.remi.7.4.x86_64.rpm
+    - source_hash: http://repository.osu.eu-west-2.outscale.com/php-pecl-gnupg-1.4.0-9.fc33.remi.7.4.x86_64.rpm.sha512
+    - user: root
+    - group: root
+    - mode: 644
+
+Repository creation for fedora 28:
   cmd.run:
     - name: createrepo .
     - cwd: /srv/repos/fedora/28/x86_64
+    - user: root
+
+Repository creation for fedora 33:
+  cmd.run:
+    - name: createrepo .
+    - cwd: /srv/repos/fedora/33/x86_64
     - user: root
 
 Install certbot:

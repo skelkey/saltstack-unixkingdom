@@ -45,6 +45,15 @@ Deploy certificate for waproxy:
     - mode: 0600
     - template: jinja
 
+Deploy certificate for passbolt:
+  file.managed:
+    - name: /etc/haproxy/passbolt.pem
+    - source: salt://haproxy/passbolt.pem
+    - user: root
+    - group: root
+    - mode: 0600
+    - template: jinja
+
 Start and enable rsyslog service:
   service.running:
     - name: haproxy

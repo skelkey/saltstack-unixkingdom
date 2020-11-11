@@ -33,7 +33,7 @@ Create directory /srv/repos/fedora/28/SRPMS:
 
 Create directory /srv/repos/fedora/33/x86_64/RPMS:
   file.directory:
-    - name: /srv/repos/fedora/28/x86_64/RPMS
+    - name: /srv/repos/fedora/33/x86_64/RPMS
     - user: root
     - group: root
     - mode: 755
@@ -41,7 +41,7 @@ Create directory /srv/repos/fedora/33/x86_64/RPMS:
 
 Create directory /srv/repos/fedora/33/x86_64/SRPMS:
   file.directory:
-    - name: /srv/repos/fedora/28/x86_64/SRPMS
+    - name: /srv/repos/fedora/33/x86_64/SRPMS
     - user: root
     - group: root
     - mode: 755

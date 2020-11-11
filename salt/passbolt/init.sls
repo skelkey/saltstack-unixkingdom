@@ -27,6 +27,7 @@ Install PHP packages:
       - php-mbstring
       - php-fpm
       - php-ldap
+      - php-pecl-gnupg
 
 Set selinux boolean httpd_can_network_connect_db:
   selinux.boolean:

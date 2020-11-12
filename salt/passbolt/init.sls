@@ -16,6 +16,15 @@ Adding unix-kingdom repository:
     - gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-unixkingdom
     - gpgcheck: 1
 
+Install cron:
+  pkg.installed:
+    - name: cronie
+
+Start and enable cronie:
+  service.running:
+    - name: crond
+    - enable: true
+
 Install PHP packages:
   pkg.installed:
     - pkgs:

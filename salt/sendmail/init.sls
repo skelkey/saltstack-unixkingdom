@@ -12,7 +12,7 @@ Install opendkim packages:
       - perl-Getopt-Long
 
 Create directory for unix-kingdom DKIM:
-  file.directory
+  file.directory:
     - name: /etc/opendkim/keys/unix-kingdom.fr
     - user: opendkim
     - group: opendkim

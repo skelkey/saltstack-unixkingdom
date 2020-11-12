@@ -127,7 +127,7 @@ dnl # mail from MUAs that authenticate. Roaming users who can't reach their
 dnl # preferred sendmail daemon due to port 25 being blocked or redirected find
 dnl # this useful.
 dnl #
-dnl DAEMON_OPTIONS(`Port=submission, Name=MSA, M=Ea')dnl
+DAEMON_OPTIONS(`Port=submission, Name=MSA, M=Ea')dnl
 dnl #
 dnl # The following causes sendmail to additionally listen to port 465, but
 dnl # starting immediately in TLS mode upon connecting. Port 25 or 587 followed

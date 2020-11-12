@@ -61,7 +61,7 @@ Set selinux boolean httpd_can_network_relay:
 
 Set selinux boolean httpd_setrlimit:
   selinux.boolean:
-    - name: httpd_can_network_relay
+    - name: httpd_setrlimit
     - value: 1
     - persist: true
 

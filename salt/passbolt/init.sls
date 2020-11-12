@@ -62,7 +62,7 @@ Set selinux boolean httpd_can_network_relay:
 Set selinux boolean httpd_setrlimit:
   selinux.boolean:
     - name: httpd_can_network_relay
-    - values: 1
+    - value: 1
     - persist: true
 
 Install composer:

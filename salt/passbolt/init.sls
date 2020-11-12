@@ -192,3 +192,15 @@ Start and enable nginx service:
   service.running:
    - name: nginx
    - enable: true
+
+Crontab for email sending:
+  cron.present:
+    - name: /opt/passbolt_api-2.13.5/bin/cake EmailQueue.sender
+    - user: apache
+    - minute: '*'
+    - hour: '*'
+    - daymonth: '*'
+    - month: '*'
+    - dayweek: '*'
+    - identifier: 'passbolt_mail'
+    

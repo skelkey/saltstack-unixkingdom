@@ -61,10 +61,11 @@ dnl #     cd /etc/pki/tls/certs; make sendmail.pem
 dnl # Complete usage:
 dnl #     make -C /etc/pki/tls/certs usage
 dnl #
-dnl define(`confCACERT_PATH', `/etc/pki/tls/certs')dnl
-dnl define(`confCACERT', `/etc/pki/tls/certs/ca-bundle.crt')dnl
-dnl define(`confSERVER_CERT', `/etc/pki/tls/certs/sendmail.pem')dnl
-dnl define(`confSERVER_KEY', `/etc/pki/tls/certs/sendmail.pem')dnl
+define(`confCACERT_PATH', `/etc/pki/tls/certs')dnl
+define(`confCACERT', `/etc/mail/chain.crt')dnl
+define(`confSERVER_CERT', `/etc/mail/sendmail.crt')dnl
+define(`confSERVER_KEY', `/etc/mail/sendmail.key')dnl
+define(`confDH_PARAMETERS', `/etc/mail/sendmail.dh.param')dnl
 dnl #
 dnl # This allows sendmail to use a keyfile that is shared with OpenLDAP's
 dnl # slapd, which requires the file to be readble by group ldap
@@ -119,7 +120,7 @@ dnl # The following causes sendmail to only listen on the IPv4 loopback address
 dnl # 127.0.0.1 and not on any other network devices. Remove the loopback
 dnl # address restriction to accept email from the internet or intranet.
 dnl #
-DAEMON_OPTIONS(`Port=smtp, Name=MTA')dnl
+dnl DAEMON_OPTIONS(`Port=smtp, Name=MTA')dnl
 dnl #
 dnl # The following causes sendmail to additionally listen to port 587 for
 dnl # mail from MUAs that authenticate. Roaming users who can't reach their
@@ -137,7 +138,7 @@ dnl # when SSL is enabled-- STARTTLS support is available in version 1.1.1.
 dnl #
 dnl # For this to work your OpenSSL certificates must be configured.
 dnl #
-dnl DAEMON_OPTIONS(`Port=smtps, Name=TLSMTA, M=s')dnl
+DAEMON_OPTIONS(`Port=smtps, Name=TLSMTA, M=s')dnl
 dnl #
 dnl # The following causes sendmail to additionally listen on the IPv6 loopback
 dnl # device. Remove the loopback address restriction listen to the network.
@@ -182,3 +183,8 @@ MAILER(procmail)dnl
 dnl MAILER(cyrusv2)dnl
 FEATURE(`relay_hosts_only')dnl
 INPUT_MAIL_FILTER(`opendkim', `S=unix:/run/opendkim/opendkim.sock')dnl
+LOCAL_CONFIG
+O CipherList=kEECDH:+kEECDH+SHA:kEDH:+kEDH+SHA:+kEDH+CAMELLIA:kECDH:+kECDH+SHA:kRSA:+kRSA+SHA:+kRSA+CAMELLIA:!aNULL:!eNULL:!SSLv2:!RC4:!MD5:!DES:!EXP:!SEED:!IDEA:!3DES
+O ServerSSLOptions=+SSL_OP_NO_SSLv2 +SSL_OP_NO_SSLv3 +SSL_OP_NO_TLSv1 +SSL_OP_CIPHER_SERVER_PREFERENCE
+O ClientSSLOptions=+SSL_OP_NO_SSLv2 +SSL_OP_NO_SSLv3 +SSL_OP_NO_TLSv1
+

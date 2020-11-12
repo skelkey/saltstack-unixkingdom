@@ -4,6 +4,7 @@ Install sendmail packages:
       - sendmail
       - sendmail-cf
       - make
+      - cyrus-sasl
 
 Install opendkim packages:
   pkg.installed:
@@ -70,7 +71,38 @@ Configure SigningTable for DKIM:
     - group: opendkim
     - mode: 644
 
-Add opendkim socket to sendmail configuration:
+Deploy sendmail private key:
+  file.managed:
+    - name: /etc/mail/sendmail.key
+    - mode: 600
+    - user: root
+    - group: root
+    - contents_pillar: sendmail_key
+
+Deploy sendmail certificate:
+  file.managed:
+    - name: /etc/mail/sendmail.crt
+    - mode: 640
+    - user: root
+    - group: root
+    - contents_pillar: sendmail_crt
+
+Deploy unixkingdom chain:
+  file.managed:
+    - name: /etc/mail/chain.crt
+    - mode: 640
+    - user: root
+    - group: root
+    - contents_pillar:
+      - server_unixkingdom_ca
+      - unixkingdom_ca
+
+Create dhparam for sendmail:
+  cmd.run:
+    - name: openssl dhparam -out /etc/mail/sendmail.dh.param 2048
+    - unless: test -f /etc/mail/sendmail.dh.param
+
+Config for sendmail service:
   file.managed:
     - name: /etc/mail/sendmail.mc
     - source: salt://sendmail/sendmail.mc

@@ -119,7 +119,7 @@ dnl # The following causes sendmail to only listen on the IPv4 loopback address
 dnl # 127.0.0.1 and not on any other network devices. Remove the loopback
 dnl # address restriction to accept email from the internet or intranet.
 dnl #
-dnl # DAEMON_OPTIONS(`Port=smtp,Addr=127.0.0.1, Name=MTA')dnl
+DAEMON_OPTIONS(`Port=smtp, Name=MTA')dnl
 dnl #
 dnl # The following causes sendmail to additionally listen to port 587 for
 dnl # mail from MUAs that authenticate. Roaming users who can't reach their

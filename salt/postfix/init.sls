@@ -100,10 +100,18 @@ Set right on opendkim run directory:
     - name: /run/opendkim
     - mode: 750
 
-Deploy configuration for postfix:
+Deploy main.cf configuration for postfix:
   file.managed:
     - name: /etc/postfix/main.cf
     - source: salt://postfix/main.cf
+    - user: root
+    - group: root
+    - mode: 644
+
+Deploy master.cf configuration for postfix:
+  file.managed:
+    - name: /etc/postfix/master.cf
+    - source: salt://postfix/master.cf
     - user: root
     - group: root
     - mode: 644

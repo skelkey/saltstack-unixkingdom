@@ -23,5 +23,5 @@ base:
     - radius
   '*passbolt*':
     - passbolt
-  '*sendmail*':
-    - sendmail
+  '*postfix*':
+    - postfix

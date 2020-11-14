@@ -37,5 +37,5 @@ base:
   '*passbolt*':
     - common_passbolt
     - passbolt
-  '*sendmail*':
-    - sendmail
+  '*postfix*':
+    - postfix

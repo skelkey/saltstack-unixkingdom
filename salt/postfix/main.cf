@@ -93,6 +93,7 @@ mail_owner = postfix
 #
 #myhostname = host.domain.tld
 #myhostname = virtual.domain.tld
+myhostname = smtp.unix-kingdom.fr
 
 # The mydomain parameter specifies the local internet domain name.
 # The default is to use $myhostname minus the first component.

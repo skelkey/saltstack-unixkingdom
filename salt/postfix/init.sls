@@ -30,7 +30,7 @@ Set correct right on keys:
     - group: opendkim
     - mode: 640
 
-Set correct righ on public keys:
+Set correct right on public keys:
   file.managed:
     - name: /etc/opendkim/keys/unix-kingdom.fr/default.txt
     - user: opendkim
@@ -73,24 +73,24 @@ Deploy postfix private key:
   file.managed:
     - name: /etc/pki/tls/private/postfix.key
     - mode: 600
-    - user: root
-    - group: root
+    - user: postfix
+    - group: postfix
     - contents_pillar: postfix_key
 
 Deploy postfix certificate:
   file.managed:
     - name: /etc/pki/tls/certs/postfix.crt
     - mode: 640
-    - user: root
-    - group: root
+    - user: postfix
+    - group: postfix
     - contents_pillar: postfix_crt
 
 Deploy unixkingdom chain:
   file.managed:
     - name: /etc/pki/tls/certs/chain.crt
     - mode: 640
-    - user: root
-    - group: root
+    - user: postfix
+    - group: postfix
     - contents_pillar:
       - server_unixkingdom_ca
       - unixkingdom_ca

@@ -71,7 +71,7 @@ Configure SigningTable for DKIM:
 
 Deploy postfix private key:
   file.managed:
-    - name: /etc/mail/postfix.key
+    - name: /etc/pki/tls/private/postfix.key
     - mode: 600
     - user: root
     - group: root
@@ -79,7 +79,7 @@ Deploy postfix private key:
 
 Deploy postfix certificate:
   file.managed:
-    - name: /etc/mail/postfix.crt
+    - name: /etc/pki/tls/certs/postfix.crt
     - mode: 640
     - user: root
     - group: root
@@ -87,7 +87,7 @@ Deploy postfix certificate:
 
 Deploy unixkingdom chain:
   file.managed:
-    - name: /etc/mail/chain.crt
+    - name: /etc/pki/tls/certs/chain.crt
     - mode: 640
     - user: root
     - group: root
@@ -95,15 +95,18 @@ Deploy unixkingdom chain:
       - server_unixkingdom_ca
       - unixkingdom_ca
 
-Create dhparam for postfix:
-  cmd.run:
-    - name: openssl dhparam -out /etc/mail/postfix.dh.param 2048
-    - unless: test -f /etc/mail/postfix.dh.param
-
 Set right on opendkim run directory:
   file.directory:
     - name: /run/opendkim
     - mode: 750
+
+Deploy configuration for postfix:
+  file.managed:
+    - name: /etc/postfix/main.cf
+    - source: salt://postfix/main.cf
+    - user: root
+    - group: root
+    - mode: 644
 
 start and enable opendkim service:
   service.running:

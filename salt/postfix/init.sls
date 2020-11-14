@@ -1,4 +1,4 @@
-Install sendmail packages:
+Install postfix packages:
   pkg.installed:
     - pkgs:
       - postfix
@@ -40,7 +40,7 @@ Set correct righ on public keys:
 Configure OpenDKIM:
   file.managed:
     - name: /etc/opendkim.conf
-    - source: salt://sendmail/opendkim.conf
+    - source: salt://postfix/opendkim.conf
     - user: opendkim
     - group: opendkim
     - mode: 644
@@ -48,7 +48,7 @@ Configure OpenDKIM:
 Configure TrustedHosts for DKIM:
   file.managed:
     - name: /etc/opendkim/TrustedHosts
-    - source: salt://sendmail/TrustedHosts
+    - source: salt://postfix/TrustedHosts
     - user: opendkim
     - group: opendkim
     - mode: 644
@@ -56,7 +56,7 @@ Configure TrustedHosts for DKIM:
 Configure KeyTable for DKIM:
   file.managed:
     - name: /etc/opendkim/KeyTable
-    - source: salt://sendmail/KeyTable
+    - source: salt://postfix/KeyTable
     - user: opendkim
     - group: opendkim
     - mode: 644
@@ -64,12 +64,12 @@ Configure KeyTable for DKIM:
 Configure SigningTable for DKIM:
   file.managed:
     - name: /etc/opendkim/SigningTable
-    - source: salt://sendmail/SigningTable
+    - source: salt://postfix/SigningTable
     - user: opendkim
     - group: opendkim
     - mode: 644
 
-Deploy sendmail private key:
+Deploy postfix private key:
   file.managed:
     - name: /etc/mail/postfix.key
     - mode: 600
@@ -77,7 +77,7 @@ Deploy sendmail private key:
     - group: root
     - contents_pillar: postfix_key
 
-Deploy sendmail certificate:
+Deploy postfix certificate:
   file.managed:
     - name: /etc/mail/postfix.crt
     - mode: 640
@@ -95,10 +95,10 @@ Deploy unixkingdom chain:
       - server_unixkingdom_ca
       - unixkingdom_ca
 
-Create dhparam for sendmail:
+Create dhparam for postfix:
   cmd.run:
-    - name: openssl dhparam -out /etc/mail/sendmail.dh.param 2048
-    - unless: test -f /etc/mail/sendmail.dh.param
+    - name: openssl dhparam -out /etc/mail/postfix.dh.param 2048
+    - unless: test -f /etc/mail/postfix.dh.param
 
 Set right on opendkim run directory:
   file.directory:
@@ -110,7 +110,7 @@ start and enable opendkim service:
     - name: opendkim
     - enable: true
 
-start and enable sendmail service:
+start and enable postfix service:
   service.running:
-    - name: sendmail
+    - name: postfix
     - enable: true

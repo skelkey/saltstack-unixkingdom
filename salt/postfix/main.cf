@@ -718,7 +718,7 @@ readme_directory = /usr/share/doc/postfix/README_FILES
 # in PEM format. Intermediate certificates should be included in general,
 # the server certificate first, then the issuing CA(s) (bottom-up order).
 #
-smtpd_tls_cert_file = /etc/pki/tls/certs/postfix.pem
+smtpd_tls_cert_file = /etc/pki/tls/certs/postfix.crt
 
 # The full pathname of a file with the Postfix SMTP server RSA private key
 # in PEM format. The private key must be accessible without a pass-phrase,

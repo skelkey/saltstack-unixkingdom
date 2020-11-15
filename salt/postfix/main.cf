@@ -734,13 +734,13 @@ smtpd_tls_security_level = may
 # Directory with PEM format Certification Authority certificates that the
 # Postfix SMTP client uses to verify a remote SMTP server certificate.
 #
-smtp_tls_CAfile = /etc/pki/tls/certs/chain.crt
+#smtp_tls_CApath = /etc/pki/tls/certs/
 
 # The full pathname of a file containing CA certificates of root CAs
 # trusted to sign either remote SMTP server certificates or intermediate CA
 # certificates.
 #
-smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
+smtp_tls_CAfile = /etc/pki/tls/certs/chain.crt
 
 # Use TLS if this is supported by the remote SMTP server, otherwise use
 # plaintext (opportunistic TLS outbound).

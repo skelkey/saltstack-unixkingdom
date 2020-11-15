@@ -124,6 +124,10 @@ Deploy postfix client blacklist:
     - group: root
     - mode: 644
 
+Compile postfix client blacklist:
+  cmd.run:
+    - name: postmap /etc/postfix/blacklist
+
 start and enable opendkim service:
   service.running:
     - name: opendkim

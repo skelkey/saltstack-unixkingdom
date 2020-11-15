@@ -3,6 +3,7 @@ Install postfix packages:
     - pkgs:
       - postfix
       - cyrus-sasl-plain
+      - postfix-ldap
 
 Install opendkim packages:
   pkg.installed:
@@ -127,6 +128,14 @@ Deploy postfix client blacklist:
 Compile postfix client blacklist:
   cmd.run:
     - name: postmap /etc/postfix/blacklist
+
+Deploy ldap aliases configuration:
+  file.managed:
+    - name: /etc/postfix/ldap-aliases.cf
+    - source: salt://postfix/ldap-aliases.cf
+    - user: root
+    - group: root
+    - mode: 644
 
 start and enable opendkim service:
   service.running:

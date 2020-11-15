@@ -284,6 +284,8 @@ unknown_local_recipient_reject_code = 550
 #mynetworks = 168.100.189.0/28, 127.0.0.0/8
 #mynetworks = $config_directory/mynetworks
 #mynetworks = hash:/etc/postfix/network_table
+mynetworks = 127.0.0.1, localhost, localhost.localdomain
+
 
 # The relay_domains parameter restricts what destinations this system will
 # relay mail to.  See the smtpd_recipient_restrictions description in
@@ -314,6 +316,15 @@ unknown_local_recipient_reject_code = 550
 # permit_mx_backup restriction description in postconf(5).
 #
 #relay_domains = $mydestination
+smtpd_recipient_restrictions =
+  permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unauth_destination,
+  reject_unknown_client,
+  reject_rbl_client spam.spam-rbl.fr,
+  reject_non_fqdn_helo_hostname,
+  reject_invalid_helo_hostname,
+  check_sender_access hash:/etc/postfix/blacklist
 
 # INTERNET OR INTRANET
 

@@ -116,6 +116,14 @@ Deploy master.cf configuration for postfix:
     - group: root
     - mode: 644
 
+Deploy postfix client blacklist:
+  file.managed:
+    - name: /etc/postfix/blacklist
+    - source: salt://postfix/blacklist
+    - user: root
+    - group: root
+    - mode: 644
+
 start and enable opendkim service:
   service.running:
     - name: opendkim

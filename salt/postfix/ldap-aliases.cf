@@ -1,2 +1,0 @@
-server_host = ldap.unix-kingdom.lan
-search_base = dc=unix-kingdom, dc=lan

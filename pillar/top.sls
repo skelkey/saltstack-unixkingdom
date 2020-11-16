@@ -37,5 +37,3 @@ base:
   '*passbolt*':
     - common_passbolt
     - passbolt
-  '*postfix*':
-    - postfix

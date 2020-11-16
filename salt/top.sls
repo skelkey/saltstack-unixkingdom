@@ -23,5 +23,3 @@ base:
     - radius
   '*passbolt*':
     - passbolt
-  '*postfix*':
-    - postfix

@@ -1,4 +1,4 @@
-URI    ldaps://euw2a-prd-unixkingdom-ldap-1.unix-kingdom.lan
+URI    ldaps://ldap.unix-kingdom.lan
 BASE   ou=Users,o=UnixKingdom
 BINDDN {{ pillar['ldap_readonly_user'] }}
 

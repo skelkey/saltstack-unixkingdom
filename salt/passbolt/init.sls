@@ -38,9 +38,9 @@ Install PHP packages:
       - php-ldap
       - php-pecl-gnupg
 
-Install python-ldap3 library:
+Install openldap-clients library:
   pkg.installed:
-    - name: python3-ldap3
+    - name: openldap-clients
 
 Set selinux boolean httpd_can_network_connect_db:
   selinux.boolean:

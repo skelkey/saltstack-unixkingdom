@@ -57,6 +57,7 @@ Deploy openldap password:
     - user: apache
     - group: apache
     - mode: 640
+    - contents_newline: false
     - contents_pillar:
       - ldap_readonly_password 
 

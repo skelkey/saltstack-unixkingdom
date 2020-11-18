@@ -42,6 +42,24 @@ Install openldap-clients library:
   pkg.installed:
     - name: openldap-clients
 
+Deploy openldap configuration:
+  file.managed:
+    - name: /usr/share/httpd/ldaprc
+    - source: salt://passbolt/ldaprc
+    - user: apache
+    - group: apache
+    - mode: 644
+    - template: jinja
+
+Deploy openldap password:
+  file.managed:
+    - name: /usr/share/httpd/ldap.pwd
+    - user: apache
+    - group: apache
+    - mode: 640
+    - contents_pillar:
+      - ldap_readonly_password 
+
 Set selinux boolean httpd_can_network_connect_db:
   selinux.boolean:
     - name: httpd_can_network_connect_db

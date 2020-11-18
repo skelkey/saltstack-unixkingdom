@@ -35,5 +35,6 @@ base:
     - common_letsencrypt
     - people
   '*passbolt*':
+    - common_ldap
     - common_passbolt
     - passbolt

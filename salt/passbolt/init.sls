@@ -42,6 +42,10 @@ Install openldap-clients library:
   pkg.installed:
     - name: openldap-clients
 
+Install python3-ldap3 library:
+  pkg.installed:
+    - name: python3-ldap3
+
 Deploy openldap configuration:
   file.managed:
     - name: /usr/share/httpd/ldaprc

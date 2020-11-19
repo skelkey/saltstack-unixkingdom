@@ -59,7 +59,15 @@ Deploy openldap password:
     - mode: 640
     - contents_newline: false
     - contents_pillar:
-      - ldap_readonly_password 
+      - ldap_readonly_password
+
+Deploy mariadb configuration for passbolt user:
+  file.managed:
+    - name: /usr/share/httpd/.my.cnf
+    - user: apache
+    - group: apache
+    - mode: 640
+    - template: jinja
 
 Set selinux boolean httpd_can_network_connect_db:
   selinux.boolean:

@@ -64,6 +64,7 @@ Deploy openldap password:
 Deploy mariadb configuration for passbolt user:
   file.managed:
     - name: /usr/share/httpd/.my.cnf
+    - source: salt://passbolt/my.cnf
     - user: apache
     - group: apache
     - mode: 640

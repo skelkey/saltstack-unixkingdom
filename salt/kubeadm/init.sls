@@ -6,28 +6,6 @@ Install containerd service:
   pkg.installed:
     - name: containerd
 
-Deploy certificate for kubernetes:
-  file.managed:
-    - name: /etc/kubernetes/pki/euw2a-prd-unixkingdom-kubeadm-1.crt
-    - user: root
-    - group: root
-    - mode: 640
-    - makedirs: true
-    - contents_pillar:
-      - kubeadm_crt
-      - server_unixkingdom_ca
-      - unixkingdom_ca
-
-Deploy private key for kubernetes:
-  file.managed:
-    - name: /etc/kubernetes/pki/euw2a-prd-unixkingdom-kubeadm-1.key
-    - user: root
-    - group: root
-    - mode: 400
-    - makedirs: true
-    - contents_pillar:
-      - kubeadm_key
-
 Deploy certificate ca for kubernetes:
   file.managed:
     - name: /etc/kubernetes/pki/ca.crt

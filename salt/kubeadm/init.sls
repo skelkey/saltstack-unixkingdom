@@ -1,6 +1,6 @@
 Install kubeadm service:
   pkg.installed:
-    - name: kubeadm
+    - name: kubernetes-kubeadm
 
 Install docker service:
   pkg.installed:

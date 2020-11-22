@@ -12,6 +12,7 @@ Deploy certificate for kubernetes:
     - user: root
     - group: root
     - mode: 640
+    - makedirs: true
     - contents_pillar:
       - kubeadm_crt
       - server_unixkingdom_ca
@@ -23,6 +24,7 @@ Deploy private key for kubernetes:
     - user: root
     - group: root
     - mode: 400
+    - makedirs: true
     - contents_pillar:
       - kubeadm_key
 

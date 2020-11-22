@@ -2,11 +2,11 @@ Install kubeadm service:
   pkg.installed:
     - name: kubernetes-kubeadm
 
-Install docker service:
+Install containerd service:
   pkg.installed:
-    - name: docker
+    - name: containerd
 
-Start and enable docker service:
+Start and enable containerd service:
   service.running:
     - name: docker
     - enable: true

@@ -1,3 +1,15 @@
+kubernetes_unixkingdom_ca: |
+     -----BEGIN CERTIFICATE-----
+     MIIDHDCCAgSgAwIBAgIUAa3u/CNBWRftTOFM9WMecqIE2E8wDQYJKoZIhvcNAQEN
+     ...
+     CFAn2ihTv3kDMwkLEwSTx/EMLpS40KnPGw6cX9sTfys=
+     -----END CERTIFICATE-----
+kubernetes_unixkingdom_key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEowIBAAKCAQEAq8WYRu0ZjNJL3Q8VYgvR0WYPtMaTQ/6Lu706L0DhYlZS7HeW
+    ...
+    wJxgRJjbODQRl4Nepu0csmkyYDzMKdsYegemejWt/zRFel78MVdf
+    -----END RSA PRIVATE KEY-----
 kubeadm_key: |
     -----BEGIN RSA PRIVATE KEY-----
     MIIEowIBAAKCAQEAq8WYRu0ZjNJL3Q8VYgvR0WYPtMaTQ/6Lu706L0DhYlZS7HeW

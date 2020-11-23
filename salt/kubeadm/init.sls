@@ -6,6 +6,10 @@ Install containerd service:
   pkg.installed:
     - name: containerd
 
+Install etcd service:
+  pkg.installed:
+    - name: etcd
+
 Deploy certificate ca for kubernetes:
   file.managed:
     - name: /etc/kubernetes/pki/ca.crt
@@ -34,4 +38,9 @@ Start and enable containerd service:
 Start and enable kubelet service:
   service.running:
     - name: kubelet
+    - enable: true
+
+Start and enable etcd service:
+  service.running:
+    - name: etcd
     - enable: true

@@ -23,5 +23,5 @@ base:
     - radius
   '*passbolt*':
     - passbolt
-  '*kubeadm*':
-    - kubeadm
+  '*bitwarden*':
+    - bitwarden

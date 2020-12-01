@@ -1,7 +1,7 @@
 Create user bitwarden:
   user.present:
     - name: bitwarden
-    - gid_from_name: bitwarden
+    - usergroup: bitwarden
     - home: /opt/bitwarden
     - shell: /sbin/nologin
     - system: true
@@ -13,5 +13,6 @@ Extract docker image:
     - source_hash: 3d7211ee4a009520e6e38b6a64ad23fdd9b6bf62e6c7645aa0ffea3e80a2c229
     - user: bitwarden
     - group: bitwarden
+    - enforce_toplevel: false
     
 

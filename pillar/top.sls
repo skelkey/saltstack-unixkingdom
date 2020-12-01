@@ -38,5 +38,3 @@ base:
     - common_ldap
     - common_passbolt
     - passbolt
-  '*kubeadm*':
-    - kubeadm

@@ -15,4 +15,67 @@ Extract docker image:
     - group: bitwarden
     - enforce_toplevel: false
     
+Deploy bitwarden identity certificate:
+  file.managed:
+    - name: /opt/bitwarden/identity/identity.pfx
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 400
+     - contents_pillar:
+       - identity_pfx
+       
+Deploy bitwarden global override env file:
+  file.managed:
+    - name: /opt/bitwarden/env/global.override.env
+    - source: salt://bitwarden/global.override.env
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+    - template: jinja
 
+Deploy bitwarden mssql override env file:
+  file.managed:
+    - name: /opt/bitwarden/env/mssql.override.env
+    - source: salt://bitwarden/mssql.override.env
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+    - template: jinja
+
+Deploy bitwarden app-id.json file:
+  file.managed:
+    - name: /opt/birwarden/web/app-id.json
+    - source: salt://bitwarden/app-id.json
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+
+Deploy bitwarden uid environment file:
+  file.managed:
+    - name: /opt/bitwarden/env/uid.env
+    - source: salt://bitwarden/uid.env
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+    - template: jinja
+
+Deploy bitwarden certificate:
+  file.managed:
+    - name: /opt/bitwarden/ssl/bitwarden.pem
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+    - contents_pillar:
+      - bitwarden_crt
+      - server_unixkingdom_ca
+      - unix-kingdom_ca
+
+Deploy bitwarden private key:
+  file.managed:
+    - name: /opt/bitwarden/ssl/bitwarden.key
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+    - contents_pillar:
+      - bitwarden_key
+ 

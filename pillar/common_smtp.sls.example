@@ -1,0 +1,4 @@
+smtp_host: <smtp_host>
+smtp_username: <smtp_username>
+smtp_password: <smtp_password>
+

@@ -1,0 +1,20 @@
+identity_cert_password: <identity_cert_password>
+installation_id: <installation_id>
+installation_key: <installation_key>
+database_password: <database_password>
+identity_pfx: !!binary
+    MIIVKQIBAzCCFO8GCSqGSIb3DQEHAaCCFOAEghTcMIIU2DCCCw8GCSqGSIb3DQEHBqCCCwAwggr8
+    ...
+    4o0CAggA
+bitwarden_ca: |
+    ----BEGIN CERTIFICATE-----
+    MIIInzCCBIegAwIBAgIUQ/FIRomWyUqmtBZ065IyuQTGVbswDQYJKoZIhvcNAQEL
+    ...
+    90R9
+    -----END CERTIFICATE-----
+bitwarden_key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQCyACOc2YHjvMpH
+    ...
+    R4i2dr4aAnAGrk1LKTzetrlj1shjDEDV
+    -----END PRIVATE KEY-----

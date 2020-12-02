@@ -38,3 +38,6 @@ base:
     - common_ldap
     - common_passbolt
     - passbolt
+  '*bitwarden*':
+    - common_smtp
+    - bitwarden

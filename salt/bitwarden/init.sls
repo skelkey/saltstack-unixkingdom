@@ -21,8 +21,8 @@ Deploy bitwarden identity certificate:
     - user: bitwarden
     - group: bitwarden
     - mode: 400
-     - contents_pillar:
-       - identity_pfx
+    - contents_pillar:
+      - identity_pfx
        
 Deploy bitwarden global override env file:
   file.managed:

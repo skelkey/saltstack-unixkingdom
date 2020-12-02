@@ -3,10 +3,10 @@ installation_id: <installation_id>
 installation_key: <installation_key>
 database_password: <database_password>
 identity_key: <identity_key>
-identity_pfx: !binary |
-    MIIVKQIBAzCCFO8GCSqGSIb3DQEHAaCCFOAEghTcMIIU2DCCCw8GCSqGSIb3DQEHBqCCCwAwggr8
+identity_pfx: !!binary "\
+    MIIVKQIBAzCCFO8GCSqGSIb3DQEHAaCCFOAEghTcMIIU2DCCCw8GCSqGSIb3DQEHBqCCCwAwggr8\
     ...
-    4o0CAggA
+    4o0CAggA"
 bitwarden_crt: |
     ----BEGIN CERTIFICATE-----
     MIIInzCCBIegAwIBAgIUQ/FIRomWyUqmtBZ065IyuQTGVbswDQYJKoZIhvcNAQEL

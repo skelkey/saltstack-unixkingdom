@@ -44,7 +44,7 @@ Deploy bitwarden mssql override env file:
 
 Deploy bitwarden app-id.json file:
   file.managed:
-    - name: /opt/birwarden/web/app-id.json
+    - name: /opt/bitwarden/web/app-id.json
     - source: salt://bitwarden/app-id.json
     - user: bitwarden
     - group: bitwarden

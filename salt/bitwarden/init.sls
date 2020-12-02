@@ -68,7 +68,7 @@ Deploy bitwarden certificate:
     - contents_pillar:
       - bitwarden_crt
       - server_unixkingdom_ca
-      - unix-kingdom_ca
+      - unixkingdom_ca
 
 Deploy bitwarden private key:
   file.managed:

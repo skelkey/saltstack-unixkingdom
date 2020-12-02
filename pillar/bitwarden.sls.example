@@ -6,7 +6,7 @@ identity_pfx: !!binary
     MIIVKQIBAzCCFO8GCSqGSIb3DQEHAaCCFOAEghTcMIIU2DCCCw8GCSqGSIb3DQEHBqCCCwAwggr8
     ...
     4o0CAggA
-bitwarden_ca: |
+bitwarden_crt: |
     ----BEGIN CERTIFICATE-----
     MIIInzCCBIegAwIBAgIUQ/FIRomWyUqmtBZ065IyuQTGVbswDQYJKoZIhvcNAQEL
     ...

@@ -2,6 +2,7 @@ identity_cert_password: <identity_cert_password>
 installation_id: <installation_id>
 installation_key: <installation_key>
 database_password: <database_password>
+duo_akey: <duo_akey>
 identity_key: <identity_key>
 identity_pfx: !!binary "\
     MIIVKQIBAzCCFO8GCSqGSIb3DQEHAaCCFOAEghTcMIIU2DCCCw8GCSqGSIb3DQEHBqCCCwAwggr8\

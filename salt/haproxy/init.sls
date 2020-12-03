@@ -54,6 +54,15 @@ Deploy certificate for passbolt:
     - mode: 0600
     - template: jinja
 
+Deploy certificate for bitwarden:
+  file.managed:
+    - name: /etc/haproxy/bitwarden.pem
+    - source: salt://haproxy/bitwarden.pem
+    - user: root
+    - group: root
+    - mode: 0600
+    - template: jinja
+
 Start and enable rsyslog service:
   service.running:
     - name: haproxy

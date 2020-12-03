@@ -1,15 +1,6 @@
-Adding docker-ce repository:
-  pkgrepo.managed:
-    - name: docker-ce-stable
-    - enable: true
-    - humanname: Docker CE Stable - $basearch
-    - baseurl: https://download.docker.com/linux/fedora/$releasever/$basearch/stable
-    - gpgkey: https://download.docker.com/linux/fedora/gpg
-    - gpgcheck : 1
-
-Install docker-ce:
+Install moby:
   pkg.installed:
-    - name: containerd.io
+    - name: moby-engine
 
 Install docker-compose:
   pkg.installed:

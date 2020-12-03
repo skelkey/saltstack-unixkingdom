@@ -83,19 +83,21 @@ Deploy nginx configuration file:
 
 Deploy unixkingdom CA in bitwarden truststore:
   file.managed:
-    - name: /opt/bitwarden/ssl/ca.crt
+    - name: /opt/bitwarden/ssl/bitwarden.unix-kingdom.lan/ca.crt
     - user: bitwarden
     - group: bitwarden
     - mode: 640
+    - makedirs: true
     - contents_pillar:
       - unixkingdom_ca
 
 Deploy bitwarden certificate:
   file.managed:
-    - name: /opt/bitwarden/ssl/certificate.crt
+    - name: /opt/bitwarden/ssl/bitwarden.unix-kingdom.lan/certificate.crt
     - user: bitwarden
     - group: bitwarden
     - mode: 640
+    - makedirs: true
     - contents_pillar:
       - bitwarden_crt
       - server_unixkingdom_ca
@@ -103,10 +105,11 @@ Deploy bitwarden certificate:
 
 Deploy bitwarden private key:
   file.managed:
-    - name: /opt/bitwarden/ssl/private.key
+    - name: /opt/bitwarden/ssl/bitwarden.unix-kingdom.lan/private.key
     - user: bitwarden
     - group: bitwarden
     - mode: 640
+    - makedirs: true
     - contents_pillar:
       - bitwarden_key
 

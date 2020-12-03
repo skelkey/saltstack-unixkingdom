@@ -1,3 +1,7 @@
+Install docker-compose:
+  pkg.installed:
+    - name: docker-compose
+
 Create user bitwarden:
   user.present:
     - name: bitwarden
@@ -83,4 +87,8 @@ Deploy bitwarden private key:
     - mode: 640
     - contents_pillar:
       - bitwarden_key
- 
+
+Generate and run bitwarden container:
+  module.run:
+    - dockercompose.up:
+      - path: /opt/bitwarden/docker/docker-compose.yml 

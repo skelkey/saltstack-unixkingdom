@@ -102,10 +102,9 @@ Deploy bitwarden private key:
       - bitwarden_key
 
 Start and enable docker service:
-  service.runing:
+  service.running:
     - name: docker
     - enable: true
-  
 
 Generate and run bitwarden container:
   cmd.run:

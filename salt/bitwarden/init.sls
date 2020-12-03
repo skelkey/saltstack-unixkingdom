@@ -89,6 +89,5 @@ Deploy bitwarden private key:
       - bitwarden_key
 
 Generate and run bitwarden container:
-  module.run:
-    - dockercompose.up:
-      - path: /opt/bitwarden/docker/docker-compose.yml 
+  cmd.run:
+    - name: docker-compose -f /opt/bitwarden/docker/docker-compose.yml -d up

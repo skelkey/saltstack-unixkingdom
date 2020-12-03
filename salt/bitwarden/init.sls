@@ -90,4 +90,4 @@ Deploy bitwarden private key:
 
 Generate and run bitwarden container:
   cmd.run:
-    - name: docker-compose -f /opt/bitwarden/docker/docker-compose.yml -d up
+    - name: "docker-compose -f /opt/bitwarden/docker/docker-compose.yml -d up"

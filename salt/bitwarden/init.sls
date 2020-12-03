@@ -1,3 +1,19 @@
+Adding docker-ce repository:
+  pkgrepo.managed:
+    - name: docker-ce-stable
+    - enable: true
+    - humanname: Docker CE Stable - $basearch
+    - baseurl: https://download.docker.com/linux/fedora/$releasever/$basearch/stable
+    - gpgkey: https://download.docker.com/linux/fedora/gpg
+    - gpgcheck : 1
+
+Install docker-ce:
+  pkg.installed:
+    - pkgs:
+      - docker-ce
+      - docker-ce-cli 
+      - containerd.io
+
 Install docker-compose:
   pkg.installed:
     - name: docker-compose
@@ -87,6 +103,12 @@ Deploy bitwarden private key:
     - mode: 640
     - contents_pillar:
       - bitwarden_key
+
+Start and enable docker service:
+  service.runing:
+    - name: docker
+    - enable: true
+  
 
 Generate and run bitwarden container:
   cmd.run:

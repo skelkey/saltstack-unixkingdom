@@ -16,11 +16,12 @@ Extract docker image:
     - enforce_toplevel: false
     
 Deploy bitwarden identity certificate:
-  file.managed:
+  file.decode:
     - name: /opt/bitwarden/identity/identity.pfx
     - user: bitwarden
     - group: bitwarden
     - mode: 400
+    - encoding_type: base64
     - contents_pillar:
       - identity_pfx
        

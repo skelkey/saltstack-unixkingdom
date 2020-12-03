@@ -18,12 +18,16 @@ Extract docker image:
 Deploy bitwarden identity certificate:
   file.decode:
     - name: /opt/bitwarden/identity/identity.pfx
-    - user: bitwarden
-    - group: bitwarden
-    - mode: 400
     - encoding_type: base64
     - contents_pillar:
       - identity_pfx
+
+Set correct righ for identity certificate:
+  file.managed:
+    - name: /opt/bitwarden/identity/identity.pfx
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 400
        
 Deploy bitwarden global override env file:
   file.managed:

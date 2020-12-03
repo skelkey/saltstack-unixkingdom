@@ -72,9 +72,18 @@ Deploy bitwarden uid environment file:
     - mode: 640
     - template: jinja
 
+Deploy nginx configuration file:
+  file.managed:
+    - name: /opt/bitwarden/nginx/default.conf
+    - source: salt://bitwarden/default.conf
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+    - template: jinja
+
 Deploy bitwarden certificate:
   file.managed:
-    - name: /opt/bitwarden/ssl/bitwarden.pem
+    - name: /opt/bitwarden/ssl/certificate.pem
     - user: bitwarden
     - group: bitwarden
     - mode: 640
@@ -85,7 +94,7 @@ Deploy bitwarden certificate:
 
 Deploy bitwarden private key:
   file.managed:
-    - name: /opt/bitwarden/ssl/bitwarden.key
+    - name: /opt/bitwarden/ssl/private.key
     - user: bitwarden
     - group: bitwarden
     - mode: 640

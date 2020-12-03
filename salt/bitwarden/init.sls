@@ -81,6 +81,15 @@ Deploy nginx configuration file:
     - mode: 640
     - template: jinja
 
+Deploy unixkingdom CA in bitwarden truststore:
+  file.managed:
+    - name: /opt/bitwarden/ssl/ca.crt
+    - user: bitwarden
+    - group: bitwarden
+    - mode: 640
+    - contents_pillar:
+      - unixkingom_ca
+
 Deploy bitwarden certificate:
   file.managed:
     - name: /opt/bitwarden/ssl/certificate.pem

@@ -9,10 +9,7 @@ Adding docker-ce repository:
 
 Install docker-ce:
   pkg.installed:
-    - pkgs:
-      - docker-ce
-      - docker-ce-cli 
-      - containerd.io
+    - name: containerd.io
 
 Install docker-compose:
   pkg.installed:

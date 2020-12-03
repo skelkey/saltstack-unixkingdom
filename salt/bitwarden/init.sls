@@ -92,7 +92,7 @@ Deploy unixkingdom CA in bitwarden truststore:
 
 Deploy bitwarden certificate:
   file.managed:
-    - name: /opt/bitwarden/ssl/certificate.pem
+    - name: /opt/bitwarden/ssl/certificate.crt
     - user: bitwarden
     - group: bitwarden
     - mode: 640

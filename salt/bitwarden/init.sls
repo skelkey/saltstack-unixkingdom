@@ -88,7 +88,7 @@ Deploy unixkingdom CA in bitwarden truststore:
     - group: bitwarden
     - mode: 640
     - contents_pillar:
-      - unixkingom_ca
+      - unixkingdom_ca
 
 Deploy bitwarden certificate:
   file.managed:

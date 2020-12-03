@@ -22,6 +22,16 @@ Extract docker image:
     - user: bitwarden
     - group: bitwarden
     - enforce_toplevel: false
+
+Set selinux context on bitwarden:
+  selinux.fcontext_policy_present:
+    - name: /opt/bitwarden(/.*)?
+    - sel_type: container_file_t
+
+Apply selinux context for bitwarden:
+  selinux.fcontext_policy_applied:
+    - name: /opt/bitwarden
+    - recursive: true
     
 Deploy bitwarden identity certificate:
   file.decode:

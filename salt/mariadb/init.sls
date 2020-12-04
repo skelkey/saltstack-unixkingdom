@@ -1,5 +1,4 @@
 {% set webadm_ip = salt['mine.get']('euw2a-prd-unixkingdom-webadm-1', 'network.interface_ip')['euw2a-prd-unixkingdom-webadm-1'] %}
-{% set passbolt_ip = salt['mine.get']('euw2a-prd-unixkingdom-passbolt-1', 'network.interface_ip')['euw2a-prd-unixkingdom-passbolt-1'] %}
 
 install MariaDB service:
   pkg.installed:
@@ -104,36 +103,6 @@ Grant right for database user WebADM on WebADM database:
     - database: webadm.*
     - user: {{ pillar['mysql_webadm_user'] }}
     - connection_charset: utf8
-
-Create database for passbolt:
-  mysql_database.present:
-    - name: 'passbolt'
-    - host: localhost
-    - character_set: utf8mb4
-    - collate: utf8mb4_unicode_ci
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8mb4
-
-Create database user for passbolt:
-  mysql_user.present:
-    - host: '{{ passbolt_ip }}'
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - connection_charset: utf8
-    - name: {{ pillar['mysql_passbolt_user'] }}
-    - password: {{ pillar['mysql_passbolt_password'] }}
-
-Grant right for database user passbolt on passbolt database:
-  mysql_grants.present:
-    - host: '{{ passbolt_ip }}'
-    - connection_user: 'root'
-    - connection_pass: {{ pillar['mysql_root_password'] }}
-    - grant : all privileges
-    - database: passbolt.*
-    - user: {{ pillar['mysql_passbolt_user'] }}
-    - connection_charset: utf8
-
 
 Restart MariaDB service:
   module.wait:

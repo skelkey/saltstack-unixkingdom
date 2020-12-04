@@ -4,7 +4,6 @@ base:
   '*openvpn*':
     - openvpn
   '*mariadb*':
-    - common_passbolt
     - common_webadm
     - mariadb
   '*bind*':
@@ -34,10 +33,6 @@ base:
   '*strongswan*':
     - common_letsencrypt
     - people
-  '*passbolt*':
-    - common_ldap
-    - common_passbolt
-    - passbolt
   '*bitwarden*':
     - common_smtp
     - bitwarden

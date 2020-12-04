@@ -1,4 +1,0 @@
-URI    ldaps://ldap.unix-kingdom.lan
-BASE   ou=Users,o=UnixKingdom
-BINDDN {{ pillar['ldap_readonly_user'] }}
-

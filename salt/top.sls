@@ -21,7 +21,5 @@ base:
     - waproxy
   '*radius*':
     - radius
-  '*passbolt*':
-    - passbolt
   '*bitwarden*':
     - bitwarden

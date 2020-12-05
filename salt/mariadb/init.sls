@@ -1,4 +1,5 @@
 {% set webadm_ip = salt['mine.get']('euw2a-prd-unixkingdom-webadm-1', 'network.interface_ip')['euw2a-prd-unixkingdom-webadm-1'] %}
+{% set zabbix_ip = salt['mine.get']('euw2a-prd-unixkingdom-zabbix-1', 'network.interface_ip')['euw2a-prd-unixkingdom-zabbix-1'] %}
 
 install MariaDB service:
   pkg.installed:
@@ -102,6 +103,35 @@ Grant right for database user WebADM on WebADM database:
     - grant : all privileges
     - database: webadm.*
     - user: {{ pillar['mysql_webadm_user'] }}
+    - connection_charset: utf8
+
+Create database for Zabbix:
+  mysql_database.present:
+    - name: 'zabbix'
+    - host: localhost
+    - character_set: utf8
+    - collate: utf8_bin
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - connection_charset: utf8
+
+Create database user for zabbix:
+  mysql_user.present:
+    - host: '{{ zabbix_ip }}'
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - connection_charset: utf8
+    - name: {{ pillar['mysql_zabbix_user'] }}
+    - password: {{ pillar['mysql_zabbix_password'] }}
+
+Grant right for database user zabbix on zabbix database:
+  mysql_grants.present:
+    - host: '{{ zabbix_ip }}'
+    - connection_user: 'root'
+    - connection_pass: {{ pillar['mysql_root_password'] }}
+    - grant : all privileges
+    - database: zabbix.*
+    - user: {{ pillar['mysql_zabbix_user'] }}
     - connection_charset: utf8
 
 Restart MariaDB service:

@@ -4,6 +4,7 @@ base:
   '*openvpn*':
     - openvpn
   '*mariadb*':
+    - common_zabbix
     - common_webadm
     - mariadb
   '*bind*':
@@ -36,3 +37,5 @@ base:
   '*bitwarden*':
     - common_smtp
     - bitwarden
+  '*zabbix*':
+    - common_zabbix

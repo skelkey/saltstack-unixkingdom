@@ -23,3 +23,5 @@ base:
     - radius
   '*bitwarden*':
     - bitwarden
+  '*zabbix*':
+    - zabbix

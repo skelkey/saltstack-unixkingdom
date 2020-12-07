@@ -2,15 +2,6 @@ Install mysql-client:
   pkg.installed:
     - name: python3-mysqlclient
 
-Install zabbix agent:
-  pkg.installed:
-    - name: zabbix-agent
-
-Start and enable zabbix-agent service:
-  service.running:
-    - name: zabbix-agent
-    - enable: true
-
 Set selinux boolean httpd_can_network_connect_db:
   selinux.boolean:
     - name: httpd_can_network_connect_db

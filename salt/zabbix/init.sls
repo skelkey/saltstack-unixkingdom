@@ -23,10 +23,10 @@ Deploy zabbix configuration:
     - mode: 640
     - template: jinja
 
-Configure httpd for ssl:
+Deploy httpd configuration for ssl:
   file.managed:
-    - name: /etc/httpd/conf/httpd.conf
-    - source: salt://zabbix/httpd.conf
+    - name: /etc/httpd/conf.d/ssl.conf
+    - source: salt://zabbix/ssl.conf
     - user: root
     - group: root
     - mode: 644

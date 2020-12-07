@@ -134,30 +134,6 @@ Grant right for database user zabbix on zabbix database:
     - user: {{ pillar['mysql_zabbix_user'] }}
     - connection_charset: utf8
 
-Deploy zabbix database schema.sql:
-  mysql_query.run_file:
-    - database: zabbix
-    - connection_user: {{ pillar['mysql_zabbix_user'] }}
-    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
-    - output: "/tmp/schema.sql.txt"
-    - query_file: salt://mysql/schema.sql
-
-Deploy zabbix database images.sql:
-  mysql_query.run_file:
-    - database: zabbix
-    - connection_user: {{ pillar['mysql_zabbix_user'] }}
-    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
-    - output: "/tmp/images.sql.txt"
-    - query_file: salt://mysql/images.sql
-
-Deploy zabbix database data.sql:
-  mysql_query.run_file:
-    - database: zabbix
-    - connection_user: {{ pillar['mysql_zabbix_user'] }}
-    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
-    - output: "/tmp/data.sql.txt"
-    - query_file: salt://mysql/data.sql
-
 Restart MariaDB service:
   module.wait:
     - name: service.restart

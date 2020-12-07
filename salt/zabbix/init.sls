@@ -1,3 +1,7 @@
+Install mysql-client:
+  pkg.installed:
+    - name: community-mysql
+
 Install zabbix agent:
   pkg.installed:
     - name: zabbix-agent
@@ -88,6 +92,30 @@ Deploy zabbix httpd configuration:
     - user: root
     - group: root
     - mode: 400
+
+Deploy zabbix database schema.sql:
+  mysql_query.run_file:
+    - database: zabbix
+    - connection_user: {{ pillar['mysql_zabbix_user'] }}
+    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
+    - output: "/tmp/schema.sql.txt"
+    - query_file: "/usr/share/zabbix-mysql/schema.sql"
+
+Deploy zabbix database images.sql:
+  mysql_query.run_file:
+    - database: zabbix
+    - connection_user: {{ pillar['mysql_zabbix_user'] }}
+    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
+    - output: "/tmp/images.sql.txt"
+    - query_file: "/usr/share/zabbix-mysql/images.sql"
+
+Deploy zabbix database data.sql:
+  mysql_query.run_file:
+    - database: zabbix
+    - connection_user: {{ pillar['mysql_zabbix_user'] }}
+    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
+    - output: "/tmp/data.sql.txt"
+    - query_file: "/usr/share/zabbix-mysql/data.sql"
 
 Start and enable zabbix-server service:
   service.running:

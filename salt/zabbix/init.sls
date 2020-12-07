@@ -19,6 +19,12 @@ Set selinux boolean httpd_can_connect_zabbix:
     - value: true
     - persist: true
 
+Set selinux boolean zabbix_can_network:
+  selinux.boolean:
+    - name: zabbix_can_network
+    - value: true
+    - persist: true
+
 Install zabbix server:
   pkg.installed:
     - pkgs:

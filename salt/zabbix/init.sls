@@ -14,7 +14,7 @@ Set selinux boolean httpd_can_network_connect_db:
     - persist: true
 
 Set selinux boolean httpd_can_connect_zabbix:
-  selinux.boolean
+  selinux.boolean:
     - name: httpd_can_connect_zabbix
     - value: true
     - persist: true

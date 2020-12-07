@@ -99,8 +99,8 @@ Deploy zabbix database schema.sql:
   mysql_query.run_file:
     - database: zabbix
     - host: {{ mariadb_ip }}
-    - connection_user: {{ pillar['mysql_zabbix_user'] }}
-    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
+    - user: {{ pillar['mysql_zabbix_user'] }}
+    - pass: {{ pillar['mysql_zabbix_password'] }}
     - output: "/tmp/schema.sql.txt"
     - query_file: "/usr/share/zabbix-mysql/schema.sql"
 
@@ -108,8 +108,8 @@ Deploy zabbix database images.sql:
   mysql_query.run_file:
     - database: zabbix
     - host: {{ mariadb_ip }}
-    - connection_user: {{ pillar['mysql_zabbix_user'] }}
-    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
+    - user: {{ pillar['mysql_zabbix_user'] }}
+    - pass: {{ pillar['mysql_zabbix_password'] }}
     - output: "/tmp/images.sql.txt"
     - query_file: "/usr/share/zabbix-mysql/images.sql"
 
@@ -117,8 +117,8 @@ Deploy zabbix database data.sql:
   mysql_query.run_file:
     - database: zabbix
     - host: {{ mariadb_ip }}
-    - connection_user: {{ pillar['mysql_zabbix_user'] }}
-    - connection_pass: {{ pillar['mysql_zabbix_password'] }}
+    - user: {{ pillar['mysql_zabbix_user'] }}
+    - pass: {{ pillar['mysql_zabbix_password'] }}
     - output: "/tmp/data.sql.txt"
     - query_file: "/usr/share/zabbix-mysql/data.sql"
 

@@ -124,7 +124,7 @@ Deploy zabbix database data.sql:
 
 Start and enable zabbix-server service:
   service.running:
-    - name: zabbix-server
+    - name: zabbix-server-mysql
     - enable: true
 
 Start and enable httpd service:

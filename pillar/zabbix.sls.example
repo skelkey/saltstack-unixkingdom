@@ -1,0 +1,12 @@
+zabbix_crt: |
+    ----BEGIN CERTIFICATE-----
+    MIIInzCCBIegAwIBAgIUQ/FIRomWyUqmtBZ065IyuQTGVbswDQYJKoZIhvcNAQEL
+    ...
+    90R9
+    -----END CERTIFICATE-----
+zabbix_key: |
+    -----BEGIN PRIVATE KEY-----
+    MIIJRAIBADANBgkqhkiG9w0BAQEFAASCCS4wggkqAgEAAoICAQCyACOc2YHjvMpH
+    ...
+    R4i2dr4aAnAGrk1LKTzetrlj1shjDEDV
+    -----END PRIVATE KEY-----

@@ -39,3 +39,4 @@ base:
     - bitwarden
   '*zabbix*':
     - common_zabbix
+    - zabbix

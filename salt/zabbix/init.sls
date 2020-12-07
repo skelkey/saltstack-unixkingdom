@@ -12,6 +12,42 @@ Install zabbix server:
     - pkgs:
       - zabbix-server
       - zabbix-web
+      - mod_ssl
+
+Deploy zabbix configuration:
+  file.managed:
+    - name: /etc/zabbix_server.conf
+    - source: salt://zabbix/zabbix_server.conf
+    - user: root
+    - group: zabbixsrv
+    - mode: 640
+    - template: jinja
+
+Configure httpd for ssl:
+  file.managed:
+    - name: /etc/httpd/conf/httpd.conf
+    - source: salt://zabbix/httpd.conf
+    - user: root
+    - group: root
+    - mode: 644
+
+Deploy zabbix certificate:
+  file.managed:
+    - name: /etc/httpd/server.crt
+    - user: root
+    - group: root
+    - mode: 640
+    - contents_pillar:
+      - zabbix_crt
+
+Deploy zabbix private key:
+  file.managed:
+    - name: /etc/httpd/server.key
+    - user: root
+    - group: root
+    - mode: 400
+    - contents_pillar:
+      - zabbix_key
 
 Start and enable zabbix-server service:
   service.running:

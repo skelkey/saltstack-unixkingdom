@@ -7,6 +7,18 @@ Start and enable zabbix-agent service:
     - name: zabbix-agent
     - enable: true
 
+Set selinux boolean httpd_can_network_connect_db:
+  selinux.boolean:
+    - name: httpd_can_network_connect_db
+    - value: true
+    - persist: true
+
+Set selinux boolean httpd_can_connect_zabbix:
+  selinux.boolean
+    - name: httpd_can_connect_zabbix
+    - value: true
+    - persist: true
+
 Install zabbix server:
   pkg.installed:
     - pkgs:

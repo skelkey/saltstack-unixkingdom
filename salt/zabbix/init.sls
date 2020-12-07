@@ -49,6 +49,18 @@ Deploy zabbix private key:
     - contents_pillar:
       - zabbix_key
 
+Remove welcome.conf file:
+  file.absent:
+    - name: /etc/httpd/conf.d/welcome.conf
+
+Deploy zabbix httpd configuration:
+  file.managed:
+    - name: /etc/httpd/conf.d/zabbix.conf
+    - source: salt://zabbix/zabbix.conf
+    - user: root
+    - group: root
+    - mode: 400
+
 Start and enable zabbix-server service:
   service.running:
     - name: zabbix-server

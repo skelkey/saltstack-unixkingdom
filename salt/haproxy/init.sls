@@ -54,6 +54,15 @@ Deploy certificate for bitwarden:
     - mode: 0600
     - template: jinja
 
+Deploy certificate for zabbix:
+  file.managed:
+    - name: /etc/haproxy/zabbix.pem
+    - source: salt://haproxy/zabbix.pem
+    - user: root
+    - group: root
+    - mode: 0600
+    - template: jinja
+
 Start and enable rsyslog service:
   service.running:
     - name: haproxy

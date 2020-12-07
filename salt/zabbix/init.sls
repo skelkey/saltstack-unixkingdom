@@ -94,7 +94,7 @@ Deploy zabbix httpd configuration:
     - mode: 400
 
 {% set mariadb_ip = salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] %}
-
+{% if not salt['file.file_exists']('/etc/zabbix/web/zabbix.conf.php') %}
 Deploy zabbix database schema.sql:
   mysql_query.run_file:
     - database: zabbix
@@ -121,6 +121,7 @@ Deploy zabbix database data.sql:
     - connection_pass: {{ pillar['mysql_zabbix_password'] }}
     - output: "/tmp/data.sql.txt"
     - query_file: "/usr/share/zabbix-mysql/data.sql"
+{% endif %}
 
 Start and enable zabbix-server service:
   service.running:

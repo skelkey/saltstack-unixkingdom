@@ -9,12 +9,12 @@ install m2crypto:
     - name: python3-m2crypto
 
 # FIXME : Condition must disappear when SaltStack upgraded
+{% if grains['osrelease'] == '28' %}
 set system hostname:
   network.system:
     - hostname: {{ grains['id'] }}
-    {% if grains['osrelease'] == '28' %}
     - apply_hostname: True
-    {% endif %}
+{% endif %}
     
 {% if grains['osrelease'] >= '30' %}
 restart network for Fedora 33:
@@ -38,3 +38,21 @@ update ca trustore:
     - cwd: /root
     - runas: root
     - shell: /bin/bash
+
+Install zabbix agent:
+  pkg.installed:
+    - name: zabbix-agent
+
+Configure zabbix-agent:
+  file.managed:
+    - name: /etc/zabbix_agentd.conf
+    - source: salt://common/zabbix_agentd.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+
+Start and enable zabbix-agent service:
+  service.running:
+    - name: zabbix-agent
+    - enable: true

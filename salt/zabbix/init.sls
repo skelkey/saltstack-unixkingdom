@@ -14,6 +14,14 @@ Install zabbix server:
       - zabbix-web
       - mod_ssl
 
+Deploy new php.ini configuration:
+  file.managed:
+    - name: /etc/php.ini
+    - source: salt://zabbix/php.ini
+    - user: root
+    - group: root
+    - mode: 644
+
 Deploy zabbix configuration:
   file.managed:
     - name: /etc/zabbix_server.conf

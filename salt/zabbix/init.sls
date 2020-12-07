@@ -1,6 +1,6 @@
 Install mysql-client:
   pkg.installed:
-    - name: community-mysql
+    - name: python3-mysqlclient
 
 Install zabbix agent:
   pkg.installed:
@@ -93,9 +93,12 @@ Deploy zabbix httpd configuration:
     - group: root
     - mode: 400
 
+{% set mariadb_ip = salt['mine.get']('euw2a-prd-unixkingdom-mariadb-1', 'network.interface_ip')['euw2a-prd-unixkingdom-mariadb-1'] %}
+
 Deploy zabbix database schema.sql:
   mysql_query.run_file:
     - database: zabbix
+    - host: {{ mariadb_ip }}
     - connection_user: {{ pillar['mysql_zabbix_user'] }}
     - connection_pass: {{ pillar['mysql_zabbix_password'] }}
     - output: "/tmp/schema.sql.txt"
@@ -104,6 +107,7 @@ Deploy zabbix database schema.sql:
 Deploy zabbix database images.sql:
   mysql_query.run_file:
     - database: zabbix
+    - host: {{ mariadb_ip }}
     - connection_user: {{ pillar['mysql_zabbix_user'] }}
     - connection_pass: {{ pillar['mysql_zabbix_password'] }}
     - output: "/tmp/images.sql.txt"
@@ -112,6 +116,7 @@ Deploy zabbix database images.sql:
 Deploy zabbix database data.sql:
   mysql_query.run_file:
     - database: zabbix
+    - host: {{ mariadb_ip }}
     - connection_user: {{ pillar['mysql_zabbix_user'] }}
     - connection_pass: {{ pillar['mysql_zabbix_password'] }}
     - output: "/tmp/data.sql.txt"

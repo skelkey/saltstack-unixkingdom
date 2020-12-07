@@ -39,6 +39,8 @@ Deploy zabbix certificate:
     - mode: 640
     - contents_pillar:
       - zabbix_crt
+      - server_unixkingdom_ca
+      - unixkingdom_ca
 
 Deploy zabbix private key:
   file.managed:

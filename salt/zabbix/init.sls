@@ -20,6 +20,12 @@ Set selinux boolean zabbix_can_network:
     - value: true
     - persist: true
 
+Set selinux boolean httpd_can_connect_ldap:
+  selinux.boolean:
+    - name: httpd_can_connect_ldap
+    - value: true
+    - persist: true
+
 Install zabbix server:
   pkg.installed:
     - pkgs:

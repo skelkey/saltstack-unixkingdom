@@ -21,7 +21,5 @@ base:
     - waproxy
   '*radius*':
     - radius
-  '*bitwarden*':
-    - bitwarden
   '*zabbix*':
     - zabbix

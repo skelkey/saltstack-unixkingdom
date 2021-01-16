@@ -45,15 +45,6 @@ Deploy certificate for waproxy:
     - mode: 0600
     - template: jinja
 
-Deploy certificate for bitwarden:
-  file.managed:
-    - name: /etc/haproxy/bitwarden.pem
-    - source: salt://haproxy/bitwarden.pem
-    - user: root
-    - group: root
-    - mode: 0600
-    - template: jinja
-
 Deploy certificate for zabbix:
   file.managed:
     - name: /etc/haproxy/zabbix.pem

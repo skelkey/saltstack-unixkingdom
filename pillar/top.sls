@@ -34,9 +34,6 @@ base:
   '*strongswan*':
     - common_letsencrypt
     - people
-  '*bitwarden*':
-    - common_smtp
-    - bitwarden
   '*zabbix*':
     - common_zabbix
     - zabbix

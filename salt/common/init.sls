@@ -42,6 +42,7 @@ update ca trustore:
 Install zabbix agent:
   pkg.installed:
     - name: zabbix-agent
+    - version: '1:5.0.7*'
 
 Configure zabbix-agent:
   file.managed:

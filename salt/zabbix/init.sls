@@ -30,8 +30,8 @@ Set selinux boolean httpd_can_connect_ldap:
 Install zabbix server:
   pkg.installed:
     - pkgs:
-      - zabbix-server: '1:5.0.7-3'
-      - zabbix-web: '1:5.0.7-3'
+      - zabbix-server: '1:5.0.7*'
+      - zabbix-web: '1:5.0.7*'
       - mod_ssl: '2.4.46*'
 
 Deploy new php.ini configuration:

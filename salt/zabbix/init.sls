@@ -1,7 +1,7 @@
 Install mysql-client:
   pkg.installed:
     - name: python3-mysqlclient
-    - version: 1.4.6-5
+    - version: '1.4.6*'
 
 Set selinux boolean httpd_can_network_connect_db:
   selinux.boolean:
@@ -30,9 +30,9 @@ Set selinux boolean httpd_can_connect_ldap:
 Install zabbix server:
   pkg.installed:
     - pkgs:
-      - zabbix-server: 5.0.7-3
-      - zabbix-web: 5.0.7-3
-      - mod_ssl: 2.4.46-9
+      - zabbix-server: '5.0.7*'
+      - zabbix-web: '5.0.7*'
+      - mod_ssl: '2.4.46*'
 
 Deploy new php.ini configuration:
   file.managed:

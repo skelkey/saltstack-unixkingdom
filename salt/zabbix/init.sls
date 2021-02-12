@@ -1,7 +1,7 @@
 Install mysql-client:
   pkg.installed:
     - name: python3-mysqlclient
-    - version: '2.0.0-1'
+    - version: '2.0.0*'
 
 Set selinux boolean httpd_can_network_connect_db:
   selinux.boolean:

@@ -50,7 +50,7 @@ Install zabbix agent:
 Install zabbix agent:
   pkg.installed:
     - name: zabbix-agent
-    - version: '1:5.0.7*'
+    - version: '1:5.0.8*'
 {% endif %}
 
 Configure zabbix-agent:

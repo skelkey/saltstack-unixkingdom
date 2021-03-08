@@ -14,4 +14,4 @@ Install Java 11 Development Kit:
 Install OpenDistro service:
   pkg.installed:
     - name: opendistroforelasticsearch
-    - version: '1:1.13.1*'
+    - version: '1.13.1-1'

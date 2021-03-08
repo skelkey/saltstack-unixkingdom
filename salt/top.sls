@@ -23,3 +23,5 @@ base:
     - radius
   '*zabbix*':
     - zabbix
+  '*elasticsearch*':
+    - elasticsearch

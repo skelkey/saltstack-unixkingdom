@@ -15,3 +15,8 @@ Install OpenDistro service:
   pkg.installed:
     - name: opendistroforelasticsearch
     - version: '1.13.1-1'
+
+Start and enable elasticsearch service:
+  service.running:
+    - name: elasticsearch
+    - enable: true

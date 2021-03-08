@@ -1,6 +1,6 @@
 $ttl 86400
 unix-kingdom.lan. IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.fr. (
-    2021011600
+    2021030800
     10800
     3600
     604800
@@ -24,6 +24,7 @@ euw2a-prd-unixkingdom-haproxy-1   IN A {{ salt['mine.get']('euw2a-prd-unixkingdo
 euw2a-prd-unixkingdom-waproxy-1   IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-waproxy-1', 'network.interface_ip')['euw2a-prd-unixkingdom-waproxy-1'] }}
 euw2a-prd-unixkingdom-radius-1   IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-radius-1', 'network.interface_ip')['euw2a-prd-unixkingdom-radius-1'] }}
 euw2a-prd-unixkingdom-zabbix-1   IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-zabbix-1', 'network.interface_ip')['euw2a-prd-unixkingdom-zabbix-1'] }}
+euw2a-prd-unixkingdom-elasticsearch-1    IN A {{ salt['mine.get']('euw2a-prd-unixkingdom-elasticsearch-1', 'network.interface_ip')['euw2a-prd-unixkingdom-elasticsearch-1'] }}
 
 ldap      IN CNAME euw2a-prd-unixkingdom-ldap-1
 webadm    IN CNAME euw2a-prd-unixkingdom-haproxy-1

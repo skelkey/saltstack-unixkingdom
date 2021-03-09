@@ -7,6 +7,10 @@ Adding OpenDistro repository:
     - group: root
     - mode: 644
 
+Install chkconfig:
+  pkg.installed:
+    - name: chkconfig
+
 Install OpenDistro service:
   pkg.installed:
     - name: opendistroforelasticsearch-kibana

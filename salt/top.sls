@@ -25,3 +25,5 @@ base:
     - zabbix
   '*elasticsearch*':
     - elasticsearch
+  '*kibana*':
+    - kibana

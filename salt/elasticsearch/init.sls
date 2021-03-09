@@ -27,6 +27,7 @@ Deploy configuration for OpenDistro ElasticSearch:
     - user: root
     - group: elasticsearch
     - mode: 0660
+    - template: jinja
 
 Start and enable elasticsearch service:
   service.running:

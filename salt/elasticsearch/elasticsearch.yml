@@ -52,7 +52,8 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-network.host: 0.0.0.0
+{% set elasticsearch_ip = salt['mine.get']('euw2a-prd-unixkingdom-elasticsearch-1', 'network.interface_ip')['euw2a-prd-unixkingdom-elasticsearch-1'] %}
+network.host: {{ elasticsearch_ip }}
 #
 # Set a custom port for HTTP:
 #

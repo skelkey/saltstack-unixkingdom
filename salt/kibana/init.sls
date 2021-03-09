@@ -12,7 +12,15 @@ Install OpenDistro service:
     - name: opendistroforelasticsearch-kibana
     - version: '1.13.1-1'
 
-Start and enable elasticsearch service:
+Deploy configuration for OpenDistro Kibana:
+  file.managed:
+    - name: /etc/kibana/kibana.yml
+    - source: salt://kibana/kibana.yml
+    - user: root
+    - group: root
+    - mode: 0644
+
+Start and enable kibana service:
   service.running:
-    - name: elasticsearch
+    - name: kibana
     - enable: true

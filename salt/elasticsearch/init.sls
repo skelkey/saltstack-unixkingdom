@@ -20,6 +20,14 @@ Install OpenDistro service:
     - name: opendistroforelasticsearch
     - version: '1.13.1-1'
 
+Deploy configuration for OpenDistro ElasticSearch:
+  file.managed:
+    - name: /etc/elasticsearch/elasticsearch.yml
+    - source: salt://elasticsearch/elasticsearch.yml
+    - user: root
+    - group: elasticsearch
+    - mode: 0660
+
 Start and enable elasticsearch service:
   service.running:
     - name: elasticsearch

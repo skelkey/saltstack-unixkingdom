@@ -58,7 +58,7 @@ Deploy configuration for OpenDistro ElasticSearch:
     - mode: 0660
     - template: jinja
 
-Remove demo certificate:
+Remove demo certificate key:
   file.absent:
     - /etc/elasticsearch/kirk-key.pem
 

@@ -37,3 +37,5 @@ base:
   '*zabbix*':
     - common_zabbix
     - zabbix
+  '*elasticsearch*':
+    - elasticsearch

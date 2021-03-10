@@ -60,11 +60,11 @@ Deploy configuration for OpenDistro ElasticSearch:
 
 Remove demo certificate key:
   file.absent:
-    - /etc/elasticsearch/kirk-key.pem
+    - name: /etc/elasticsearch/kirk-key.pem
 
 Remove demo certificate:
   file.absent:
-    - /etc/elasticsearch/kirk.pem
+    - name: /etc/elasticsearch/kirk.pem
 
 Start and enable elasticsearch service:
   service.running:

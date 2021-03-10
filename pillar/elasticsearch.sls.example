@@ -1,3 +1,4 @@
+admin_dn: CN=kirk,OU=client,O=client,L=test, C=de
 elasticsearch_crt: |
     -----BEGIN CERTIFICATE-----
     MIIF7zCCBNegAwIBAgIRANdVj9r18RBbshMoK3B3KaMwDQYJKoZIhvcNAQEFBQAw

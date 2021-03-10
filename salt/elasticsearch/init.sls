@@ -58,6 +58,14 @@ Deploy configuration for OpenDistro ElasticSearch:
     - mode: 0660
     - template: jinja
 
+Remove demo certificate:
+  file.absent:
+    - /etc/elasticsearch/kirk-key.pem
+
+Remove demo certificate:
+  file.absent:
+    - /etc/elasticsearch/kirk.pem
+
 Start and enable elasticsearch service:
   service.running:
     - name: elasticsearch

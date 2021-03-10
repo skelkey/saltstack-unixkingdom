@@ -20,6 +20,35 @@ Install OpenDistro service:
     - name: opendistroforelasticsearch
     - version: '1.13.1-1'
 
+Deploy elasticsearch certificate:
+  file.managed:
+    - name: /etc/elasticsearch/esnode.pem
+    - user: root
+    - group: elasticsearch
+    - mode: 644
+    - contents_pillar:
+      - elasticsearch_crt
+      - server_unixkingdom_ca
+      - unixkingdom_ca
+
+Deploy elasticsearch private key:
+  file.managed:
+    - name: /etc/elasticsearch/esnode-key.pem
+    - user: root
+    - group: elasticsearch
+    - mode: 644
+    - contents_pillar:
+      - elasticsearch_key
+
+Deploy unixkingdom root CA for elasticseach:
+  file.managed:
+    - name: /etc/elasticsearch/root-ca.pem
+    - user: root
+    - group: elasticsearch
+    - mode: 644
+    - contents_pillar:
+      - unixkingdom_ca
+
 Deploy configuration for OpenDistro ElasticSearch:
   file.managed:
     - name: /etc/elasticsearch/elasticsearch.yml

@@ -52,10 +52,15 @@ Link letsencrypt private key to strongswan private key:
     - name: /etc/strongswan/swanctl/private/privkey.pem
     - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/privkey.pem
 
-Link letsencrypt fullchain to strongswan certs:
+Link letsencrypt cert to strongswan certs:
   file.symlink:
-    - name: /etc/strongswan/swanctl/x509/fullchain.pem
-    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/fullchain.pem
+    - name: /etc/strongswan/swanctl/x509/cert.pem
+    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/cert.pem
+
+Link letsencrypt intermediate ca to strongswan CA:
+  file.symlink:
+    - name: /etc/strongswan/swanctl/x509ca/chain.pem
+    - target: /etc/letsencrypt/live/vpn.unix-kingdom.fr/chain.pem
 
 Deploy unixkingdom CA to strongswan CA:
   file.managed:

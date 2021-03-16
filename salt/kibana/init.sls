@@ -28,7 +28,7 @@ Deploy certificate for OpenDistro Kibana:
   file.managed:
     - name: /etc/kibana/server.crt
     - user: kibana
-    - group: roo
+    - group: root
     - mode: 640
     - contents_pillar:
       - kibana_crt

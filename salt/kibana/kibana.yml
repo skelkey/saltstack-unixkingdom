@@ -35,3 +35,4 @@ security.showInsecureClusterWarning: false
 server.ssl.certificate: "/etc/kibana/server.crt"
 server.ssl.key: "/etc/kibana/server.key"
 server.ssl.enabled: true
+server.host: "0.0.0.0"

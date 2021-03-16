@@ -32,3 +32,6 @@ telemetry.optIn: false
 telemetry.enabled: false
 security.showInsecureClusterWarning: false
 
+server.ssl.certificate: "/etc/kibana/server.crt"
+server.ssl.key: "/etc/kibana/server.key"
+server.ssl.enabled: true

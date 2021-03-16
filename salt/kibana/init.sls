@@ -24,6 +24,26 @@ Deploy configuration for OpenDistro Kibana:
     - group: root
     - mode: 0644
 
+Deploy certificate for OpenDistro Kibana:
+  file.managed:
+    - name: /etc/kibana/server.crt
+    - user: root
+    - group: root
+    - mode: 640
+    - contents_pillar:
+      - unixkingdom_ca
+      - server_unixkingdom_ca
+      - kibana_crt
+
+Deploy private key for OpenDistro Kibana:
+  file.managed:
+    - name: /etc/kibana/server.key
+    - user: root
+    - group: root
+    - mode: 400
+    - contents_pillar:
+      - kibana_key
+
 Start and enable kibana service:
   service.running:
     - name: kibana

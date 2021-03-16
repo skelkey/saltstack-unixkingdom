@@ -1,6 +1,6 @@
 $ttl 86400
 unix-kingdom.lan. IN SOA ns1.unix-kingdom.lan. abuse.unix-kingdom.fr. (
-    2021030900
+    2021031600
     10800
     3600
     604800
@@ -32,3 +32,4 @@ webadm    IN CNAME euw2a-prd-unixkingdom-haproxy-1
 waproxy   IN CNAME euw2a-prd-unixkingdom-haproxy-1
 zabbix    IN CNAME euw2a-prd-unixkingdom-haproxy-1
 radius    IN CNAME euw2a-prd-unixkingdom-radius-1
+kibana    IN CNAME euw2a-prd-unixkingdom-haproxy-1

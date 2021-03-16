@@ -27,6 +27,15 @@ Deploy configuration for rsyslog:
     - group: root
     - mode: 0644
 
+Deploy certificate for kibana:
+  file.managed:
+    - name: /etc/haproxy/kibana.pem
+    - source: salt://haproxy/kibana.pem
+    - user: root
+    - group: root
+    - mode: 0600
+    - template: jinja
+
 Deploy certificate for webadm:
   file.managed:
     - name: /etc/haproxy/webadm.pem

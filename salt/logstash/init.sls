@@ -30,3 +30,8 @@ Deploy logstash configuration:
     - group: root
     - mode: 644
     - template: jinja
+
+Start and enable logstash service:
+  service.running:
+    - name: logstash
+    - enable: true

@@ -18,7 +18,7 @@ Adding Elastic repository:
 
 Install logstash service:
   pkg.installed:
-    - name: logstash
+    - name: logstash-oss
     - version: '7.11.2'
 
 Deploy logstash configuration:

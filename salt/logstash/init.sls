@@ -14,7 +14,7 @@ Adding Elastic repository:
     - enabled: true
     - humanname: unix-kingdom repository
     - baseurl: https://artifacts.elastic.co/packages/7.x/yum
-    - gpgkey: file:///etc/pki/rpm-gpg/GPG-KEY-unixkingdom
+    - gpgkey: file:///etc/pki/rpm-gpg/GPG-KEY-elasticsearch
     - gpgcheck: 1
 
 Install logstash service:

@@ -27,3 +27,5 @@ base:
     - elasticsearch
   '*kibana*':
     - kibana
+  '*logstash*':
+    - logstash

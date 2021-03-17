@@ -9,11 +9,10 @@ Adding Elastic signing public key:
 
 Adding Elastic repository:
   pkgrepo.managed:
-    - name: logstash-7.x
-    - humanname: Elastic repository for 7.x packages
+    - name: oss-logstash-7.x
+    - humanname: Elastic community repository for 7.x packages
     - enabled: true
-    - humanname: unix-kingdom repository
-    - baseurl: https://artifacts.elastic.co/packages/7.x/yum
+    - baseurl: https://artifacts.elastic.co/packages/oss-7.x/yum
     - gpgkey: file:///etc/pki/rpm-gpg/GPG-KEY-elasticsearch
     - gpgcheck: 1
 

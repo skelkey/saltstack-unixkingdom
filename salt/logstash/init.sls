@@ -17,3 +17,7 @@ Adding Elastic repository:
     - gpgkey: file:///etc/pki/rpm-gpg/GPG-KEY-unixkingdom
     - gpgcheck: 1
 
+Install logstash service:
+  pkg.installed:
+    - name: logstash
+    - version: '7.11.2'

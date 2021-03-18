@@ -33,7 +33,7 @@ Deploy logstash configuration:
 Deploy UnixKingdom CA for logstash:
   file.managed:
     - name: /etc/logstash/ca.crt
-    - user: root
+    - user: logstash
     - group: root
     - mode: 640
     - contents_pillar:

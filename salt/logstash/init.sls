@@ -30,6 +30,15 @@ Deploy logstash configuration:
     - mode: 644
     - template: jinja
 
+Deploy UnixKingdom CA for logstash:
+  file.managed:
+    - name: /etc/logstash/ca.crt
+    - user: root
+    - group: root
+    - mode: 640
+    - contents_pillar:
+      - unixkingdom_ca
+
 Start and enable logstash service:
   service.running:
     - name: logstash

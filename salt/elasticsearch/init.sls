@@ -82,7 +82,6 @@ Create elasticsearch admin certificate:
     - group: elasticsearch
     - mode: 640
     - contents_pillar:
-      - unixkingdom_ca
       - people_unixkingdom_ca
       - es_admin_cert
 

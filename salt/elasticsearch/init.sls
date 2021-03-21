@@ -82,6 +82,7 @@ Create elasticsearch admin certificate:
     - group: elasticsearch
     - mode: 640
     - contents_pillar:
+      - people_unixkingdom_ca
       - es_admin_cert
 
 Start and enable elasticsearch service:

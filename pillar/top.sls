@@ -38,6 +38,7 @@ base:
     - common_zabbix
     - zabbix
   '*elasticsearch*':
+    - people
     - elasticsearch
   '*kibana*':
     - kibana

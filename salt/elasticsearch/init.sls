@@ -40,7 +40,7 @@ Deploy elasticsearch private key:
     - contents_pillar:
       - elasticsearch_key
 
-Deploy unixkingdom root CA for elasticseach:
+Deploy unixkingdom root CA for elasticsearch:
   file.managed:
     - name: /etc/elasticsearch/root-ca.pem
     - user: root
@@ -77,7 +77,7 @@ Create elasticsearch admin certificate key:
 
 Create elasticsearch admin certificate:
   file.managed:
-    - name: /etc/elasticseach/elasticsearch-cert.pem
+    - name: /etc/elasticsearch/elasticsearch-cert.pem
     - user: root
     - group: elasticsearch
     - mode: 640

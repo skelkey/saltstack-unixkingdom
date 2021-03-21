@@ -36,7 +36,7 @@ Deploy elasticsearch private key:
     - name: /etc/elasticsearch/esnode-key.pem
     - user: root
     - group: elasticsearch
-    - mode: 644
+    - mode: 640
     - contents_pillar:
       - elasticsearch_key
 
@@ -65,6 +65,24 @@ Remove demo certificate key:
 Remove demo certificate:
   file.absent:
     - name: /etc/elasticsearch/kirk.pem
+
+Create elasticsearch admin certificate key:
+  file.managed:
+    - name: /etc/elasticsearch/elasticsearch-key.pem
+    - user: root
+    - group: elasticsearch
+    - mode: 640
+    - contents_pillar:
+      - es_admin_key
+
+Create elasticsearch admin certificate:
+  file.managed:
+    - name: /etc/elasticseach/elasticsearch-cert.pem
+    - user: root
+    - group: elasticsearch
+    - mode: 640
+    - contents_pillar:
+      - es_admin_cert
 
 Start and enable elasticsearch service:
   service.running:

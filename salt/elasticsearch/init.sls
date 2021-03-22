@@ -85,6 +85,15 @@ Create elasticsearch admin certificate:
       - people_unixkingdom_ca
       - es_admin_cert
 
+Deploy internal user configuration:
+  file.managed:
+    - name: /usr/share/elasticsearch/plugins/opendistro_security/securityconfig/internal_users.yml
+    - source: salt://elasticsearch/internal_users.yml
+    - user: root
+    - group: elasticsearch
+    - mode: 640
+    - template: jinja
+
 Start and enable elasticsearch service:
   service.running:
     - name: elasticsearch

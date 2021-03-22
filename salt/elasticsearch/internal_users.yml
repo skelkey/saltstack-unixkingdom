@@ -1,0 +1,61 @@
+---
+# This is the internal user database
+# The hash value is a bcrypt hash and can be generated with plugin/tools/hash.sh
+
+_meta:
+  type: "internalusers"
+  config_version: 2
+
+# Define your internal users here
+
+{% set admin_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['admin_password'] }}') %}
+{% set kibanaserver_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['kibanaserver_password'] }}') %}
+{% set kibanaro_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['kibanaro_password'] }}') %}
+{% set logstash_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['logstash_password'] }}') %}
+{% set readall_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['readall_password'] }}') %}
+{% set snapshotrestore_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['snapshotrestore_password'] }}') %}
+
+admin:
+  hash: "{{ admin_password }}"
+  reserved: true
+  backend_roles:
+  - "admin"
+  description: "admin user"
+
+kibanaserver:
+  hash: "{{ kibanaserver_password }}"
+  reserved: true
+  description: "kibanaserver user"
+
+kibanaro:
+  hash: "{{ kibanaro_password }}"
+  reserved: false
+  backend_roles:
+  - "kibanauser"
+  - "readall"
+  attributes:
+    attribute1: "value1"
+    attribute2: "value2"
+    attribute3: "value3"
+  description: "kibanaro user"
+
+logstash:
+  hash: "{{ logstash_password }}"
+  reserved: false
+  backend_roles:
+  - "logstash"
+  description: "logstash user"
+
+readall:
+  hash: "{{ readall_password }}"
+  reserved: false
+  backend_roles:
+  - "readall"
+  description: "readall user"
+
+snapshotrestore:
+  hash: "{{ snapshotrestore_password }}"
+  reserved: false
+  backend_roles:
+  - "snapshotrestore"
+  description: "snapshotrestore user"

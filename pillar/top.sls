@@ -41,4 +41,7 @@ base:
     - people
     - elasticsearch
   '*kibana*':
+    - common_kibana
     - kibana
+  '*logstash*':
+    - common_logstash

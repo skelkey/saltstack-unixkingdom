@@ -1,4 +1,9 @@
 admin_dn: CN=kirk,OU=client,O=client,L=test, C=de
+admin_password: admin
+kibanaro_password: kibanaro
+readall_password: readall
+snapshotrestore_password: snapshotrestore
+
 elasticsearch_crt: |
     -----BEGIN CERTIFICATE-----
     MIIF7zCCBNegAwIBAgIRANdVj9r18RBbshMoK3B3KaMwDQYJKoZIhvcNAQEFBQAw

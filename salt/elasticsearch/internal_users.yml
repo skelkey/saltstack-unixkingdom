@@ -8,12 +8,12 @@ _meta:
 
 # Define your internal users here
 
-{% set admin_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['admin_password'] }}') %}
-{% set kibanaserver_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['kibanaserver_password'] }}') %}
-{% set kibanaro_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['kibanaro_password'] }}') %}
-{% set logstash_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['logstash_password'] }}') %}
-{% set readall_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['readall_password'] }}') %}
-{% set snapshotrestore_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['snapshotrestore_password'] }}') %}
+{% set admin_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['admin_password'] }} | tail -1') %}
+{% set kibanaserver_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['kibanaserver_password'] }} | tail -1') %}
+{% set kibanaro_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['kibanaro_password'] }} | tail -1') %}
+{% set logstash_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['logstash_password'] }} | tail -1') %}
+{% set readall_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['readall_password'] }} | tail -1') %}
+{% set snapshotrestore_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p {{ pillar['snapshotrestore_password'] }} | tail -1') %}
 
 admin:
   hash: "{{ admin_password }}"

@@ -8,12 +8,12 @@ _meta:
 
 # Define your internal users here
 
-{% set admin_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('admin_password') + ' {{ | }} tail -1') %}
-{% set kibanaserver_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('kibanaserver_password') + ' {{ | }} tail -1') %}
-{% set kibanaro_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('kibanaro_password') + ' {{ | }} tail -1') %}
-{% set logstash_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('logstash_password') + ' {{ | }} tail -1') %}
-{% set readall_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('readall_password') + ' {{ | }} tail -1') %}
-{% set snapshotrestore_password = salt['cmd.run']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('snapshotrestore_password') + ' {{ | }} tail -1') %}
+{% set admin_password = salt['cmd.shell']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('admin_password') + ' | tail -1') %}
+{% set kibanaserver_password = salt['cmd.shell']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('kibanaserver_password') + ' | tail -1') %}
+{% set kibanaro_password = salt['cmd.shell']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('kibanaro_password') + ' | tail -1') %}
+{% set logstash_password = salt['cmd.shell']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('logstash_password') + ' | tail -1') %}
+{% set readall_password = salt['cmd.shell']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('readall_password') + ' | tail -1') %}
+{% set snapshotrestore_password = salt['cmd.shell']('/usr/share/elasticsearch/plugins/opendistro_security/tools/hash.sh -p ' + pillar.get('snapshotrestore_password') + ' | tail -1') %}
 
 admin:
   hash: "{{ admin_password }}"

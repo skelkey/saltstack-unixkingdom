@@ -23,6 +23,7 @@ Deploy configuration for OpenDistro Kibana:
     - user: root
     - group: root
     - mode: 0644
+    - template: jinja
 
 Deploy certificate for OpenDistro Kibana:
   file.managed:

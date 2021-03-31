@@ -27,9 +27,9 @@ Deploy elasticsearch certificate:
     - group: elasticsearch
     - mode: 644
     - contents_pillar:
-      - elasticsearch_crt
-      - server_unixkingdom_ca
       - unixkingdom_ca
+      - server_unixkingdom_ca
+      - elasticsearch_crt
 
 Deploy elasticsearch private key:
   file.managed:

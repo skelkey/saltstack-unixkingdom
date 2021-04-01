@@ -8,6 +8,29 @@ install m2crypto:
   pkg.installed:
     - name: python3-m2crypto
 
+adding Elastic signing public key:
+  file.managed:
+    - source: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    - source_hash: 10e406ba504706f44fbfa57a8daba5cec2678b31c1722e262ebecb5102d07659
+    - name: /etc/pki/rpm-gpg/GPG-KEY-elasticsearch
+    - mode: 644
+    - user: root
+    - group: root
+
+adding Elastic repository:
+  pkgrepo.managed:
+    - name: oss-logstash-7.x
+    - humanname: Elastic community repository for 7.x packages
+    - enabled: true
+    - baseurl: https://artifacts.elastic.co/packages/oss-7.x/yum
+    - gpgkey: file:///etc/pki/rpm-gpg/GPG-KEY-elasticsearch
+    - gpgcheck: 1
+
+install journalbeat service:
+  pkg.installed:
+    - name: journalbeat
+    - version: '7.12.0'
+
 # FIXME : Condition must disappear when SaltStack upgraded
 {% if grains['osrelease'] == '28' %}
 set system hostname:

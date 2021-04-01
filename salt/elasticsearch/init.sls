@@ -94,6 +94,10 @@ Deploy internal user configuration:
     - mode: 640
     - template: jinja
 
+Apply elasticsearch configuration:
+  cmd.run:
+    - name: /usr/share/elasticsearch/plugins/opendistro_security/tools/securityadmin.sh -cacert /etc/elasticsearch/root-ca.pem -cert /etc/elasticsearch/elasticsearch-cert.pem -key /etc/elasticsearch/elasticsearch-key.pem -h euw2a-prd-unixkingdom-elasticsearch-1.unix-kingdom.lan -icl -nhnv -cd /usr/share/elasticsearch/plugins/opendistro_security/securityconfig/
+
 Start and enable elasticsearch service:
   service.running:
     - name: elasticsearch

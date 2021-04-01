@@ -1,4 +1,4 @@
-admin_dn: CN=kirk,OU=client,O=client,L=test, C=de
+admin_dn: CN=kirk,OU=client,O=client,L=test,C=de
 admin_password: admin
 kibanaro_password: kibanaro
 readall_password: readall

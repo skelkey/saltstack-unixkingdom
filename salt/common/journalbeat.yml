@@ -133,7 +133,7 @@ setup.kibana:
 # ------------------------------ Logstash Output -------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["euw2a-prd-unixkingdom-logstash-1.unix-kingdom.lan:10514"]
+  hosts: ["euw2a-prd-unixkingdom-logstash-1.unix-kingdom.lan:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

@@ -39,6 +39,11 @@ deploy journalbeat configuration:
     - group: root
     - mode: 600
 
+start and enable journalbeat service:
+  service.running:
+    - name: journalbeat
+    - enable: true 
+
 # FIXME : Condition must disappear when SaltStack upgraded
 {% if grains['osrelease'] == '28' %}
 set system hostname:

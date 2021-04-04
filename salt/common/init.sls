@@ -31,6 +31,14 @@ install journalbeat service:
     - name: journalbeat
     - version: '7.12.0'
 
+deploy journalbeat configuration:
+  file.managed:
+    - name: /etc/journalbeat/journalbeat.yml
+    - source: salt://common/journalbeat.yml
+    - user: root
+    - group: root
+    - mode: 600
+
 # FIXME : Condition must disappear when SaltStack upgraded
 {% if grains['osrelease'] == '28' %}
 set system hostname:

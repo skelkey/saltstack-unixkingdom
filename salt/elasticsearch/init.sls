@@ -94,6 +94,15 @@ Deploy internal user configuration:
     - mode: 640
     - template: jinja
 
+Deploy authentification configuration:
+  file.managed:
+    - name: /usr/share/elasticsearch/plugins/opendistro_security/securityconfig/config.yml
+    - source: salt://elasticsearch/config.yml
+    - user: root
+    - group: elasticsearch
+    - mode: 640
+    - template: jinja
+
 Deploy elasticsearch jvm configuration file:
   file.managed:
     - name: /etc/elasticsearch/jvm.options

@@ -114,7 +114,7 @@ Deploy elasticsearch jvm configuration file:
 Link local truststore in Elastic:
   file.symlink:
     - name: /etc/elasticsearch/cacerts
-    - target: /etc/ssl/certs/java/cacerts+
+    - target: /etc/pki/java/cacerts
 
 Apply elasticsearch configuration:
   cmd.run:

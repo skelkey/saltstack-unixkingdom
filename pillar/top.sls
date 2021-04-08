@@ -39,6 +39,7 @@ base:
     - zabbix
   '*elasticsearch*':
     - people
+    - common_ldap
     - common_kibana
     - common_logstash
     - elasticsearch

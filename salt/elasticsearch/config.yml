@@ -169,8 +169,8 @@ config:
             verify_hostnames: true
             hosts:
             - ldap.unix-kingdom.lan:389
-            bind_dn: {{ pillar['ldap_readonly_user'] }}
-            password: {{ pillar['ldap_readonly_password'] }}
+            bind_dn: "{{ pillar['ldap_readonly_user'] }}"
+            password: "{{ pillar['ldap_readonly_password'] }}"
             userbase: 'ou=Users,o=UnixKingdom'
             # Filter to search for users (currently in the whole subtree beneath userbase)
             # {0} is substituted with the username
@@ -196,8 +196,8 @@ config:
             verify_hostnames: true
             hosts:
             - ldap.unix-kingdom.lan:389
-            bind_dn: {{ pillar['ldap_readonly_user'] }}
-            password: {{ pillar['ldap_readonly_password'] }}
+            bind_dn: "{{ pillar['ldap_readonly_user'] }}"
+            password: "{{ pillar['ldap_readonly_password'] }}"
             rolebase: 'ou=Groups,o=UnixKingdom'
             # Filter to search for roles (currently in the whole subtree beneath rolebase)
             # {0} is substituted with the DN of the user

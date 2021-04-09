@@ -174,7 +174,7 @@ config:
             userbase: 'ou=Users,o=UnixKingdom'
             # Filter to search for users (currently in the whole subtree beneath userbase)
             # {0} is substituted with the username
-            usersearch: '(sAMAccountName={0})'
+            usersearch: '(uid={0})'
             # Use this attribute from the user as username (if not set then DN is used)
             username_attribute: uid
     authz:
